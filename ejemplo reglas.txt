@@ -1,0 +1,3 @@
+assert (padre juan pedro)
+(defrule mifunc (padre ?x  ?y) => (assert(hijo ?y ?x)))
+(defrule mifunc2 (hijo ?x ?y) => (assert(padre ?y ?x)))
