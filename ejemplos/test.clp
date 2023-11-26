@@ -1,3 +1,5 @@
+;; Para cargar hechos, (reset), para ejecutar reglas, (run)
+
 ;; Hechos iniciales
 (deffacts initial-facts
     (padre juan pedro)
