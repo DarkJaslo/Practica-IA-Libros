@@ -1,5 +1,5 @@
 ;; Facts
-assert (padre juan pedro)
+(assert (padre juan pedro))
 
 ;; Rules
 (defrule padre-hijo
