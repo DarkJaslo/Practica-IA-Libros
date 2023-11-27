@@ -12,7 +12,21 @@
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#fecha_inicio
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#genero
+:genero rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Manga ;
+        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#tema
+:tema rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdfs:domain :Manga ;
+      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/fecha_inicio
 :fecha_inicio rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
               rdf:type owl:FunctionalProperty ;
@@ -20,7 +34,7 @@
               rdfs:range xsd:dateTime .
 
 
-###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#titulo
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/titulo
 :titulo rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdf:type owl:FunctionalProperty ;
@@ -32,7 +46,7 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#Manga
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/Manga
 :Manga rdf:type owl:Class .
 
 
