@@ -9,29 +9,165 @@
 <http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2> rdf:type owl:Ontology .
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#escribe
+:escribe rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdfs:domain :Autor ;
+         rdfs:range :Manga .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#ilustra
+:ilustra rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdfs:domain :Autor ;
+         rdfs:range :Manga .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#publicado-por
+:publicado-por rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdf:type owl:FunctionalProperty ;
+               rdfs:domain :Manga ;
+               rdfs:range :Publicador .
+
+
+#################################################################
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#genero
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#capitulos
+:capitulos rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdf:type owl:FunctionalProperty ;
+           rdfs:domain :Manga ;
+           rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#copias-vendidas
+:copias-vendidas rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdf:type owl:FunctionalProperty ;
+                 rdfs:domain :Manga ;
+                 rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#dificultad-lectura
+:dificultad-lectura rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdf:type owl:FunctionalProperty ;
+                    rdfs:domain :Manga ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "Valores: (baja | media | alta)" .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#estado-publicacion
+:estado-publicacion rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdf:type owl:FunctionalProperty ;
+                    rdfs:domain :Manga ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "Valores: (acabado | en publicacion | en pausa | cancelado)" .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#fin-publicacion
+:fin-publicacion rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdf:type owl:FunctionalProperty ;
+                 rdfs:domain :Manga ;
+                 rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#frecuencia-publicacion
+:frecuencia-publicacion rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdf:type owl:FunctionalProperty ;
+                        rdfs:domain :Manga ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "Valores: (semanal | quincenal | mensual | bimestral | trimestral | semestral | irregular)" .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#inicio-publicacion
+:inicio-publicacion rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdf:type owl:FunctionalProperty ;
+                    rdfs:domain :Manga ;
+                    rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#metodo-distribucion
+:metodo-distribucion rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdf:type owl:FunctionalProperty ;
+                     rdfs:domain :Manga ;
+                     rdfs:range xsd:string ;
+                     rdfs:comment "Valores: (digital | fisico | ambos)" .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#nombre
+:nombre rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdf:type owl:FunctionalProperty ;
+        rdfs:domain :Autor ,
+                    :Publicador ;
+        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#precio
+:precio rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdf:type owl:FunctionalProperty ;
+        rdfs:domain :Manga ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Valores: (gratuito | de pago)" .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#restriccion-edad
+:restriccion-edad rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdf:type owl:FunctionalProperty ;
+                  rdfs:domain :Manga ;
+                  rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#tiene-anime
+:tiene-anime rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdf:type owl:FunctionalProperty ;
+             rdfs:domain :Manga ;
+             rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#tomos
+:tomos rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdf:type owl:FunctionalProperty ;
+       rdfs:domain :Serializado ;
+       rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#valoracion
+:valoracion rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdf:type owl:FunctionalProperty ;
+            rdfs:domain :Manga ;
+            rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/genero
 :genero rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdfs:domain :Manga ;
         rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#tema
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/tema
 :tema rdf:type owl:DatatypeProperty ;
       rdfs:subPropertyOf owl:topDataProperty ;
       rdfs:domain :Manga ;
       rdfs:range xsd:string .
-
-
-###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/fecha_inicio
-:fecha_inicio rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf owl:topDataProperty ;
-              rdf:type owl:FunctionalProperty ;
-              rdfs:domain :Manga ;
-              rdfs:range xsd:dateTime .
 
 
 ###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/titulo
@@ -46,8 +182,77 @@
 #    Classes
 #################################################################
 
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#Autor
+:Autor rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#Autor-Publicador
+:Autor-Publicador rdf:type owl:Class ;
+                  rdfs:subClassOf :Publicador .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#Editorial
+:Editorial rdf:type owl:Class ;
+           rdfs:subClassOf :Autor ,
+                           :Publicador .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#One-shot
+:One-shot rdf:type owl:Class ;
+          rdfs:subClassOf :Manga ;
+          owl:disjointWith :Serializado .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#Publicador
+:Publicador rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#Serializado
+:Serializado rdf:type owl:Class ;
+             rdfs:subClassOf :Manga .
+
+
 ###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/Manga
 :Manga rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#eiichiro-oda
+:eiichiro-oda rdf:type owl:NamedIndividual ,
+                       :Autor ;
+              :escribe :one-piece ;
+              :ilustra :one-piece ;
+              :nombre "Eiichiro Oda" .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#one-piece
+:one-piece rdf:type owl:NamedIndividual ,
+                    :Serializado ;
+           :publicado-por :shueisha ;
+           :capitulos 1099 ;
+           :copias-vendidas 598957 ;
+           :dificultad-lectura "facil" ;
+           :estado-publicacion "en publicacion" ;
+           :frecuencia-publicacion "semanal" ;
+           :inicio-publicacion "1997-07-22T00:00:00"^^xsd:dateTime ;
+           :metodo-distribucion "ambos" ;
+           :precio "pago" ;
+           :tiene-anime "true"^^xsd:boolean ;
+           :tomos 107 ;
+           :valoracion 9.22 ;
+           :genero "Accion" ,
+                   "Aventura" ;
+           :tema "Super poderes" ;
+           :titulo "One Piece" .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#shueisha
+:shueisha rdf:type owl:NamedIndividual ,
+                   :Editorial ;
+          :nombre "Shueisha" .
 
 
 ###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
