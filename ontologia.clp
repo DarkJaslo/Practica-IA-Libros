@@ -2,7 +2,28 @@
 ;;; ontologia.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontologia.ttl
-;;; :Date 01/12/2023 21:52:47
+;;; :Date 02/12/2023 00:33:17
+
+(defclass Publicador
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (slot nombre
+        (type STRING)
+        (create-accessor read-write))
+)
+
+(defclass Autor-Publicador
+    (is-a Publicador)
+    (role concrete)
+    (pattern-match reactive)
+)
+
+(defclass Editorial
+    (is-a Publicador)
+    (role concrete)
+    (pattern-match reactive)
+)
 
 (defclass Autor
     (is-a USER)
@@ -29,7 +50,13 @@
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
+    (multislot pertenece-a
+        (type INSTANCE)
+        (create-accessor read-write))
     (slot publicado-por
+        (type INSTANCE)
+        (create-accessor read-write))
+    (multislot trata-de
         (type INSTANCE)
         (create-accessor read-write))
     (slot capitulos
@@ -42,12 +69,10 @@
     (slot dificultad-lectura
         (type STRING)
         (create-accessor read-write))
-        (allowed-values "baja" "media" "alta")
     ;;; Valores: (acabado | en publicacion | en pausa | cancelado)
     (slot estado-publicacion
         (type STRING)
         (create-accessor read-write))
-        (allowed-values "acabado" "en publicacion" "en pausa" "cancelado")
     (slot fin-publicacion
         (type SYMBOL)
         (create-accessor read-write))
@@ -55,7 +80,6 @@
     (slot frecuencia-publicacion
         (type STRING)
         (create-accessor read-write))
-        (allowed-values "semanal" "quincenal" "mensual" "bimestral" "trimestral" "semestral" "irregular")
     (slot inicio-publicacion
         (type SYMBOL)
         (create-accessor read-write))
@@ -63,12 +87,10 @@
     (slot metodo-distribucion
         (type STRING)
         (create-accessor read-write))
-        (allowed-values "digital" "fisico" "ambos")
     ;;; Valores: (gratuito | de pago)
     (slot precio
         (type STRING)
         (create-accessor read-write))
-        (allowed-values "gratuito" "de pago")
     (slot restriccion-edad
         (type INTEGER)
         (create-accessor read-write))
@@ -77,12 +99,6 @@
         (create-accessor read-write))
     (slot valoracion
         (type FLOAT)
-        (create-accessor read-write))
-    (multislot genero
-        (type STRING)
-        (create-accessor read-write))
-    (multislot tema
-        (type STRING)
         (create-accessor read-write))
     (slot titulo
         (type STRING)
@@ -104,23 +120,14 @@
         (create-accessor read-write))
 )
 
-(defclass Publicador
+(defclass Genero
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    (slot nombre
-        (type STRING)
-        (create-accessor read-write))
 )
 
-(defclass Autor-Publicador
-    (is-a Publicador)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Editorial
-    (is-a Publicador)
+(defclass Tema
+    (is-a USER)
     (role concrete)
     (pattern-match reactive)
 )
@@ -145,8 +152,6 @@
          (precio  "pago")
          (tiene-anime  "true")
          (valoracion  9.22)
-         (genero  "Accion" "Aventura")
-         (tema  "Super poderes")
          (titulo  "One Piece")
     )
 
