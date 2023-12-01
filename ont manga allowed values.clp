@@ -2,7 +2,13 @@
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
+    (multislot pertenece-a
+        (type INSTANCE)
+        (create-accessor read-write))
     (slot publicado-por
+        (type INSTANCE)
+        (create-accessor read-write))
+    (multislot trata-de
         (type INSTANCE)
         (create-accessor read-write))
     (slot capitulos
@@ -50,12 +56,6 @@
         (create-accessor read-write))
     (slot valoracion
         (type FLOAT)
-        (create-accessor read-write))
-    (multislot genero
-        (type STRING)
-        (create-accessor read-write))
-    (multislot tema
-        (type STRING)
         (create-accessor read-write))
     (slot titulo
         (type STRING)

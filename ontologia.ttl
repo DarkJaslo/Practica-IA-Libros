@@ -125,7 +125,9 @@
         rdfs:subPropertyOf owl:topDataProperty ;
         rdf:type owl:FunctionalProperty ;
         rdfs:domain :Autor ,
-                    :Publicador ;
+                    :Genero ,
+                    :Publicador ,
+                    :Tema ;
         rdfs:range xsd:string .
 
 
@@ -188,13 +190,13 @@
 
 ###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#Autor-Publicador
 :Autor-Publicador rdf:type owl:Class ;
-                  rdfs:subClassOf :Publicador .
+                  rdfs:subClassOf :Autor ,
+                                  :Publicador .
 
 
 ###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#Editorial
 :Editorial rdf:type owl:Class ;
-           rdfs:subClassOf :Autor ,
-                           :Publicador .
+           rdfs:subClassOf :Publicador .
 
 
 ###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#Genero

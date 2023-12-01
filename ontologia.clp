@@ -2,49 +2,7 @@
 ;;; ontologia.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontologia.ttl
-;;; :Date 02/12/2023 00:33:17
-
-(defclass Publicador
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-    (slot nombre
-        (type STRING)
-        (create-accessor read-write))
-)
-
-(defclass Autor-Publicador
-    (is-a Publicador)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Editorial
-    (is-a Publicador)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Autor
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-    (multislot escribe
-        (type INSTANCE)
-        (create-accessor read-write))
-    (multislot ilustra
-        (type INSTANCE)
-        (create-accessor read-write))
-    (slot nombre
-        (type STRING)
-        (create-accessor read-write))
-)
-
-(defclass Editorial
-    (is-a Autor)
-    (role concrete)
-    (pattern-match reactive)
-)
+;;; :Date 02/12/2023 00:41:53
 
 (defclass Manga
     (is-a USER)
@@ -120,16 +78,64 @@
         (create-accessor read-write))
 )
 
+(defclass Autor
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (multislot escribe
+        (type INSTANCE)
+        (create-accessor read-write))
+    (multislot ilustra
+        (type INSTANCE)
+        (create-accessor read-write))
+    (slot nombre
+        (type STRING)
+        (create-accessor read-write))
+)
+
+(defclass Autor-Publicador
+    (is-a Autor)
+    (role concrete)
+    (pattern-match reactive)
+)
+
+(defclass Publicador
+    (is-a USER)
+    (role abstract)
+    (pattern-match reactive)
+    (slot nombre
+        (type STRING)
+        (create-accessor read-write))
+)
+
+(defclass Autor-Publicador
+    (is-a Publicador)
+    (role concrete)
+    (pattern-match reactive)
+)
+
+(defclass Editorial
+    (is-a Publicador)
+    (role concrete)
+    (pattern-match reactive)
+)
+
 (defclass Genero
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
+    (slot nombre
+        (type STRING)
+        (create-accessor read-write))
 )
 
 (defclass Tema
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
+    (slot nombre
+        (type STRING)
+        (create-accessor read-write))
 )
 
 (definstances instances
