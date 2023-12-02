@@ -340,7 +340,7 @@ void readManga(Manga& m)
 
     //Lee anime
     cin >> l;
-    l == "true" ? m.anime = true : m.anime = false;
+    l == "y" ? m.anime = true : m.anime = false;
 
     //Lee valoracion
     {
