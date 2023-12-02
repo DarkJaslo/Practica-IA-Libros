@@ -169,6 +169,10 @@
     )
 
 )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Modulos ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; No es lo mas eficiente exportar todo
+
 ; Modulo principal
 (defmodule MAIN (export ?ALL))
 
@@ -195,7 +199,17 @@
     (import MAIN ?ALL)
     (export ?ALL)
 )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Funciones ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(deffunction pregunta-numerica (?pregunta ?rangini ?rangfi)
+    (format t "¿%s? [%d, %d] " ?pregunta ?rangini ?rangfi)
+    (bind ?respuesta (read))
+    (while (not(and(> ?respuesta ?rangini)(< ?respuesta ?rangfi))) do
+        (format t "¿%s? [%d, %d] " ?pregunta ?rangini ?rangfi)
+        (bind ?respuesta (read))
+    )
+    ?respuesta
+)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Templates ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (deftemplate MAIN::usuario
@@ -204,17 +218,32 @@
     (multislot gusto-temas (type INSTANCE))
 )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defrule MAIN::haz-preguntas-usuario
     (declare (salience 10))
     =>
+    (assert (usuario))
     (focus preguntas-usuario)
 )
 
 (defrule preguntas-usuario::pregunta-edad
     ; poner un hecho que ahora este sin instanciar pero se instancie aqui (para que no se vuelva a llamar??)
+    (not (pregunta1))
     ?usr <- (usuario)
     =>
-    ;esto siguiente se puede hacer mejor con una funcion pero ahora mismo no se hacer funciones aun
+    ; esto siguiente se puede hacer mejor con una funcion pero ahora mismo no se hacer funciones aun
     (printout t "¿Cuantos años tienes?" crlf)
     (modify ?usr (edad (read)))
+    (assert (pregunta1))
+)
+
+(defrule preguntas-usuario::pregunta-a-medias
+    ; poner un hecho que ahora este sin instanciar pero se instancie aqui (para que no se vuelva a llamar??)
+    (pregunta1)
+    ?usr <- (usuario)
+    =>
+    ; esto siguiente se puede hacer mejor con una funcion pero ahora mismo no se hacer funciones aun
+    (printout t "¿Cuantos años tienes?" crlf)
+    (modify ?usr (edad (read)))
+    (assert (pregunta2))
 )
