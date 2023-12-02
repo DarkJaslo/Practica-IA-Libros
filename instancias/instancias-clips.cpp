@@ -53,7 +53,7 @@ string normToClips(const string& nombre)
         {
             c = '-';
         }
-        else if(c == ',' or c == '.')
+        else if(c == ',' or c == '.' or c == ':')
             continue;
 
         res += c;
@@ -241,7 +241,7 @@ struct Manga
     }    
 };
 
-void readManga(Manga& m)
+bool readManga(Manga& m)
 {
     string l;
     int n;
@@ -352,11 +352,22 @@ void readManga(Manga& m)
     //Lee edad
     cin >> n;
     m.edad = n;
+
+    getline(cin,l);
+    if(getline(cin,l))
+        return true;
+    return false;
 }
 
 int main()
 {
-    Manga m;
-    readManga(m);
-    m.toClips();
+    bool reading = true;
+
+    do
+    {
+        Manga m;
+        reading = readManga(m);
+        m.toClips();
+    }
+    while(reading);
 }

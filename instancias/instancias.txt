@@ -8,5 +8,154 @@ Aventura
 Comedia
 Fantasia
 1 
-Super poderes
+Superpoderes
 s 107 1100 10000000 b pu 1s 1997-07-22 a p y 9.22 12
+
+Hunter x Hunter
+Yoshihiro Togashi
+Yoshihiro Togashi
+Shueisha
+3
+Accion
+Aventura
+Fantasia
+1
+Superpoderes
+s 37 400 264000 a pa ir 1998-03-03 a p y 8.73 12
+
+JoJo no Kimyou na bouken part 5: Ougon no kaze
+Hirohiko Araki
+Hirohiko Araki
+Shueisha
+4
+Accion
+Aventura
+Drama
+Supernatural
+3
+Delincuencia
+Historico
+Superpoderes
+s 17 155 109000 m ac 1s 1995-11-28 a p y 8.17 12
+
+JoJo no Kimyou na bouken part 4: Diamond wa kudakenai
+Hirohiko Araki
+Hirohiko Araki
+Shueisha
+4
+Accion
+Slice of life
+Misterio
+Supernatural
+2
+Escolar
+Superpoderes
+s 18 174 100000 m ac 1s 1992-04-21 a p y 8.57 12
+
+JoJo no Kimyou na bouken part 3: Stardust crusaders
+Hirohiko Araki
+Hirohiko Araki
+Shueisha
+4
+Accion
+Aventura
+Supernatural
+Suspense
+2
+Superpoderes
+Historico
+s 16 152 94600 m ac 1s 1989-04-21 a p y 8.10 12
+
+JoJo no Kimyou na bouken part 2: Battle tendency
+Hirohiko Araki
+Hirohiko Araki
+Shueisha
+3
+Accion
+Aventura
+Suspense
+3
+Superpoderes
+Vampiros
+Historico
+s 7 69 102000 m ac 1s 1987-04-21 a p y 8.15 12
+
+JoJo no Kimyou na bouken part 1: Phantom blood
+Hirohiko Araki
+Hirohiko Araki
+Shueisha
+3
+Accion
+Aventura
+Suspense
+3
+Superpoderes
+Vampiros
+Historico
+s 5 44 125000 m ac 1s 1985-04-21 a p y 7.60 12
+
+Kaguya-sama wa kokurasetai: Tensai-tachi no renai zunousen
+Aka Akasaka
+Aka Akasaka
+Shueisha
+3
+Romance
+Comedia
+Psicologico
+1
+Escolar
+s 28 281 262000 b ac 1s 2015-05-19 a p y 8.91 12
+
+World Trigger
+Aishihara Daisuke
+Aishihara Daisuke
+Shueisha
+2
+Ciencia ficcion
+Accion
+1
+Superpoderes
+s 17 200 45000 a pu 1s 2013-01-01 a p y 7.81 8
+
+Naruto
+Kishimoto Masashi
+Kishimoto Masashi
+Shueisha
+4
+Accion
+Aventura
+Fantasia
+Drama
+4
+Artes marciales
+Tradicional japones
+Superpoderes
+Venganza
+s 72 700 5000000 m ac 1s 1999-01-01 a p y 8.07 12
+
+Shingeki no Kyojin
+Isayama Hajime
+Isayama Hajime
+Kodansha
+2
+Accion
+Drama
+4
+Gore
+Guerra
+Supervivencia
+Postapocaliptico
+s 34 141 3000000 m ac 1m 2009-03-03 a p y 8.55 16
+
+Death Note
+Ohba Tsugumi
+Obata Takeshi
+Shueisha
+3
+Supernatural
+Suspense
+Psicologico
+2
+Detectives
+Personajes adultos
+s 12 108 1000000 a ac 1s 2003-07-23 a p y 8.69 12
