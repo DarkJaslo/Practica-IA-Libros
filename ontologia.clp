@@ -2,7 +2,28 @@
 ;;; ontologia.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontologia.ttl
-;;; :Date 02/12/2023 00:41:53
+;;; :Date 02/12/2023 16:00:29
+
+(defclass Publicador
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (slot nombre
+        (type STRING)
+        (create-accessor read-write))
+)
+
+(defclass Autopublicador
+    (is-a Publicador)
+    (role concrete)
+    (pattern-match reactive)
+)
+
+(defclass Editorial
+    (is-a Publicador)
+    (role concrete)
+    (pattern-match reactive)
+)
 
 (defclass Manga
     (is-a USER)
@@ -55,11 +76,11 @@
     (slot tiene-anime
         (type SYMBOL)
         (create-accessor read-write))
-    (slot valoracion
-        (type FLOAT)
-        (create-accessor read-write))
     (slot titulo
         (type STRING)
+        (create-accessor read-write))
+    (slot valoracion
+        (type FLOAT)
         (create-accessor read-write))
 )
 
@@ -93,33 +114,6 @@
         (create-accessor read-write))
 )
 
-(defclass Autor-Publicador
-    (is-a Autor)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Publicador
-    (is-a USER)
-    (role abstract)
-    (pattern-match reactive)
-    (slot nombre
-        (type STRING)
-        (create-accessor read-write))
-)
-
-(defclass Autor-Publicador
-    (is-a Publicador)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Editorial
-    (is-a Publicador)
-    (role concrete)
-    (pattern-match reactive)
-)
-
 (defclass Genero
     (is-a USER)
     (role concrete)
@@ -139,6 +133,10 @@
 )
 
 (definstances instances
+    ([eiichiro-oda-p] of Autopublicador
+         (nombre  "Eiichiro Oda")
+    )
+
     ([eiichiro-oda] of Autor
          (escribe  [one-piece])
          (ilustra  [one-piece])
@@ -147,7 +145,7 @@
 
     ([one-piece] of Serializado
          (tomos  107)
-         (publicado-por  [shueisha])
+         (publicado-por  [eiichiro-oda-p])
          (capitulos  1099)
          (copias-vendidas  598957)
          (dificultad-lectura  "facil")
@@ -157,8 +155,8 @@
          (metodo-distribucion  "ambos")
          (precio  "pago")
          (tiene-anime  "true")
-         (valoracion  9.22)
          (titulo  "One Piece")
+         (valoracion  9.22)
     )
 
     ([shueisha] of Editorial
