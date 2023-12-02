@@ -1,0 +1,24 @@
+todos estos, 1 por linea
+
+[titulo] {string}
+[autor]
+[ilustrador]
+[publicadora] (el programa lo pasa a nombre CLIPS)
+[genero] numero n y n nombres instancias {nombres instancias}
+[tema] numero n y n nombres instancias {nombres temas}
+
+todos estos, solo separados por un espacio
+
+[tipo] o|s {oneshot|serializado}
+[ntomos]
+[ncapitulos]
+[ncopias]
+[dif] b|m|a{baja|media|alta}
+[estado] ac|pu|pa|ca {acabado|en publicacion|en pausa|cancelado}
+[frec] 1s|2s|1m|2m|3m|6m|ir {"semanal" "quincenal" "mensual" "bimestral" "trimestral" "semestral" "irregular"}
+[ini] {aaaa-mm-dd}
+[metodo] d|f|a {digital|fisico|ambos}
+[precio] g|p {gratuito|de pago}
+[tiene-anime] y|n {true|false}
+[valoracion] {floats [0.00,10.00]}
+[edad] {int >=0}
