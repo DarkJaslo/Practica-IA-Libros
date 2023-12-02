@@ -9,7 +9,7 @@ Comedia
 Fantasia
 1 
 Superpoderes
-s 107 1100 10000000 b pu 1s 1997-07-22 a p y 9.22 12
+s 107 1100 528000000 b pu 1s 1997-07-22 a p y 9.22 12
 
 Hunter x Hunter
 Yoshihiro Togashi
@@ -21,7 +21,7 @@ Aventura
 Fantasia
 1
 Superpoderes
-s 37 400 264000 a pa ir 1998-03-03 a p y 8.73 12
+s 37 400 84000000 a pa ir 1998-03-03 a p y 8.73 12
 
 JoJo no Kimyou na bouken part 5: Ougon no kaze
 Hirohiko Araki
@@ -31,12 +31,12 @@ Shueisha
 Accion
 Aventura
 Drama
-Supernatural
+Sobrenatural
 3
 Delincuencia
 Historico
 Superpoderes
-s 17 155 109000 m ac 1s 1995-11-28 a p y 8.17 12
+s 17 155 10000000 m ac 1s 1995-11-28 a p y 8.17 12
 
 JoJo no Kimyou na bouken part 4: Diamond wa kudakenai
 Hirohiko Araki
@@ -46,7 +46,7 @@ Shueisha
 Accion
 Slice of life
 Misterio
-Supernatural
+Sobrenatural
 2
 Escolar
 Superpoderes
@@ -59,7 +59,7 @@ Shueisha
 4
 Accion
 Aventura
-Supernatural
+Sobrenatural
 Suspense
 2
 Superpoderes
@@ -104,22 +104,22 @@ Comedia
 Psicologico
 1
 Escolar
-s 28 281 262000 b ac 1s 2015-05-19 a p y 8.91 12
+s 28 281 22000000 b ac 1s 2015-05-19 a p y 8.91 12
 
 World Trigger
-Aishihara Daisuke
-Aishihara Daisuke
+Daisuke Aishihara
+Daisuke Aishihara
 Shueisha
 2
 Ciencia ficcion
 Accion
 1
 Superpoderes
-s 17 200 45000 a pu 1s 2013-01-01 a p y 7.81 8
+s 17 200 15000000 a pu 1s 2013-01-01 a p y 7.81 8
 
 Naruto
-Kishimoto Masashi
-Kishimoto Masashi
+Masashi Kishimoto
+Masashi Kishimoto
 Shueisha
 4
 Accion
@@ -131,11 +131,11 @@ Artes marciales
 Tradicional japones
 Superpoderes
 Venganza
-s 72 700 5000000 m ac 1s 1999-01-01 a p y 8.07 12
+s 72 700 250000000 m ac 1s 1999-01-01 a p y 8.07 12
 
 Shingeki no Kyojin
-Isayama Hajime
-Isayama Hajime
+Hajime Isayama
+Hajime Isayama
 Kodansha
 2
 Accion
@@ -145,17 +145,103 @@ Gore
 Guerra
 Supervivencia
 Postapocaliptico
-s 34 141 3000000 m ac 1m 2009-03-03 a p y 8.55 16
+s 34 141 120000000 m ac 1m 2009-03-03 a p y 8.55 16
 
 Death Note
-Ohba Tsugumi
-Obata Takeshi
+Tsugumi Ohba
+Takeshi Obata
 Shueisha
 3
-Supernatural
+Sobrenatural
 Suspense
 Psicologico
 2
 Detectives
 Personajes adultos
-s 12 108 1000000 a ac 1s 2003-07-23 a p y 8.69 12
+s 12 108 30000000 a ac 1s 2003-07-23 a p y 8.69 16
+
+Detective Conan
+Gosho Aoyama
+Gosho Aoyama
+Shogakukan
+3
+Aventura
+Comedia
+Misterio
+1
+Detectives
+s 104 1111 270000000 m pu ir 1994-01-05 a p y 8.29 12
+
+Made in Abyss
+Akihito Tsukushi
+Akihito Tsukushi
+Takeshobo
+5
+Aventura
+Drama
+Fantasia
+Misterio
+Ciencia ficcion
+2
+Gore
+Supervivencia
+s 12 66 1965000 a pu ir 2012-10-20 a p y 8.77 18
+
+Pretty Soldier Sailor Moon
+Naoko Takeuchi
+Naoko Takeuchi
+Kodansha
+2
+Fantasia
+Romance
+2
+Mahou Shoujo
+Mitologia
+s 18 52 46000000 b ac 1m 1991-12-28 a p y 8.20 10
+
+One Punch Man
+ONE
+Yusuke Murata
+Shueisha
+3
+Accion
+Comedia
+Ciencia ficcion
+3
+Parodia
+Personajes adultos
+Superpoderes
+s 29 185 15000000 m pu ir 2012-06-14 a p y 8.75 12
+
+Berserk
+Kentaro Miura
+Kentaro Miura
+Hakusensha
+7
+Accion
+Aventura
+Drama
+Fantasia
+Horror
+Sobrenatural
+Psicologico
+5
+Gore
+Guerra
+Mitologia
+Tragedia
+Venganza
+s 42 364 50000000 a pu ir 1989-08-25 a p y 9.47 18
+
+Bobobo-bo Bo-bobo
+Yoshio Sawai
+Yoshio Sawai
+Shueisha
+3
+Aventura
+Comedia
+Ciencia ficcion
+2
+Humor absurdo
+Parodia
+s 21 230 7000000 f ac 1m 2001-02-20 a p y 7.49 11
