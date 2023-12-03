@@ -1,0 +1,73 @@
+Sono Bisque Doll wa Koi wo Suru
+Fukuda Shinichi
+Fukuda Shinichi
+Square Enix
+2
+Romance
+Comedia
+1
+Escolar
+s 12 96 10000000 b pu 2s 2018-01-19 f y 8.00 16
+
+Uchi no Neko ga Onnanoko de Kawaii
+Shimahara
+Shimahara
+Shimahara
+2
+Comedia
+Slice of life
+3
+Animales
+Humor absurdo
+Reconfortante
+s 3 3 70000 b ac ir 2020-12-30 a n 7.84 0
+
+Dekihime no Usui Hon
+Ajiichi
+Ajiichi
+Ajiichi
+1
+Romance
+2
+Escolar
+Yuri
+s 5 5 20000 b ac ir 2022-05-05 a n 8.12 7
+
+Orange
+Takano Ichigo
+Takano Ichigo
+Futabasha
+2
+Romance
+Drama
+3
+Escolar
+Triangulo amoroso
+Viajes en el tiempo
+s 7 38 4700000 m ac ir 2012-03-13 f y 8.30 13
+
+Given
+Kizu Natsuki
+Kizu Natsuki
+Shinshokan
+2
+Drama
+Romance
+4
+Artes
+Escolar
+Musica
+Yaoi
+s 9 58 500000 m ac 1m 2013-05-30 f y 8.53 13
+
+Yoake ni Furu
+Hayakawa Nojiko
+Hayakawa Nojiko
+Taiyoh Tosho
+1
+Romance
+3
+Escolar
+Triangulo Amoroso
+Yaoi
+s 2 15 80000 m ac 2s 2013-07-19 f n 7.51 13
