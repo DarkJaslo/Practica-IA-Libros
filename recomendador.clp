@@ -266,6 +266,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Main ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Aqui controlaremos en cambio entre los modulos del programa
+
 ; Funcion que solo activa el modulo preguntas-usuario
 ; salience para que se llame la primera
 (defrule MAIN::haz-preguntas-usuario
@@ -274,6 +278,10 @@
     (assert (usuario))
     (focus preguntas-usuario)
 )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Preguntas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Reglas del modulo preguntas-usuario
 
 (defrule preguntas-usuario::pregunta-edad
     ; control para que no se llame mas de una vez
