@@ -13,8 +13,8 @@ map<string,string> autopublicadoresClips;
 map<string,string> autopublicadoresNormal;
 map<string,string> autoresClips;
 map<string,string> autoresNormal;
-set<string> generos;
-set<string> temas;
+vector<string> generos = {"Accion", "Aventura", "Ciencia ficcion", "Comedia", "Deportes", "Drama", "Fantasia", "Horror", "Misterio", "Psicologico", "Romance", "Slice of life", "Sobrenatural", "Suspense"};
+vector<string> temas = {"Animales", "Artes", "Artes marciales", "Battle royale", "Carreras", "Delincuencia", "Detectives", "Escolar", "Espacio exterior", "Familiar", "Genero", "Gore", "Guerra", "Harem", "Historico", "Humor absurdo", "Idols", "Isekai", "Juegos de estrategia", "Magia", "Mahou shoujo", "Mitologia", "Musica", "Parodia", "Personajes adultos", "Postapocaliptico", "Reconfortante", "Robots", "Superpoderes", "Supervivencia", "Tradicional japones", "Tragedia", "Triangulo amoroso", "Vampiros", "Venganza", "Viajes en el tiempo", "Videojuegos", "Yaoi", "Yuri"};
 
 struct MangaYAutoria
 {
@@ -24,6 +24,24 @@ struct MangaYAutoria
 };
 
 map<string,vector<MangaYAutoria>> mangasPorAutor;
+
+template <typename T>
+int binarySearch(int l, int r, const T& thing, const vector<T>& vec)
+{
+    if(l > r) return -1;
+    int m = (l+r)/2;
+    if(vec[m] > thing)
+        return binarySearch(l,m-1,thing,vec);
+    else if(vec[m] < thing)
+        return binarySearch(m+1,r,thing,vec);
+    return m;
+}
+
+template <typename T>
+bool find(const T& thing, const vector<T>& vec)
+{
+    return binarySearch(0,vec.size()-1,thing,vec) >= 0;
+}
 
 void inserta(map<string,string>& m1, map<string,string>& m2, const string& key, const string& value)
 {
@@ -40,13 +58,6 @@ void inserta(map<string,string>& m1, map<string,string>& m2, const string& key, 
         m1[key] = value;
         m2[value] = key;
     }
-}
-
-void add(set<string>& set, const string& item)
-{
-    if(set.find(item) != set.end()) return;
-
-    set.insert(item);
 }
 
 string normToClips(const string& nombre)
@@ -319,7 +330,11 @@ bool readManga(Manga& m)
     for(int i = 0; i < n; ++i)
     {
         getline(cin,m.generos[i]);
-        add(generos,m.generos[i]);
+        if(not find(m.generos[i],generos))
+        {
+            cerr << m.generos[i] << "\n";
+            __throw_domain_error("genero no reconocido");
+        }
     }
 
     //Lee temas
@@ -330,7 +345,11 @@ bool readManga(Manga& m)
     for(int i = 0; i < n; ++i)
     {
         getline(cin,m.temas[i]);
-        add(temas,m.temas[i]);
+        if(not find(m.temas[i],temas))
+        {
+            cerr << m.temas[i] << "\n";
+            __throw_domain_error("tema no reconocido");
+        }
     }
     
     //Lee tipo
@@ -460,6 +479,26 @@ void printPublicadores()
     }
 }
 
+void printGeneros()
+{
+    for(const string& genero : generos)
+    {
+        cout << "([" << normToClips(genero) << "] of Genero\n";
+        cout << "\t(nombre  \"" << genero << "\")\n";
+        cout << ")\n";
+    }
+}
+
+void printTemas()
+{
+    for(const string& tema : temas)
+    {
+        cout << "([" << normToClips(tema) << "] of Tema\n";
+        cout << "\t(nombre  \"" << tema << "\")\n";
+        cout << ")\n";
+    }
+}
+
 int main()
 {
     bool reading = true;
@@ -476,4 +515,8 @@ int main()
     printAutores();
     cout << "\n; Publicadores\n\n";
     printPublicadores();
+    cout << "\n; Generos\n\n";
+    printGeneros();
+    cout << "\n; Temas\n\n";
+    printTemas();
 }
