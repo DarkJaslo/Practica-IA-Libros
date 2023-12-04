@@ -1,6 +1,6 @@
 Sono Bisque Doll wa Koi wo Suru
-Fukuda Shinichi
-Fukuda Shinichi
+Shinichi Fukuda
+Shinichi Fukuda
 Square Enix
 2
 Romance
@@ -20,7 +20,7 @@ Slice of life
 Animales
 Humor absurdo
 Reconfortante
-s 3 3 70000 b ac ir 2020-12-30 a n 7.84 0
+s 3 3 70000 b ac ir 2020-12-30 a n 7.84 3
 
 Dekihime no Usui Hon
 Ajiichi
@@ -34,8 +34,8 @@ Yuri
 s 5 5 20000 b ac ir 2022-05-05 a n 8.12 7
 
 Orange
-Takano Ichigo
-Takano Ichigo
+Ichigo Takano
+Ichigo Takano
 Futabasha
 2
 Romance
@@ -44,11 +44,11 @@ Drama
 Escolar
 Triangulo amoroso
 Viajes en el tiempo
-s 7 38 4700000 m ac ir 2012-03-13 f y 8.30 13
+s 7 38 4700000 m ac ir 2012-03-13 f y 8.30 12
 
 Given
-Kizu Natsuki
-Kizu Natsuki
+Natsuki Kizu
+Natsuki Kizu
 Shinshokan
 2
 Drama
@@ -58,11 +58,11 @@ Artes
 Escolar
 Musica
 Yaoi
-s 9 58 500000 m ac 1m 2013-05-30 f y 8.53 13
+s 9 58 500000 m ac 1m 2013-05-30 f y 8.53 12
 
 Yoake ni Furu
-Hayakawa Nojiko
-Hayakawa Nojiko
+Nojiko Hayakawa
+Nojiko Hayakawa
 Taiyoh Tosho
 1
 Romance
@@ -70,4 +70,4 @@ Romance
 Escolar
 Triangulo Amoroso
 Yaoi
-s 2 15 80000 m ac 2s 2013-07-19 f n 7.51 13
+s 2 15 80000 m ac 2s 2013-07-19 f n 7.51 12
