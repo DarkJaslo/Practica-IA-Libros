@@ -248,8 +248,8 @@ struct Manga
     }
 
     string tieneAnime(){
-        if(anime) return "true";
-        return "false";
+        if(anime) return "TRUE";
+        return "FALSE";
     }
 
     void toClips()
@@ -271,7 +271,7 @@ struct Manga
         cout << "\t(inicio-publicacion  \"" << ini << "\")\n";
         cout << "\t(metodo-distribucion  \"" << metodo << "\")\n";
         cout << "\t(precio  \"" << precio << "\")\n";
-        cout << "\t(tiene-anime  \"" << tieneAnime() << "\")\n";
+        cout << "\t(tiene-anime  " << tieneAnime() << ")\n";
         cout << "\t(valoracion  " << valoracion << ")\n";
         cout << "\t(restriccion-edad  " << edad << ")\n";
         cout << ")\n";
