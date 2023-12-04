@@ -9,10 +9,21 @@ map<string,string> titulosClips;
 map<string,string> titulosNormal;
 map<string,string> publicadorasClips;
 map<string,string> publicadorasNormal;
+map<string,string> autopublicadoresClips;
+map<string,string> autopublicadoresNormal;
 map<string,string> autoresClips;
 map<string,string> autoresNormal;
 set<string> generos;
 set<string> temas;
+
+struct MangaYAutoria
+{
+    string nombre;
+    bool escribe;
+    bool ilustra;
+};
+
+map<string,vector<MangaYAutoria>> mangasPorAutor;
 
 void inserta(map<string,string>& m1, map<string,string>& m2, const string& key, const string& value)
 {
@@ -53,7 +64,7 @@ string normToClips(const string& nombre)
         {
             c = '-';
         }
-        else if(c == ',' or c == '.' or c == ':')
+        else if(c == ',' or c == '.' or c == ':' or c == '!' or c == '?')
             continue;
 
         res += c;
@@ -164,6 +175,20 @@ string precio(const string& p)
     __throw_domain_error("mal input en precio()");
 }
 
+bool autopublicado(const string& a)
+    {
+        if(a == "e")
+        {
+            return false;
+        }
+        else if(a == "a"){
+            return true;
+        }
+        cerr << a << "\n";
+        __throw_domain_error("mal input en autopublicado()");
+        return false;
+    }
+
 struct Manga
 {
     string titulo; //Normal
@@ -185,6 +210,7 @@ struct Manga
     int edad;
     vector<string> generos;
     vector<string> temas;
+    bool autopublicado;
 
     string generosToClips()
     {
@@ -272,7 +298,16 @@ bool readManga(Manga& m)
     getline(cin, l);
     {
         string aux = normToClips(l);
-        inserta(publicadorasClips,publicadorasNormal,l,aux);
+        if(aux == m.autor or aux == m.ilustrador)
+        {
+            m.autopublicado = true;
+            inserta(autopublicadoresClips,autopublicadoresNormal,l,aux);
+        }
+        else
+        {
+            m.autopublicado = false;
+            inserta(publicadorasClips,publicadorasNormal,l,aux);
+        }
         m.publicadora = aux;
     }
 
@@ -353,10 +388,76 @@ bool readManga(Manga& m)
     cin >> n;
     m.edad = n;
 
+    //Guarda datos sobre autores
+    if(m.autor == m.ilustrador)
+    {
+        MangaYAutoria mya;
+        mya.nombre = m.titulo;
+        mya.escribe = true;
+        mya.ilustra = true;
+        mangasPorAutor[m.autor].push_back(mya);
+    }
+    else
+    {
+        MangaYAutoria myaAutor;
+        myaAutor.nombre = m.titulo;
+        myaAutor.escribe = true;
+        myaAutor.ilustra = false;
+        mangasPorAutor[m.autor].push_back(myaAutor);
+
+        MangaYAutoria myaIlustrador;
+        myaIlustrador.nombre = m.titulo;
+        myaIlustrador.escribe = false;
+        myaIlustrador.ilustra = true;
+        mangasPorAutor[m.ilustrador].push_back(myaIlustrador);
+    }
+
     getline(cin,l);
     if(getline(cin,l))
         return true;
     return false;
+}
+
+void printAutores()
+{
+    for(auto it = mangasPorAutor.begin(); it != mangasPorAutor.end(); ++it)
+    {
+        const string& nombreClips = it->first;
+        const vector<MangaYAutoria>& mangasClips = it->second;
+
+        cout << "([" << nombreClips << "] of Autor\n";
+        cout << "\t(nombre  \"" << autoresNormal[nombreClips] << "\")\n";
+
+        for(const MangaYAutoria& manga : mangasClips)
+        {
+            if(manga.escribe)
+            {
+                cout << "\t(escribe  [" << titulosClips[manga.nombre] << "])\n"; 
+            }
+            if(manga.ilustra)
+            {
+                cout << "\t(ilustra  [" << titulosClips[manga.nombre] << "])\n";
+            }
+        }
+        cout << ")\n";
+    }
+}
+
+void printPublicadores()
+{
+    for(auto it = publicadorasNormal.begin(); it != publicadorasNormal.end(); ++it)
+    {
+        cout << "([" << it->first << "] of Editorial\n";
+        cout << "\t(nombre  \"" << it->second << "\")\n";
+        cout << ")\n";
+    }
+
+    for(auto it = autopublicadoresNormal.begin(); it != autopublicadoresNormal.end(); ++it)
+    {
+        cout << "([" << it->first << "] of Autopublicador\n";
+        cout << "\t(nombre  \"" << it->second << "\")\n";
+        cout << ")\n";
+    }
 }
 
 int main()
@@ -370,4 +471,9 @@ int main()
         m.toClips();
     }
     while(reading);
+
+    cout << "\n; Autores\n\n";
+    printAutores();
+    cout << "\n; Publicadores\n\n";
+    printPublicadores();
 }
