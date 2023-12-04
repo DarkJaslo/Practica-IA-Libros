@@ -241,7 +241,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Templates ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(deftemplate MAIN::usuario
+(deftemplate preguntas-usuario::usuario
     (slot edad (type INTEGER))
     (slot ve-anime (type SYMBOL))
     (slot leeria-anime-ya-visto (type SYMBOL)
@@ -252,11 +252,16 @@
                         (allowed-values pocos normal muchos))
     (multislot gusto-generos (type INSTANCE))
     (multislot gusto-temas (type INSTANCE))
+    (slot tiempo-lectura (type INTEGER))
     ; faltan cosas, las voy añadiendo conforme hago las preguntas
 )
 
 ; Definir template para problema abstracto
-; (deftemplate...)
+(deftemplate abstraccion-problema::usuario-abstracto
+    (slot edad (type INTEGER))
+    (slot dificultad (type STRING)
+                        )
+)
 
 ; Definir template para solucion abstracta
 ; (deftemplate...)
@@ -278,6 +283,8 @@
     (assert (usuario))
     (focus preguntas-usuario)
 )
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Preguntas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -353,3 +360,10 @@
     (assert (mangas-animes-vistos-preguntado))
 )
 
+(defrule abstraccion-problema::dificultad-usuario
+    (usuario (tiempo-lectura ?t))
+    (< (?t 30))
+    ?usr <- (usuario-abstracto)
+    =>
+    (modify ?usr (dificultad "facil"))
+)
