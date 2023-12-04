@@ -86,19 +86,11 @@
                     rdfs:comment "Valores: (acabado | en publicacion | en pausa | cancelado)" .
 
 
-###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/fin-publicacion
-:fin-publicacion rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf owl:topDataProperty ;
-                 rdf:type owl:FunctionalProperty ;
-                 rdfs:domain :Manga ;
-                 rdfs:range xsd:dateTime .
-
-
 ###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/frecuencia-publicacion
 :frecuencia-publicacion rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf owl:topDataProperty ;
                         rdf:type owl:FunctionalProperty ;
-                        rdfs:domain :Manga ;
+                        rdfs:domain :Serializado ;
                         rdfs:range xsd:string ;
                         rdfs:comment "Valores: (semanal | quincenal | mensual | bimestral | trimestral | semestral | irregular)" .
 
@@ -129,15 +121,6 @@
                     :Publicador ,
                     :Tema ;
         rdfs:range xsd:string .
-
-
-###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/precio
-:precio rdf:type owl:DatatypeProperty ;
-        rdfs:subPropertyOf owl:topDataProperty ;
-        rdf:type owl:FunctionalProperty ;
-        rdfs:domain :Manga ;
-        rdfs:range xsd:string ;
-        rdfs:comment "Valores: (gratuito | de pago)" .
 
 
 ###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/restriccion-edad
@@ -229,18 +212,18 @@
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#eiichiro-oda-p
-:eiichiro-oda-p rdf:type owl:NamedIndividual ,
-                         :Autopublicador ;
-                :nombre "Eiichiro Oda" .
-
-
 ###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/eiichiro-oda
 :eiichiro-oda rdf:type owl:NamedIndividual ,
                        :Autor ;
               :escribe :one-piece ;
               :ilustra :one-piece ;
               :nombre "Eiichiro Oda" .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/eiichiro-oda-p
+:eiichiro-oda-p rdf:type owl:NamedIndividual ,
+                         :Autopublicador ;
+                :nombre "Eiichiro Oda" .
 
 
 ###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/one-piece
@@ -254,7 +237,6 @@
            :frecuencia-publicacion "semanal" ;
            :inicio-publicacion "1997-07-22T00:00:00"^^xsd:dateTime ;
            :metodo-distribucion "ambos" ;
-           :precio "pago" ;
            :tiene-anime "true"^^xsd:boolean ;
            :titulo "One Piece" ;
            :tomos 107 ;

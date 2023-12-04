@@ -2,7 +2,7 @@
 ;;; ontologia.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontologia.ttl
-;;; :Date 02/12/2023 16:00:29
+;;; :Date 04/12/2023 08:50:00
 
 (defclass Publicador
     (is-a USER)
@@ -54,14 +54,6 @@
         (type STRING)
         (create-accessor read-write)
         (allowed-values "acabado" "en publicacion" "en pausa" "cancelado"))
-    (slot fin-publicacion
-        (type SYMBOL)
-        (create-accessor read-write))
-    ;;; Valores: (semanal | quincenal | mensual | bimestral | trimestral | semestral | irregular)
-    (slot frecuencia-publicacion
-        (type STRING)
-        (create-accessor read-write)
-        (allowed-values "semanal" "quincenal" "mensual" "bimestral" "trimestral" "semestral" "irregular"))
     (slot inicio-publicacion
         (type SYMBOL)
         (create-accessor read-write))
@@ -70,22 +62,17 @@
         (type STRING)
         (create-accessor read-write)
         (allowed-values "digital" "fisico" "ambos"))
-    ;;; Valores: (gratuito | de pago)
-    (slot precio
-        (type STRING)
-        (create-accessor read-write)
-        (allowed-values "gratuito" "de pago"))
     (slot restriccion-edad
         (type INTEGER)
         (create-accessor read-write))
     (slot tiene-anime
         (type SYMBOL)
         (create-accessor read-write))
-    (slot valoracion
-        (type FLOAT)
-        (create-accessor read-write))
     (slot titulo
         (type STRING)
+        (create-accessor read-write))
+    (slot valoracion
+        (type FLOAT)
         (create-accessor read-write))
 )
 
@@ -99,6 +86,11 @@
     (is-a Manga)
     (role concrete)
     (pattern-match reactive)
+    ;;; Valores: (semanal | quincenal | mensual | bimestral | trimestral | semestral | irregular)
+    (slot frecuencia-publicacion
+        (type STRING)
+        (create-accessor read-write)
+        (allowed-values "semanal" "quincenal" "mensual" "bimestral" "trimestral" "semestral" "irregular"))
     (slot tomos
         (type INTEGER)
         (create-accessor read-write))
