@@ -170,7 +170,7 @@ Comedia
 Misterio
 1
 Detectives
-s 104 1111 270000000 m pu ir 1994-01-05 a p y 8.29 12
+s 104 1111 270000000 m pu ir 1994-01-05 a p y 8.29 10
 
 Made in Abyss
 Akihito Tsukushi
@@ -197,7 +197,7 @@ Romance
 2
 Mahou shoujo
 Mitologia
-s 18 52 46000000 b ac 1m 1991-12-28 a p y 8.20 10
+s 18 52 46000000 b ac 1m 1991-12-28 a p y 8.20 7
 
 One Punch Man
 ONE
@@ -244,7 +244,7 @@ Ciencia ficcion
 2
 Humor absurdo
 Parodia
-s 21 230 7000000 b ac 1m 2001-02-20 a p y 7.49 11
+s 21 230 7000000 b ac 1m 2001-02-20 a p y 7.49 10
 
 Yotsuba to!
 Kiyohiko Azuma
@@ -256,7 +256,7 @@ Slice of life
 2
 Familiar
 Reconfortante
-s 15 112 13000000 b pu 1m 2003-03-21 a p n 8.89 8
+s 15 112 13000000 b pu 1m 2003-03-21 a p n 8.89 5
 
 Ijiranaide, Nagatoro-san
 Nanashi
@@ -269,7 +269,7 @@ Slice of life
 2
 Escolar
 Artes
-s 17 140 4000000 b pu 2s 2017-11-07 a g y 7.64 13
+s 17 140 4000000 b pu 2s 2017-11-07 a g y 7.64 12
 
 Haikyuu!!
 Haruichi Furudate
@@ -279,7 +279,7 @@ Shueisha
 Deportes
 1
 Escolar
-s 45 407 55000000 m ac 1s 2012-02-20 a p y 8.85 13
+s 45 407 55000000 m ac 1s 2012-02-20 a p y 8.85 12
 
 Uzumaki
 Junji Ito
@@ -292,3 +292,94 @@ Sobrenatural
 1
 Gore
 o 3 19 1500000 a ac ir 1998-01-12 a p n 8.17 16
+
+Initial D
+Shuuichi Shigeno
+Shuuichi Shigeno
+Kodansha
+2
+Accion
+Drama
+2
+Carreras
+Personajes adultos
+s 48 724 55000000 m ac 1s 1995-06-26 a y 8.23 12
+
+A Story about a Cat Reincarnated in a Different World Where There are no Cats
+Ema Tooyama
+Ema Tooyama
+Ema Tooyama
+3
+Comedia
+Fantasia
+Slice of life
+2
+Animales
+Isekai
+s 0 17 350000 b pu ir 2020-06-19 d n 8.80 7
+
+Wangan Midnight
+Michiharu Kusunoki
+Michiharu Kusunoki
+Kodansha
+2
+Accion
+Drama
+1
+Carreras
+s 42 550 17000000 m ac 1s 1990-06-15 f y 7.49 7
+
+Yu Yu Hakusho
+Yoshihiro Togashi
+Yoshihiro Togashi
+Shueisha
+5
+Accion
+Comedia
+Drama
+Fantasia
+Sobrenatural
+2
+Artes marciales
+Mitologia
+s 19 176 50000000 m ac 1s 1990-11-20 a y 8.20 7
+
+Black Lagoon
+Rei Hiroe
+Rei Hiroe
+Shogakukan
+2
+Accion
+Drama
+3
+Personajes adultos
+Guerra
+Delincuencia
+s 12 116 8500000 a pu ir 2002-04-19 a y 8.29 16
+
+Hanma Baki
+Keisuke Itagaki
+Keisuke Itagaki
+Akita Shoten
+3
+Accion
+Aventura
+Deportes
+2
+Gore
+Artes marciales
+s 37 312 85000000 m ac 1s 2005-12-01 a y 8.15 18
+
+Shin Lupin III
+Monkey Punch
+Monkey Punch
+Futabasha
+4
+Accion
+Aventura
+Comedia
+Misterio
+2
+Personajes adultos
+Delincuencia
+s 17 180 10000000 b ac 1s 1977-06-23 f y 7.47 7
