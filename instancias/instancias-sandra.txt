@@ -73,3 +73,42 @@ Escolar
 Triangulo Amoroso
 Yaoi
 s 2 15 80000 m ac 2s 2013-07-19 f n 7.51 12
+
+Mahou Shoujo Madoka Magica
+Magica Quartet
+Hanokage
+Houbunsha
+4
+Drama
+Fantasia
+Horror
+Sobrenatural
+3
+Escolar
+Magia
+Mahou shoujo
+s 3 12 6000000 m ac 1m 2011-02-12 f y 8.07 12
+
+Wotaku ni Koi wa Muzukashii
+Fujita
+Fujita
+Ichijinsha
+2
+Comedia
+Romance
+1
+Personajes adultos
+s 11 105 10000000 b ac 1m 2015-04-30 a y 8.36 7
+
+Gril Crush
+Midori Tayama
+Midori Tayama
+Shinchosha
+2
+Comedia
+Romance
+3
+Artes
+Idols
+Musica
+s 7 58 70000 b pu 2s 2021-05-21 d n 7.12 7
