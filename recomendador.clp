@@ -257,10 +257,30 @@
 )
 
 ; Definir template para problema abstracto
-(deftemplate abstraccion-problema::usuario-abstracto
-    (slot edad (type INTEGER))
-    (slot dificultad (type STRING)
-                        )
+(deftemplate abstraccion-problema::problema-abstracto
+    (slot edad (type SYMBOL)
+                (allowed-values MENOS_12 12_O_MAS 16_O_MAS 18_O_MAS))
+    (slot mangas-leidos (type SYMBOL)
+                        (allowed-values pocos bastantes muchos))
+    (slot prefiere-acabados (type SYMBOL)
+                            (allowed-values TRUE FALSE))
+                            (default FALSE)
+    (slot prefiere-sin-anime (type SYMBOL)
+                            (allowed-values TRUE FALSE)
+                            (default FALSE))
+    (slot quiere-doujinshis (type SYMBOL)
+                            (allowed-values TRUE FALSE)
+                            (default FALSE))
+    ;(slot longitud-preferida ()) no trivial
+    (multislot preferencia-generos (type INSTANCE))
+    (multislot preferencia-temas (type INSTANCE))
+)
+
+(deftemplate asociacion-heuristica::solucion-abstracta
+
+)
+
+(deftemplate refinamiento-solucion::solucion-concreta
 )
 
 ; Definir template para solucion abstracta
@@ -360,10 +380,67 @@
     (assert (mangas-animes-vistos-preguntado))
 )
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Modulo de abstraccion ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Edad
+(defrule abstraccion-problema::edad-menos-12
+    (usuario (edad ?e))
+    (< (?e 12))
+    ?usr <- (problema-abstracto)
+    =>
+    (modify ?usr (edad MENOS_12))
+)
+(defrule abstraccion-problema::edad-12-mas
+    (usuario (edad ?e))
+    (> (?e 11))
+    ?usr <- (problema-abstracto)
+    =>
+    (modify ?usr (edad 12_O_MAS))
+)
+(defrule abstraccion-problema::edad-16-mas
+    (usuario (edad ?e))
+    (> (?e 15))
+    ?usr <- (problema-abstracto)
+    =>
+    (modify ?usr (edad 16_O_MAS))
+)
+(defrule abstraccion-problema::edad-18-mas
+    (usuario (edad ?e))
+    (> (?e 17))
+    ?usr <- (problema-abstracto)
+    =>
+    (modify ?usr (edad 18_O_MAS))
+)
+
+; Cantidad mangas leidos
+(defrule abstraccion-problema::cantidad-mangas-pocos
+    (usuario (mangas-leidos ?m))
+    (= (?m pocos))
+    ?usr <- (problema-abstracto)
+    =>
+    (modify ?usr (mangas-leidos pocos))
+)
+(defrule abstraccion-problema::cantidad-mangas-bastantes
+    (usuario (mangas-leidos ?m))
+    (= (?m normal))
+    ?usr <- (problema-abstracto)
+    =>
+    (modify ?usr (mangas-leidos bastantes))
+)
+(defrule abstraccion-problema::cantidad-mangas-muchos
+    (usuario (mangas-leidos ?m))
+    (= (?m muchos))
+    ?usr <- (problema-abstracto)
+    =>
+    (modify ?usr (mangas-leidos muchos))
+)
+
+; Ejemplo
 (defrule abstraccion-problema::dificultad-usuario
     (usuario (tiempo-lectura ?t))
     (< (?t 30))
-    ?usr <- (usuario-abstracto)
+    ?usr <- (problema-abstracto)
     =>
     (modify ?usr (dificultad "facil"))
 )
