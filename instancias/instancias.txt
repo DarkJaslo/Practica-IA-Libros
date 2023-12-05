@@ -303,7 +303,7 @@ Drama
 2
 Carreras
 Personajes adultos
-s 48 724 55000000 m ac 1s 1995-06-26 a y 8.23 12
+s 48 724 55000000 m ac 1s 1995-06-26 a p y 8.23 12
 
 A Story about a Cat Reincarnated in a Different World Where There are no Cats
 Ema Tooyama
@@ -316,7 +316,7 @@ Slice of life
 2
 Animales
 Isekai
-s 0 17 350000 b pu ir 2020-06-19 d n 8.80 7
+s 0 17 350000 b pu ir 2020-06-19 d p n 8.80 7
 
 Wangan Midnight
 Michiharu Kusunoki
@@ -327,7 +327,7 @@ Accion
 Drama
 1
 Carreras
-s 42 550 17000000 m ac 1s 1990-06-15 f y 7.49 7
+s 42 550 17000000 m ac 1s 1990-06-15 f p y 7.49 7
 
 Yu Yu Hakusho
 Yoshihiro Togashi
@@ -342,7 +342,7 @@ Sobrenatural
 2
 Artes marciales
 Mitologia
-s 19 176 50000000 m ac 1s 1990-11-20 a y 8.20 7
+s 19 176 50000000 m ac 1s 1990-11-20 a p y 8.20 7
 
 Black Lagoon
 Rei Hiroe
@@ -355,7 +355,7 @@ Drama
 Personajes adultos
 Guerra
 Delincuencia
-s 12 116 8500000 a pu ir 2002-04-19 a y 8.29 16
+s 12 116 8500000 a pu ir 2002-04-19 a p y 8.29 16
 
 Hanma Baki
 Keisuke Itagaki
@@ -368,7 +368,7 @@ Deportes
 2
 Gore
 Artes marciales
-s 37 312 85000000 m ac 1s 2005-12-01 a y 8.15 18
+s 37 312 85000000 m ac 1s 2005-12-01 a p y 8.15 18
 
 Shin Lupin III
 Monkey Punch
@@ -382,4 +382,4 @@ Misterio
 2
 Personajes adultos
 Delincuencia
-s 17 180 10000000 b ac 1s 1977-06-23 f y 7.47 7
+s 17 180 10000000 b ac 1s 1977-06-23 f p y 7.47 7
