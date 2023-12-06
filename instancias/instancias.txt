@@ -9,7 +9,7 @@ Comedia
 Fantasia
 1 
 Superpoderes
-s 107 1100 528000000 b pu 1s 1997-07-22 a p y 9.22 12
+s 107 1100 528000000 b pu 1s 1997-07-22 a y 9.22 12
 
 Hunter x Hunter
 Yoshihiro Togashi
@@ -21,7 +21,7 @@ Aventura
 Fantasia
 1
 Superpoderes
-s 37 400 84000000 a pa ir 1998-03-03 a p y 8.73 12
+s 37 400 84000000 a pa ir 1998-03-03 a y 8.73 12
 
 JoJo no Kimyou na bouken part 5: Ougon no kaze
 Hirohiko Araki
@@ -36,7 +36,7 @@ Sobrenatural
 Delincuencia
 Historico
 Superpoderes
-s 17 155 10000000 m ac 1s 1995-11-28 a p y 8.17 12
+s 17 155 10000000 m ac 1s 1995-11-28 a y 8.17 12
 
 JoJo no Kimyou na bouken part 4: Diamond wa kudakenai
 Hirohiko Araki
@@ -50,7 +50,7 @@ Sobrenatural
 2
 Escolar
 Superpoderes
-s 18 174 100000 m ac 1s 1992-04-21 a p y 8.57 12
+s 18 174 100000 m ac 1s 1992-04-21 a y 8.57 12
 
 JoJo no Kimyou na bouken part 3: Stardust crusaders
 Hirohiko Araki
@@ -64,7 +64,7 @@ Suspense
 2
 Superpoderes
 Historico
-s 16 152 94600 m ac 1s 1989-04-21 a p y 8.10 12
+s 16 152 94600 m ac 1s 1989-04-21 a y 8.10 12
 
 JoJo no Kimyou na bouken part 2: Battle tendency
 Hirohiko Araki
@@ -78,7 +78,7 @@ Suspense
 Superpoderes
 Vampiros
 Historico
-s 7 69 102000 m ac 1s 1987-04-21 a p y 8.15 12
+s 7 69 102000 m ac 1s 1987-04-21 a y 8.15 12
 
 JoJo no Kimyou na bouken part 1: Phantom blood
 Hirohiko Araki
@@ -92,7 +92,7 @@ Suspense
 Superpoderes
 Vampiros
 Historico
-s 5 44 125000 m ac 1s 1985-04-21 a p y 7.60 12
+s 5 44 125000 m ac 1s 1985-04-21 a y 7.60 12
 
 Kaguya-sama wa kokurasetai: Tensai-tachi no renai zunousen
 Aka Akasaka
@@ -104,7 +104,7 @@ Comedia
 Psicologico
 1
 Escolar
-s 28 281 22000000 b ac 1s 2015-05-19 a p y 8.91 12
+s 28 281 22000000 b ac 1s 2015-05-19 a y 8.91 12
 
 World Trigger
 Daisuke Aishihara
@@ -115,7 +115,7 @@ Ciencia ficcion
 Accion
 1
 Superpoderes
-s 17 200 15000000 a pu 1s 2013-01-01 a p y 7.81 8
+s 17 200 15000000 a pu 1s 2013-01-01 a y 7.81 8
 
 Naruto
 Masashi Kishimoto
@@ -131,7 +131,7 @@ Artes marciales
 Tradicional japones
 Superpoderes
 Venganza
-s 72 700 250000000 m ac 1s 1999-01-01 a p y 8.07 12
+s 72 700 250000000 m ac 1s 1999-01-01 a y 8.07 12
 
 Shingeki no Kyojin
 Hajime Isayama
@@ -145,7 +145,7 @@ Gore
 Guerra
 Supervivencia
 Postapocaliptico
-s 34 141 120000000 m ac 1m 2009-03-03 a p y 8.55 16
+s 34 141 140000000 m ac 1m 2009-03-03 a y 8.55 16
 
 Death Note
 Tsugumi Ohba
@@ -158,7 +158,7 @@ Psicologico
 2
 Detectives
 Personajes adultos
-s 12 108 30000000 a ac 1s 2003-07-23 a p y 8.69 16
+s 12 108 30000000 a ac 1s 2003-07-23 a y 8.69 16
 
 Detective Conan
 Gosho Aoyama
@@ -170,22 +170,24 @@ Comedia
 Misterio
 1
 Detectives
-s 104 1111 270000000 m pu ir 1994-01-05 a p y 8.29 10
+s 104 1111 270000000 m pu ir 1994-01-05 a y 8.29 10
 
 Made in Abyss
 Akihito Tsukushi
 Akihito Tsukushi
 Takeshobo
-5
+7
 Aventura
+Ciencia ficcion
 Drama
 Fantasia
+Horror
 Misterio
-Ciencia ficcion
+Psicologico
 2
 Gore
 Supervivencia
-s 12 66 1965000 a pu ir 2012-10-20 a p y 8.77 18
+s 12 66 1965000 a pu ir 2012-10-20 a y 8.77 18
 
 Pretty Soldier Sailor Moon
 Naoko Takeuchi
@@ -197,7 +199,7 @@ Romance
 2
 Mahou shoujo
 Mitologia
-s 18 52 46000000 b ac 1m 1991-12-28 a p y 8.20 7
+s 18 52 46000000 b ac 1m 1991-12-28 a y 8.20 7
 
 One Punch Man
 ONE
@@ -211,7 +213,7 @@ Ciencia ficcion
 Parodia
 Personajes adultos
 Superpoderes
-s 29 185 15000000 m pu ir 2012-06-14 a p y 8.75 12
+s 29 185 15000000 m pu ir 2012-06-14 a y 8.75 12
 
 Berserk
 Kentaro Miura
@@ -231,7 +233,7 @@ Guerra
 Mitologia
 Tragedia
 Venganza
-s 42 364 50000000 a pu ir 1989-08-25 a p y 9.47 18
+s 42 364 60000000 a pu ir 1989-08-25 a y 9.47 18
 
 Bobobo-bo Bo-bobo
 Yoshio Sawai
@@ -244,7 +246,7 @@ Ciencia ficcion
 2
 Humor absurdo
 Parodia
-s 21 230 7000000 b ac 1m 2001-02-20 a p y 7.49 10
+s 21 230 7000000 b ac 1m 2001-02-20 a y 7.49 10
 
 Yotsuba to!
 Kiyohiko Azuma
@@ -256,7 +258,7 @@ Slice of life
 2
 Familiar
 Reconfortante
-s 15 112 13000000 b pu 1m 2003-03-21 a p n 8.89 5
+s 15 112 13000000 b pu 1m 2003-03-21 a n 8.89 5
 
 Ijiranaide, Nagatoro-san
 Nanashi
@@ -269,7 +271,7 @@ Slice of life
 2
 Escolar
 Artes
-s 17 140 4000000 b pu 2s 2017-11-07 a g y 7.64 12
+s 17 140 4000000 b pu 2s 2017-11-07 a y 7.64 12
 
 Haikyuu!!
 Haruichi Furudate
@@ -279,7 +281,7 @@ Shueisha
 Deportes
 1
 Escolar
-s 45 407 55000000 m ac 1s 2012-02-20 a p y 8.85 12
+s 45 407 55000000 m ac 1s 2012-02-20 a y 8.85 12
 
 Uzumaki
 Junji Ito
@@ -291,7 +293,7 @@ Horror
 Sobrenatural
 1
 Gore
-o 3 19 1500000 a ac ir 1998-01-12 a p n 8.17 16
+s 3 19 1500000 a ac ir 1998-01-12 a n 8.17 16
 
 Initial D
 Shuuichi Shigeno
@@ -303,7 +305,7 @@ Drama
 2
 Carreras
 Personajes adultos
-s 48 724 55000000 m ac 1s 1995-06-26 a p y 8.23 12
+s 48 724 55000000 m ac 1s 1995-06-26 a y 8.23 12
 
 A Story about a Cat Reincarnated in a Different World Where There are no Cats
 Ema Tooyama
@@ -316,7 +318,7 @@ Slice of life
 2
 Animales
 Isekai
-s 0 17 350000 b pu ir 2020-06-19 d p n 8.80 7
+s 0 17 350000 b pu ir 2020-06-19 d n 8.80 7
 
 Wangan Midnight
 Michiharu Kusunoki
@@ -327,7 +329,7 @@ Accion
 Drama
 1
 Carreras
-s 42 550 17000000 m ac 1s 1990-06-15 f p y 7.49 7
+s 42 550 17000000 m ac 1s 1990-06-15 f y 7.49 7
 
 Yu Yu Hakusho
 Yoshihiro Togashi
@@ -342,7 +344,7 @@ Sobrenatural
 2
 Artes marciales
 Mitologia
-s 19 176 50000000 m ac 1s 1990-11-20 a p y 8.20 7
+s 19 176 50000000 m ac 1s 1990-11-20 a y 8.20 7
 
 Black Lagoon
 Rei Hiroe
@@ -355,20 +357,7 @@ Drama
 Personajes adultos
 Guerra
 Delincuencia
-s 12 116 8500000 a pu ir 2002-04-19 a p y 8.29 16
-
-Hanma Baki
-Keisuke Itagaki
-Keisuke Itagaki
-Akita Shoten
-3
-Accion
-Aventura
-Deportes
-2
-Gore
-Artes marciales
-s 37 312 85000000 m ac 1s 2005-12-01 a p y 8.15 18
+s 12 116 8500000 a pu ir 2002-04-19 a y 8.29 16
 
 Shin Lupin III
 Monkey Punch
@@ -382,4 +371,219 @@ Misterio
 2
 Personajes adultos
 Delincuencia
-s 17 180 10000000 b ac 1s 1977-06-23 f p y 7.47 7
+s 17 180 10000000 b ac 1s 1977-06-23 f y 7.47 7
+
+Hanma Baki
+Keisuke Itagaki
+Keisuke Itagaki
+Akita Shoten
+3
+Accion
+Aventura
+Deportes
+2
+Gore
+Artes marciales
+s 37 312 85000000 m ac 1s 2005-12-01 a y 8.15 18
+
+Hajime no Ippo
+Jyoji Morikawa
+Jyoji Morikawa
+Kodansha
+4
+Accion
+Comedia
+Drama
+Deportes
+1
+Artes marciales
+s 139 1443 100000000 m pu 1s 1989-09-27 a y 8.72 12
+
+Oliver y Benji
+Yoichi Takahashi
+Yoichi Takahashi
+Shueisha
+2
+Accion
+Deportes
+1
+Escolar
+s 37 146 90000000 b ac 1s 1981-03-31 a y 7.53 5
+
+Assassination Classroom
+Yuusei Matsui
+Yuusei Matsui
+Shueisha
+2
+Accion
+Comedia
+1
+Escolar
+s 21 187 25000000 m ac 1s 2012-07-02 a y 8.26 12
+
+Tomodachi Game
+Mikoto Yamaguchi
+Yuuki Satou
+Kodansha
+2
+Psicologico
+Suspense
+2
+Battle Royale
+Juegos de estrategia
+s 23 103 13450000 m pu 1m 2013-12-09 a y 8.45 12
+
+Kingdom
+Yasuhisa Hara
+Yasuhisa Hara
+Shueisha
+3
+Accion
+Aventura
+Drama
+2
+Guerra
+Historico
+s 70 780 100000000 m pu ir 2006-01-26 a y 9.00 16
+
+Beastars
+Paru Itagaki
+Paru Itagaki
+Akita Shoten
+3
+Drama
+Slice of life
+Psicologico
+2
+Animales
+Escolar
+s 22 196 7500000 a ac 1s 2016-09-08 a y 8.25 18
+
+Mazinger Z
+Go Nagai
+Go Nagai
+Shueisha
+4
+Accion
+Comedia
+Drama
+Ciencia ficcion 
+1
+Robots
+s 5 33 20000000 b ac 1s 1972-10-02 f y 6.64 5
+
+Dr. Stone
+Riichiro Inagaki
+Boichi
+Shueisha
+2
+Aventura
+Ciencia ficcion
+2
+Viajes en el tiempo
+Supervivencia
+s 26 233 15000000 m ac 1s 2017-03-06 a y 8.20 10
+
+Bokkou
+Kenichi Sakemi
+Hideki Mori
+Shogakukan
+2
+Accion
+Drama
+2
+Guerra
+Historico
+s 11 107 2000000 m ac ir 1992-01-25 a y 7.70 16
+
+Liar Game
+Shinobu Kaitani
+Shinobu Kaitani
+Shueisha
+2
+Drama
+Psicologico
+2
+Battle Royale
+Juegos de estrategia
+s 19 203 10000000 m ac ir 2005-02-17 a n 8.28 14
+
+Mach Gogogo
+Tatsuo Yoshida
+Tatsuo Yoshida
+Shueisha
+1
+Accion
+1
+Carreras
+s 2 10 7000000 b ac 1m 1966-06-25 f y 6.58 5
+
+Manhole
+Tetsuya Tsutsui
+Tetsuya Tsutsui
+Square Enix
+3
+Drama
+Horror
+Misterio
+2
+Detectives
+Gore
+s 3 29 9000000 a ac 2s 2004-12-03 a n 8.95 18
+
+Monster
+Naoki Urasawa
+Naoki Urasawa
+Shogakukan
+4
+Drama
+Misterio
+Psicologico
+Suspense
+1
+Personajes adultos
+s 18 162 20000000 a ac ir 1994-12-05 a y 9.15 18
+
+Doomsday with my dog
+Yuu Ishihara
+Yuu Ishihara
+Yuu Ishihara
+3
+Aventura
+Comedia
+Slice of life
+3
+Animales
+Postapocaliptico
+Supervivencia
+s 4 39 2000000 b pu ir 2018-03-28 d y 7.40 7
+
+Planetes
+Makoto Yukimura
+Makoto Yukimura
+Kodansha
+5
+Ciencia ficcion
+Drama 
+Romance
+Psicologico
+Slice of life
+2
+Espacio exterior
+Personajes adultos
+s 4 27 100000 m ac ir 1999-01-14 a y 8.28 14
+
+Hellsing
+Kouta Hirano
+Kouta Hirano
+Shonen Gahosha
+3
+Accion
+Horror
+Sobrenatural
+4
+Gore
+Historico
+Personajes adultos
+Vampiros
+s 10 92 4000000 m ac 1m 1997-04-30 a y 8.30 18
