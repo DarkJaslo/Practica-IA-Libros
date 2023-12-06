@@ -429,7 +429,7 @@ Kodansha
 Psicologico
 Suspense
 2
-Battle Royale
+Battle royale
 Juegos de estrategia
 s 23 103 13450000 m pu 1m 2013-12-09 a y 8.45 12
 
@@ -467,7 +467,7 @@ Shueisha
 Accion
 Comedia
 Drama
-Ciencia ficcion 
+Ciencia ficcion
 1
 Robots
 s 5 33 20000000 b ac 1s 1972-10-02 f y 6.64 5
@@ -504,7 +504,7 @@ Shueisha
 Drama
 Psicologico
 2
-Battle Royale
+Battle royale
 Juegos de estrategia
 s 19 203 10000000 m ac ir 2005-02-17 a n 8.28 14
 
@@ -564,7 +564,7 @@ Makoto Yukimura
 Kodansha
 5
 Ciencia ficcion
-Drama 
+Drama
 Romance
 Psicologico
 Slice of life
@@ -587,3 +587,118 @@ Historico
 Personajes adultos
 Vampiros
 s 10 92 4000000 m ac 1m 1997-04-30 a y 8.30 18
+
+Sono Bisque Doll wa Koi wo Suru
+Shinichi Fukuda
+Shinichi Fukuda
+Square Enix
+2
+Romance
+Comedia
+3
+Artes
+Escolar
+Reconfortante
+s 12 96 10000000 b pu 2s 2018-01-19 f y 8.00 16
+
+Uchi no Neko ga Onnanoko de Kawaii
+Shimahara
+Shimahara
+Shimahara
+2
+Comedia
+Slice of life
+3
+Animales
+Humor absurdo
+Reconfortante
+s 3 3 70000 b ac ir 2020-12-30 a n 7.84 3
+
+Dekihime no Usui Hon
+Ajiichi
+Ajiichi
+Ajiichi
+1
+Romance
+2
+Escolar
+Yuri
+s 5 5 20000 b ac ir 2022-05-05 a n 8.12 7
+
+Orange
+Ichigo Takano
+Ichigo Takano
+Futabasha
+2
+Romance
+Drama
+3
+Escolar
+Triangulo amoroso
+Viajes en el tiempo
+s 7 38 4700000 m ac ir 2012-03-13 f y 8.30 12
+
+Given
+Natsuki Kizu
+Natsuki Kizu
+Shinshokan
+2
+Drama
+Romance
+4
+Artes
+Escolar
+Musica
+Yaoi
+s 9 58 500000 m ac 1m 2013-05-30 f y 8.53 12
+
+Yoake ni Furu
+Nojiko Hayakawa
+Nojiko Hayakawa
+Taiyoh Tosho
+1
+Romance
+3
+Escolar
+Triangulo amoroso
+Yaoi
+s 2 15 80000 m ac 2s 2013-07-19 f n 7.51 12
+
+Mahou Shoujo Madoka Magica
+Magica Quartet
+Hanokage
+Houbunsha
+4
+Drama
+Fantasia
+Horror
+Sobrenatural
+3
+Escolar
+Magia
+Mahou shoujo
+s 3 12 6000000 m ac 1m 2011-02-12 f y 8.07 12
+
+Wotaku ni Koi wa Muzukashii
+Fujita
+Fujita
+Ichijinsha
+2
+Comedia
+Romance
+1
+Personajes adultos
+s 11 105 10000000 b ac 1m 2015-04-30 a y 8.36 7
+
+Gril Crush
+Midori Tayama
+Midori Tayama
+Shinchosha
+2
+Comedia
+Romance
+3
+Artes
+Idols
+Musica
+s 7 58 70000 b pu 2s 2021-05-21 d n 7.12 7

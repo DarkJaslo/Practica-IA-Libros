@@ -174,18 +174,6 @@ string metodo(const string& m)
     __throw_domain_error("mal input en metodo()");
 }
 
-string precio(const string& p)
-{
-    if(p == "g"){
-        return "gratuito";
-    }
-    else if(p == "p"){
-        return "de pago";
-    }
-    cerr << p << "\n";
-    __throw_domain_error("mal input en precio()");
-}
-
 bool autopublicado(const string& a)
     {
         if(a == "e")
@@ -215,7 +203,6 @@ struct Manga
     string frecuencia;
     string ini;
     string metodo;
-    string precio;
     bool anime;
     float valoracion;
     int edad;
@@ -270,7 +257,6 @@ struct Manga
         cout << "\t(frecuencia-publicacion  \"" << frecuencia << "\")\n";
         cout << "\t(inicio-publicacion  \"" << ini << "\")\n";
         cout << "\t(metodo-distribucion  \"" << metodo << "\")\n";
-        cout << "\t(precio  \"" << precio << "\")\n";
         cout << "\t(tiene-anime  " << tieneAnime() << ")\n";
         cout << "\t(valoracion  " << valoracion << ")\n";
         cout << "\t(restriccion-edad  " << edad << ")\n";
@@ -387,10 +373,6 @@ bool readManga(Manga& m)
     //Lee metodo
     cin >> l;
     m.metodo = metodo(l);
-
-    //Lee precio
-    cin >> l;
-    m.precio = precio(l);
 
     //Lee anime
     cin >> l;
