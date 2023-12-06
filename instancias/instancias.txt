@@ -702,3 +702,115 @@ Artes
 Idols
 Musica
 s 7 58 70000 b pu 2s 2021-05-21 d n 7.12 7
+
+Jujutsu Kaisen
+Gege Akutami
+Gege Akutami
+Shueisha
+3
+Accion
+Drama
+Sobrenatural
+3
+Escolar
+Mitologia
+Superpoderes
+s 24 244 80000000 m pu 1s 2018-03-05 a y 8.53 12
+
+Bungou Stray Dogs
+Kafka Asagiri
+Harukawa35
+Kadokawa Shoten
+3
+Accion
+Sobrenatural
+Misterio
+4
+Personajes adultos
+Delincuencia
+Detectives
+Superpoderes
+s 23 106 10000000 m pu 1m 2012-12-04 a y 8.52 16
+
+Oshi no Ko
+Aka Akasaka
+Mengo Yokoyari
+Shueisha
+3
+Drama
+Misterio
+Sobrenatural
+4
+Idols
+Musica
+Tragedia
+Venganza
+s 12 122 15000000 b pu 1s 2020-04-23 a y 8.63 16
+
+Kagurabachi
+Takeru Hokazono
+Takeru Hokazono
+Shueisha
+2
+Accion
+Fantasia
+3
+Gore
+Tradicional japones
+Venganza
+s 1 12 100000 b pu 1s 2023-09-18 a n 7.92 16
+
+Chainsaw Man
+Tatsuki Fujimoto
+Tatsuki Fujimoto
+Shueisha
+4
+Accion
+Drama
+Sobrenatural
+Psicologico
+3
+Gore
+Superpoderes
+Tragedia
+s 16 150 15000000 m pu 1s 2018-12-03 a y 8.74 16
+
+Banana Fish
+Akimi Yoshida
+Akimi Yoshida
+Shogakukan
+3
+Accion
+Aventura
+Drama
+2
+Delincuencia
+Tragedia
+s 19 110 11000000 m ac 1m 1985-04-13 a y 8.61 16
+
+Tokyo Ghoul
+Sui Ishida
+Sui Ishida
+Shueisha
+4
+Accion
+Fantasia
+Horror
+Psicologico
+2
+Gore
+Vampiros
+s 14 144 34000000 m ac 1s 2011-08-09 a y 8.52 16
+
+Kimetsu no Yaiba
+Koyoharu Gotouge
+Koyoharu Gotouge
+Shueisha
+2
+Accion
+Fantasia
+3
+Historico
+Supervivencia
+Tradicional japones
+s 23 207 102000000 b ac 1s 2016-02-15 a y 8.21 12
