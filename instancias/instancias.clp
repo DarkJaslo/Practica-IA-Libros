@@ -1,4 +1,4 @@
-(definstances
+(definstances instancias
 ([one-piece] of Serializado
 	(titulo  "One Piece")
 	(publicado-por  [shueisha])
