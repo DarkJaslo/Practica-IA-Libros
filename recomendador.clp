@@ -2100,7 +2100,34 @@
     
 )
 
-(defrule asociacion-heuristica::)
+; Elimina instancias que no cumplan la edad mínima
+(defrule asociacion-heuristica::elimina-mas-doce
+    (declare (salience 10))
+    (problema-abstracto (edad MENOS_12))
+    ?m <- (object (is-a Manga) (restriccion-edad ?restr))
+    (> ?restr 11)
+    =>
+    (send ?m delete)
+    (retract ?m)   
+)
+(defrule asociacion-heuristica::elimina-mas-dieciseis
+    (declare (salience 10))
+    (problema-abstracto (edad 12_O_MAS))
+    ?m <- (object (is-a Manga) (restriccion-edad ?restr))
+    (> ?restr 15)
+    =>
+    (send ?m delete)
+    (retract ?m)   
+)
+(defrule asociacion-heuristica::elimina-mas-dieciocho
+    (declare (salience 10))
+    (problema-abstracto (edad 16_O_MAS))
+    ?m <- (object (is-a Manga) (restriccion-edad ?restr))
+    (> ?restr 17)
+    =>
+    (send ?m delete)
+    (retract ?m)   
+)
 
 ; Ejemplo tratar con instancias de clases
 (defrule owo
