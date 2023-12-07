@@ -485,7 +485,7 @@ int main()
 {
     bool reading = true;
 
-    cout << "(definstances\n";
+    cout << "(definstances instancias\n";
 
     do
     {
