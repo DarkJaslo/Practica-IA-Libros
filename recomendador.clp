@@ -2100,6 +2100,8 @@
     
 )
 
+(defrule asociacion-heuristica::)
+
 ; Ejemplo tratar con instancias de clases
 (defrule owo
 	?m <- (object (is-a Manga) (titulo ?t) (capitulos ?c))
@@ -2108,6 +2110,17 @@
 	(format t "El manga %s tiene mas de 1000 capitulos" ?t)
   (printout t crlf)
 )
+
+; Add an instance of Item to the Container
+;(deffunction add-instance-to-container (?container ?item)
+;    (if (not (member$ ?item (slot-value ?container instances)))
+;        then
+;            (modify ?container (instances ?item&:(create$ (slot-value ?container instances) ?item)))
+;            (printout t "Instance added successfully." crlf)
+;        else
+;            (printout t "Instance already exists." crlf)
+;    )
+;)
 
 ; Function to add a value to the multislot
 ;(deffunction AddValueToMultislot (?newValue)
