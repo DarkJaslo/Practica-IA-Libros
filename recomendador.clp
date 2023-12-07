@@ -477,7 +477,7 @@
     ?usr <- (problema-abstracto (preferencia-temas $?absTem))
     (usuario (gusto-temas ?tem))
     =>
-    (modify ?usr (preferencia-temas (create$ ?temgen ?absTem)))
+    (modify ?usr (preferencia-temas (create$ ?tem ?absTem)))
     (modify ?req (preferencia-temas-hecho TRUE))
 )
 
