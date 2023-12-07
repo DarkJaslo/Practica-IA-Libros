@@ -1985,7 +1985,7 @@
 (defrule abstraccion-problema::cantidad-mangas-pocos
     ?req <- (cantidad-hecho FALSE)
     (usuario (mangas-leidos ?m))
-    (= ?m pocos)
+    (== ?m pocos)
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos pocos))
@@ -1994,7 +1994,7 @@
 (defrule abstraccion-problema::cantidad-mangas-bastantes
     ?req <- (cantidad-hecho FALSE)
     (usuario (mangas-leidos ?m))
-    (= ?m normal)
+    (== ?m normal)
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos bastantes))
@@ -2003,7 +2003,7 @@
 (defrule abstraccion-problema::cantidad-mangas-muchos
     ?req <- (cantidad-hecho FALSE)
     (usuario (mangas-leidos ?m))
-    (= ?m muchos)
+    (== ?m muchos)
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos muchos))
@@ -2028,15 +2028,6 @@
     =>
     (modify ?usr (preferencia-temas (create$ ?tem ?absTem)))
     (modify ?req (preferencia-temas-hecho TRUE))
-)
-
-; Ejemplo
-(defrule abstraccion-problema::dificultad-usuario
-    (usuario (tiempo-lectura ?t))
-    (< ?t 30)
-    ?usr <- (problema-abstracto)
-    =>
-    (modify ?usr (dificultad "facil"))
 )
 
 ; Ejemplo tratar con instancias de clases
