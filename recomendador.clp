@@ -277,7 +277,7 @@
 )
 
 (deftemplate asociacion-heuristica::solucion-abstracta
-    (multislot recomendables (type INSTANEC)) ;instancias de mangas
+    (multislot recomendables (type INSTANCE)) ;instancias de mangas
 )
 
 (deftemplate refinamiento-solucion::solucion-concreta

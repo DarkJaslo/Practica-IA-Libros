@@ -1422,16 +1422,16 @@
 ([takeshobo] of Editorial
 	(nombre  "Takeshobo")
 )
-([ajiichi] of Autopublicador
+([publ-ajiichi] of Autopublicador
 	(nombre  "Ajiichi")
 )
-([ema-tooyama] of Autopublicador
+([publ-ema-tooyama] of Autopublicador
 	(nombre  "Ema Tooyama")
 )
-([shimahara] of Autopublicador
+([publ-shimahara] of Autopublicador
 	(nombre  "Shimahara")
 )
-([yuu-ishihara] of Autopublicador
+([publ-yuu-ishihara] of Autopublicador
 	(nombre  "Yuu Ishihara")
 )
 

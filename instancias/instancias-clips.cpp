@@ -455,7 +455,7 @@ void printPublicadores()
 
     for(auto it = autopublicadoresNormal.begin(); it != autopublicadoresNormal.end(); ++it)
     {
-        cout << "([" << it->first << "] of Autopublicador\n";
+        cout << "([publ-" << it->first << "] of Autopublicador\n";
         cout << "\t(nombre  \"" << it->second << "\")\n";
         cout << ")\n";
     }
