@@ -1947,7 +1947,7 @@
 (defrule abstraccion-problema::edad-menos-12
     ?req <- (edad-hecho FALSE)
     (usuario (edad ?e))
-    (< (?e 12))
+    (< ?e 12)
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad MENOS_12))
@@ -1956,7 +1956,7 @@
 (defrule abstraccion-problema::edad-12-mas
     ?req <- (edad-hecho FALSE)
     (usuario (edad ?e))
-    (> (?e 11))
+    (> ?e 11)
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad 12_O_MAS))
@@ -1965,7 +1965,7 @@
 (defrule abstraccion-problema::edad-16-mas
     ?req <- (edad-hecho FALSE)
     (usuario (edad ?e))
-    (> (?e 15))
+    (> ?e 15)
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad 16_O_MAS))
@@ -1974,7 +1974,7 @@
 (defrule abstraccion-problema::edad-18-mas
     ?req <- (edad-hecho FALSE)
     (usuario (edad ?e))
-    (> (?e 17))
+    (> ?e 17)
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad 18_O_MAS))
@@ -1985,7 +1985,7 @@
 (defrule abstraccion-problema::cantidad-mangas-pocos
     ?req <- (cantidad-hecho FALSE)
     (usuario (mangas-leidos ?m))
-    (= (?m pocos))
+    (= ?m pocos)
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos pocos))
@@ -1994,7 +1994,7 @@
 (defrule abstraccion-problema::cantidad-mangas-bastantes
     ?req <- (cantidad-hecho FALSE)
     (usuario (mangas-leidos ?m))
-    (= (?m normal))
+    (= ?m normal)
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos bastantes))
@@ -2003,7 +2003,7 @@
 (defrule abstraccion-problema::cantidad-mangas-muchos
     ?req <- (cantidad-hecho FALSE)
     (usuario (mangas-leidos ?m))
-    (= (?m muchos))
+    (= ?m muchos)
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos muchos))
@@ -2033,7 +2033,7 @@
 ; Ejemplo
 (defrule abstraccion-problema::dificultad-usuario
     (usuario (tiempo-lectura ?t))
-    (< (?t 30))
+    (< ?t 30)
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (dificultad "facil"))
