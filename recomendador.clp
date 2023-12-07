@@ -1753,7 +1753,7 @@
 
 ; Modulo para convertir al problema concreto en abstracto
 (defmodule abstraccion-problema
-    (import MAIN ?ALL) ; no os tomeis esto como que esta bien ni aqui ni en los siguientes
+    (import preguntas-usuario ?ALL) ; no os tomeis esto como que esta bien ni aqui ni en los siguientes
     (export ?ALL)
 )
 
