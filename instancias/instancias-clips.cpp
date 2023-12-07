@@ -485,6 +485,8 @@ int main()
 {
     bool reading = true;
 
+    cout << "(definstances\n";
+
     do
     {
         Manga m;
@@ -501,4 +503,6 @@ int main()
     printGeneros();
     cout << "\n; Temas\n\n";
     printTemas();
+
+    cout << ")\n";
 }

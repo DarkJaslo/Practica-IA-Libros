@@ -1,3 +1,4 @@
+(definstances
 ([one-piece] of Serializado
 	(titulo  "One Piece")
 	(publicado-por  [shueisha])
@@ -1598,4 +1599,5 @@
 )
 ([yuri] of Tema
 	(nombre  "Yuri")
+)
 )
