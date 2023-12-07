@@ -1836,6 +1836,15 @@
     (multislot gusto-generos (type INSTANCE))
     (multislot gusto-temas (type INSTANCE))
     (slot tiempo-lectura (type INTEGER))
+	(slot prefiere-acabados (type SYMBOL)
+                            (allowed-values TRUE FALSE)
+                            (default FALSE))
+    (slot prefiere-sin-anime (type SYMBOL)
+                            (allowed-values TRUE FALSE)
+                            (default FALSE))
+    (slot quiere-doujinshis (type SYMBOL)
+                            (allowed-values TRUE FALSE)
+                            (default FALSE))
     ; faltan cosas, las voy añadiendo conforme hago las preguntas
 )
 
