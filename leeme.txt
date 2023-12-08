@@ -1,5 +1,9 @@
 Prototipo de un recomendador de manga.
 
+Jon Campillo Navarro-Soto
+Hector Garcia Lirola
+Sandra Vazquez Rodriguez
+
 Se hace una serie de preguntas al usuario por consola, que debera contestar:
 
 Edad
