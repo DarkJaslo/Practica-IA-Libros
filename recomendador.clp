@@ -2304,7 +2304,7 @@
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t))
 	(test (> ?val ?*asoc_bueno*))
 	(problema-abstracto (mangas-leidos pocos))
-	(test (> ?copias ?*asoc_extr_popular*))
+	(test (> ?copias ?*asoc_popular*))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?m $?rec)))
 	=>
