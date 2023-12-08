@@ -134,7 +134,8 @@
         (create-accessor read-write))
 )
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Instancias ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (definstances instancias
 ([one-piece] of Serializado
 	(titulo  "One Piece")
@@ -177,7 +178,7 @@
 	(trata-de  [delincuencia]  [historico]  [superpoderes])
 	(tomos  17)
 	(capitulos  155)
-	(copias-vendidas  10000000)
+	(copias-vendidas  9000000)
 	(dificultad-lectura  "media")
 	(estado-publicacion  "acabado")
 	(frecuencia-publicacion  "semanal")
@@ -194,7 +195,7 @@
 	(trata-de  [escolar]  [superpoderes])
 	(tomos  18)
 	(capitulos  174)
-	(copias-vendidas  100000)
+	(copias-vendidas  2000000)
 	(dificultad-lectura  "media")
 	(estado-publicacion  "acabado")
 	(frecuencia-publicacion  "semanal")
@@ -211,7 +212,7 @@
 	(trata-de  [superpoderes]  [historico])
 	(tomos  16)
 	(capitulos  152)
-	(copias-vendidas  94600)
+	(copias-vendidas  4000000)
 	(dificultad-lectura  "media")
 	(estado-publicacion  "acabado")
 	(frecuencia-publicacion  "semanal")
@@ -228,7 +229,7 @@
 	(trata-de  [superpoderes]  [vampiros]  [historico])
 	(tomos  7)
 	(capitulos  69)
-	(copias-vendidas  102000)
+	(copias-vendidas  1000000)
 	(dificultad-lectura  "media")
 	(estado-publicacion  "acabado")
 	(frecuencia-publicacion  "semanal")
@@ -245,7 +246,7 @@
 	(trata-de  [superpoderes]  [vampiros]  [historico])
 	(tomos  5)
 	(capitulos  44)
-	(copias-vendidas  125000)
+	(copias-vendidas  200000)
 	(dificultad-lectura  "media")
 	(estado-publicacion  "acabado")
 	(frecuencia-publicacion  "semanal")
@@ -529,7 +530,7 @@
 )
 ([a-story-about-a-cat-reincarnated-in-a-different-world-where-there-are-no-cats] of Serializado
 	(titulo  "A Story about a Cat Reincarnated in a Different World Where There are no Cats")
-	(publicado-por  [ema-tooyama])
+	(publicado-por  [publ-ema-tooyama])
 	(pertenece-a  [comedia]  [fantasia]  [slice-of-life])
 	(trata-de  [animales]  [isekai])
 	(tomos  0)
@@ -852,7 +853,7 @@
 )
 ([doomsday-with-my-dog] of Serializado
 	(titulo  "Doomsday with my dog")
-	(publicado-por  [yuu-ishihara])
+	(publicado-por  [publ-yuu-ishihara])
 	(pertenece-a  [aventura]  [comedia]  [slice-of-life])
 	(trata-de  [animales]  [postapocaliptico]  [supervivencia])
 	(tomos  4)
@@ -920,7 +921,7 @@
 )
 ([uchi-no-neko-ga-onnanoko-de-kawaii] of Serializado
 	(titulo  "Uchi no Neko ga Onnanoko de Kawaii")
-	(publicado-por  [shimahara])
+	(publicado-por  [publ-shimahara])
 	(pertenece-a  [comedia]  [slice-of-life])
 	(trata-de  [animales]  [humor-absurdo]  [reconfortante])
 	(tomos  3)
@@ -937,7 +938,7 @@
 )
 ([dekihime-no-usui-hon] of Serializado
 	(titulo  "Dekihime no Usui Hon")
-	(publicado-por  [ajiichi])
+	(publicado-por  [publ-ajiichi])
 	(pertenece-a  [romance])
 	(trata-de  [escolar]  [yuri])
 	(tomos  5)
@@ -1788,7 +1789,7 @@
 	(test (> ?val ?*asoc_bueno*))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?m $?rec)))
-	(test (eq (class ?publ) Editorial))
+	(test (eq (class ?publ) Autopublicador))
 	=>
 	;(modify ?sol (recomendables $?rec ?m))
 	(printout t "El manga " ?m "es un doujinshi" crlf)
