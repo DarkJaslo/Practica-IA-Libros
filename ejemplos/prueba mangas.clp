@@ -1774,7 +1774,7 @@
 	(test (> ?val ?*asoc_excelente*))
 	(test (> ?copias ?*asoc_extr_popular*))
 	?sol <- (solucion-abstracta (recomendables $?rec))
-	(not (member$ ?m $?rec))
+	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
 	;(modify ?sol (recomendables $?rec (insert$ $?rec (+ (length$ $?rec) 1) ?m)))
