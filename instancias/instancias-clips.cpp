@@ -298,14 +298,17 @@ bool readManga(Manga& m)
         if(aux == m.autor or aux == m.ilustrador)
         {
             m.autopublicado = true;
-            inserta(autopublicadoresClips,autopublicadoresNormal,l,aux);
+            string aux2 = "publ-";
+            aux2.append(aux);
+            inserta(autopublicadoresClips,autopublicadoresNormal,l,aux2);
+            m.publicadora = aux2;
         }
         else
         {
             m.autopublicado = false;
             inserta(publicadorasClips,publicadorasNormal,l,aux);
+            m.publicadora = aux;
         }
-        m.publicadora = aux;
     }
 
     //Lee generos
@@ -455,7 +458,7 @@ void printPublicadores()
 
     for(auto it = autopublicadoresNormal.begin(); it != autopublicadoresNormal.end(); ++it)
     {
-        cout << "([publ-" << it->first << "] of Autopublicador\n";
+        cout << "([" << it->first << "] of Autopublicador\n";
         cout << "\t(nombre  \"" << it->second << "\")\n";
         cout << ")\n";
     }
