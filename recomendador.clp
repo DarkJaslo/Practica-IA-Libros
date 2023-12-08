@@ -1852,9 +1852,10 @@
 
 ; funcion que nos dan en el FAQ apartado 3.10
 (deffunction preguntas-usuario::pregunta-si-no (?pregunta)
-    (format t "%s " ?pregunta)
+    (format t "%s (si/no)" ?pregunta)
+	(printout t crlf)
     (bind ?respuesta (read))
-    (if (or (eq (lowcase ?respuesta) si) (eq (lowcase ?respuesta) s))
+    (if (eq (lowcase ?respuesta) si)
         then TRUE
         else FALSE
     )
@@ -1874,7 +1875,7 @@
     (multislot gusto-generos (type INSTANCE))
     (multislot gusto-temas (type INSTANCE))
     (slot tiempo-lectura (type INTEGER))
-		(slot prefiere-acabados (type SYMBOL)
+	(slot prefiere-acabados (type SYMBOL)
                             (allowed-values TRUE FALSE)
                             (default FALSE))
     (slot prefiere-sin-anime (type SYMBOL)
@@ -1907,7 +1908,7 @@
 )
 
 (deftemplate asociacion-heuristica::solucion-abstracta
-    (multislot recomendables (type INSTANCE) (allowed-items Manga)) ;instancias de mangas
+    (multislot recomendables (type INSTANCE)) ;instancias de mangas
 )
 
 (deftemplate refinamiento-solucion::solucion-concreta
@@ -1998,15 +1999,17 @@
 		(bind $?nombres-gen(insert$ $?nombres-gen (+ (length$ $?nombres-gen) 1) ?nombre))
 	)
 
+	; devuelve los indices de los generos escogidos
 	(bind ?respuesta (pregunta-multirespuesta "Escoge tus generos favoritos (separados por un espacio, o 0 si no tienes)" $?nombres-gen))
 
 	(bind $?instancias (create$))
-	;;;;;;;;;; aqui harias otro progn creo pero tengo sueño me voy a dormir
-	(loop-for-count (?i 1 (length$ ?respuesta)) do
-		(bind ?index (nth$ ?i ?respuesta))
+
+	; busca cada genero en ?generos y lo añade a la lista de instancias
+	(progn$ (?index ?respuesta)
 		(bind ?gen (nth$ ?index ?generos))
 		(bind $?instancias(insert$ $?instancias (+ (length$ $?instancias) 1) ?gen))
 	)
+
 	(modify ?usr (gusto-generos $?instancias))
     (assert (generos-preguntado))
 )
@@ -2017,8 +2020,53 @@
     (not (temas-preguntado))
 	?usr <- (usuario)
     =>
+	(bind $?conj-temas (find-all-instances ((?inst Tema)) TRUE))
+	(bind $?conj-nombres (create$))
+
+	(progn$ (?tema ?conj-temas)
+		(bind ?nombre (send ?tema get-nombre))
+		(bind $?conj-nombres(insert$ $?conj-nombres (+ (length$ $?conj-nombres) 1) ?nombre))
+	)
 	
+	; devuelve los indices de los generos escogidos
+	(bind ?respuesta (pregunta-multirespuesta "Escoge tus temas favoritos (separados por un espacio, o 0 si no tienes)" $?conj-nombres))
+
+	(bind $?instancias (create$))
+
+	(progn$ (?index ?respuesta)
+		(bind ?tema (nth$ ?index ?conj-temas))
+		(bind $?instancias(insert$ $?instancias (+ (length$ $?instancias) 1) ?tema))
+	)
+
+	(modify ?usr (gusto-temas $?instancias))
     (assert (temas-preguntado))
+)
+
+(defrule preguntas-usuario::prefiere-acabados
+	(temas-preguntado)
+	(not (prefiere-acabados-preguntado))
+	?usr <- (usuario)
+	=>
+	(modify ?usr (prefiere-acabados (pregunta-si-no "¿Tienes una preferencia por los mangas acabados?")))
+	(assert (prefiere-acabados-preguntado))
+)
+
+(defrule preguntas-usuario::prefiere-sin-anime
+	(prefiere-acabados-preguntado)
+	(not (prefiere-sin-anime-preguntado))
+	?usr <- (usuario)
+	=>
+	(modify ?usr (prefiere-sin-anime (pregunta-si-no "¿Tienes una preferencia por los mangas que no tienen anime?")))
+	(assert (prefiere-sin-anime-preguntado))
+)
+
+(defrule preguntas-usuario::prefiere-doujinshis
+	(prefiere-sin-anime-preguntado)
+	(not (prefiere-doujinshis-preguntado))
+	?usr <- (usuario)
+	=>
+	(modify ?usr (quiere-doujinshis (pregunta-si-no "¿Tienes una preferencia por los doujinshis (mangas autopublicados)?")))
+	(assert (prefiere-doujinshis-preguntado))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Modulo de abstraccion ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2260,8 +2308,7 @@
 
 ; Si prefiere sin anime, el manga no tiene anime y está bien
 (defrule asociacion-heuristica::pref-sin-anime
-	?m <- (object (is-a Manga) (valoracion ?val) (tiene-anime ?anime))
-	(test (?anime FALSE))
+	?m <- (object (is-a Manga) (valoracion ?val) (tiene-anime FALSE))
 	(problema-abstracto (prefiere-sin-anime TRUE))
 	(test (> ?val ?*asoc_bueno*))
 	?sol <- (solucion-abstracta (recomendables $?rec))
@@ -2271,9 +2318,9 @@
 )
 
 ; Si prefiere acabados, el manga está acabado y está bien
-(defrule asociacion-heuyristica::pref-acabados
+(defrule asociacion-heuristica::pref-acabados
 	?m <- (object (is-a Manga) (valoracion ?val) (estado-publicacion ?publ))
-	(test (== ?publ "acabado"))
+	(test (eq ?publ "acabado"))
 	(problema-abstracto (prefiere-acabados TRUE))
 	(test (> ?val ?*asoc_bueno*))
 	?sol <- (solucion-abstracta (recomendables $?rec))
