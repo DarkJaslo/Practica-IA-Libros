@@ -2191,7 +2191,7 @@
 )
 ; No prefiere acabados
 (defrule abstraccion-problema::preferencia-acabados-false
-	(not preferencia-acabados-hecho)
+	(not (preferencia-acabados-hecho))
 	?req <- (preferencia-acabados-hecho FALSE)
 	(usuario (prefiere-acabados FALSE))
 	?usr <- (problema-abstracto)
