@@ -1812,6 +1812,44 @@
     ?respuesta
 )
 
+; devuelve una lista con el indice de los valores escogidos
+(deffunction preguntas-usuario::pregunta-multirespuesta (?pregunta $?valores-posibles)
+	(printout t ?pregunta crlf)
+
+	; por cada valor de los valores posibles lo imprime junto a su indice
+	(progn$ (?valor ?valores-posibles)
+		(bind ?text (format nil "	%d %s" ?valor-index ?valor))
+		(printout t ?text crlf)
+	)
+
+	(bind ?respuesta (readline))
+
+	; la respuesta esta en un solo string asi que la separamos
+    (bind ?respuesta (explode$ ?respuesta))
+    (bind $?lista (create$))
+
+	; si ha escrito un numero que no pertenece a ningun genero, pide que responda otra vez
+	(while (not (progn$ (?valor ?respuesta)
+					(and (integerp ?valor) (and (>= ?valor 0) (<= ?valor (length$ ?valores-posibles))))
+				)
+	)
+	do
+        (printout t "Algo ha ocurrido mal. Vuelve a escribir tu respuesta." crlf)
+        (bind ?respuesta (readline))
+		(bind ?respuesta (explode$ ?respuesta))
+    )
+
+	; Cuando los valores sean válidos los guardamos
+	(progn$ (?valor ?respuesta)
+		(if (not (member$ ?valor ?lista))
+			then (bind ?lista (insert$ ?lista (+ (length$ ?lista) 1) ?valor))
+		)
+    )
+	; si no ha respondido nada o ha respondido 0, devolvemos una lista vacia
+    (if (or(member$ 0 ?lista)(= (length$ ?lista) 0)) then (bind ?lista (create$ )))
+    ?lista
+)
+
 ; funcion que nos dan en el FAQ apartado 3.10
 (deffunction preguntas-usuario::pregunta-si-no (?pregunta)
     (format t "%s " ?pregunta)
@@ -1836,7 +1874,7 @@
     (multislot gusto-generos (type INSTANCE))
     (multislot gusto-temas (type INSTANCE))
     (slot tiempo-lectura (type INTEGER))
-	(slot prefiere-acabados (type SYMBOL)
+		(slot prefiere-acabados (type SYMBOL)
                             (allowed-values TRUE FALSE)
                             (default FALSE))
     (slot prefiere-sin-anime (type SYMBOL)
@@ -1934,9 +1972,41 @@
 (defrule preguntas-usuario::pregunta-generos
     (mangas-leidos-preguntado)
     (not (generos-preguntado))
+	?usr <- (usuario)
     =>
-    
+	; guarda en generos todas las instancias de la clase Genero
+	(bind $?generos (find-all-instances ((?inst Genero)) TRUE))
+	; crea la variable donde guardara el nombre de los generos
+	(bind $?nombres-gen (create$))
+
+	; por cada genero guarda su nombre en nombres-gen
+	(progn$ (?gen ?generos)
+		(bind ?nombre (send ?gen get-nombre)) ; hace get del nombre del genero y lo guarda en ?nombre
+		; insert$ devuelve la lista con el nombre nuevo insertado al final, y luego hace bind de esto en la variable
+		(bind $?nombres-gen(insert$ $?nombres-gen (+ (length$ $?nombres-gen) 1) ?nombre))
+	)
+
+	(bind ?respuesta (pregunta-multirespuesta "Escoge tus generos favoritos (separados por un espacio, o 0 si no tienes)" $?nombres-gen))
+
+	(bind $?instancias (create$))
+	;;;;;;;;;; aqui harias otro progn creo pero tengo sueño me voy a dormir
+	(loop-for-count (?i 1 (length$ ?respuesta)) do
+		(bind ?index (nth$ ?i ?respuesta))
+		(bind ?gen (nth$ ?index ?generos))
+		(bind $?instancias(insert$ $?instancias (+ (length$ $?instancias) 1) ?gen))
+	)
+	(modify ?usr (gusto-generos $?instancias))
     (assert (generos-preguntado))
+)
+
+; esta puesta para que no salga del modulo y pueda comprobar que la de generos se ha hecho bien
+(defrule preguntas-usuario::pregunta-temas
+    (generos-preguntado)
+    (not (temas-preguntado))
+	?usr <- (usuario)
+    =>
+	
+    (assert (temas-preguntado))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Modulo de abstraccion ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
