@@ -2397,10 +2397,10 @@
 
 (defrule refinamiento-solucion::escoge-mangas
   (declare (salience 10))
-  ?counter <- (counter (num-rec ?n))
-  (test (< ?n 3))
   ?abs <- (solucion-abstracta (recomendables $?opciones))
   ?sol <- (solucion-concreta (recomendaciones $?rec))
+  ?counter <- (counter (num-rec ?n))
+  (test (and (< ?n 3) (< ?n (length$ ?opciones))))
   =>
   (bind ?index (random 1 (length$ ?opciones)))
   (bind ?manga (nth$ ?index ?opciones))
