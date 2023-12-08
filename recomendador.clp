@@ -2282,15 +2282,6 @@
 	(modify ?sol (recomendables $?rec ?m))
 )
 
-; Ejemplo tratar con instancias de clases
-(defrule owo
-	?m <- (object (is-a Manga) (titulo ?t) (capitulos ?c))
-	(test (> ?c 1000))
-	=>
-	(format t "El manga %s tiene mas de 1000 capitulos" ?t)
-  (printout t crlf)
-)
-
 ; Add an instance of Item to the Container
 ;(deffunction add-instance-to-container (?container ?item)
 ;    (if (not (member$ ?item (slot-value ?container instances)))
