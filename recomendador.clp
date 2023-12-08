@@ -529,7 +529,7 @@
 )
 ([a-story-about-a-cat-reincarnated-in-a-different-world-where-there-are-no-cats] of Serializado
 	(titulo  "A Story about a Cat Reincarnated in a Different World Where There are no Cats")
-	(publicado-por  [ema-tooyama])
+	(publicado-por  [publ-ema-tooyama])
 	(pertenece-a  [comedia]  [fantasia]  [slice-of-life])
 	(trata-de  [animales]  [isekai])
 	(tomos  0)
@@ -852,7 +852,7 @@
 )
 ([doomsday-with-my-dog] of Serializado
 	(titulo  "Doomsday with my dog")
-	(publicado-por  [yuu-ishihara])
+	(publicado-por  [publ-yuu-ishihara])
 	(pertenece-a  [aventura]  [comedia]  [slice-of-life])
 	(trata-de  [animales]  [postapocaliptico]  [supervivencia])
 	(tomos  4)
@@ -920,7 +920,7 @@
 )
 ([uchi-no-neko-ga-onnanoko-de-kawaii] of Serializado
 	(titulo  "Uchi no Neko ga Onnanoko de Kawaii")
-	(publicado-por  [shimahara])
+	(publicado-por  [publ-shimahara])
 	(pertenece-a  [comedia]  [slice-of-life])
 	(trata-de  [animales]  [humor-absurdo]  [reconfortante])
 	(tomos  3)
@@ -937,7 +937,7 @@
 )
 ([dekihime-no-usui-hon] of Serializado
 	(titulo  "Dekihime no Usui Hon")
-	(publicado-por  [ajiichi])
+	(publicado-por  [publ-ajiichi])
 	(pertenece-a  [romance])
 	(trata-de  [escolar]  [yuri])
 	(tomos  5)
