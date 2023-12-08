@@ -6,7 +6,7 @@ pregunta1
 pregunta2
 pregunta3
 
-Basandonos en las respuestas, se recomendaran 3 mangas que cumplan criterios de momento muy generales:
+Basandonos en las respuestas, se recomendaran 3 mangas (cualquiera) que cumplan criterios de momento muy generales:
 -Que se cumplan las restricciones de edad
 -Muy buena valoracion y popularidad muy alta
 -Si el usuario ha leido pocos mangas, se recomiendan mangas muy populares bien valorados (bien)
