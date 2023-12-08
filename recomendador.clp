@@ -1759,7 +1759,7 @@
 
 ; Modulo para solucionar el problema abstracto
 (defmodule asociacion-heuristica
-    (import MAIN ?ALL)
+    (import abstraccion-problema ?ALL)
     (export ?ALL)
 )
 
@@ -1933,6 +1933,18 @@
     (focus preguntas-usuario)
 )
 
+(defrule MAIN::abstrae-problema
+	(declare (salience 9))
+	=>
+	(focus abstraccion-problema)
+)
+
+(defrule MAIN::resuelve-problema
+	(declare (salience 8))
+	=>
+	(focus asociacion-heuristica)
+)
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Preguntas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2018,9 +2030,19 @@
     (preferencia-temas-hecho FALSE)
     (edad-hecho FALSE)
     (cantidad-hecho FALSE)
+	(preferencia-acabados-hecho FALSE)
+	(preferencia-sin-anime-hecho FALSE)
+	(quiere-doujinshis-hecho FALSE)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Crea problema abstracto
+(defrule abstraccion-problema::crea-problema
+	(not (problema-abstracto))
+    =>
+    (assert (problema-abstracto))
+)
 
 ; Edad
 (defrule abstraccion-problema::edad-menos-12
@@ -2109,6 +2131,74 @@
     (modify ?req (preferencia-temas-hecho TRUE))
 )
 
+; Prefiere acabados
+(defrule abstraccion-problema::preferencia-acabados
+	?req <- (preferencia-acabados-hecho FALSE)
+	(usuario (prefiere-acabados ?pref))
+	?usr <- (problema-abstracto)
+	=>
+	(modify ?usr (prefiere-acabados ?pref))
+	(modify ?req (preferencia-acabados-hecho TRUE))
+)
+
+; Prefiere sin anime
+(defrule abstraccion-problema::preferencia-sin-anime
+	?req <- (preferencia-sin-anime-hecho FALSE)
+	(usuario (prefiere-sin-anime ?pref))
+	?usr <- (problema-abstracto)
+	=>
+	(modify ?usr (prefiere-sin-anime ?pref))
+	(modify ?req (preferencia-sin-anime-hecho TRUE))
+)
+
+; Quiere doujinshis
+(defrule abstraccion-problema::quiere-doujinshis
+	?req <- (quiere-doujinshis-hecho FALSE)
+	(usuario (quiere-doujinshis ?quiere))
+	?usr <- (problema-abstracto)
+	=>
+	(modify ?usr (quiere-doujinshis ?quiere))
+	(modify ?req (quiere-doujinshis-hecho TRUE))
+)
+
+
+;;;;;;;;;;;;;;;;;;;;;;; Modulo de asociacion heuristica ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Control de reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(deffacts asociacion-heuristica::requisitos-asoc
+    
+)
+
+; Elimina instancias que no cumplan la edad mínima
+(defrule asociacion-heuristica::elimina-mas-doce
+    (declare (salience 10))
+    (problema-abstracto (edad MENOS_12))
+    ?m <- (object (is-a Manga) (restriccion-edad ?restr))
+    (> ?restr 11)
+    =>
+    (send ?m delete)
+    (retract ?m)   
+)
+(defrule asociacion-heuristica::elimina-mas-dieciseis
+    (declare (salience 10))
+    (problema-abstracto (edad 12_O_MAS))
+    ?m <- (object (is-a Manga) (restriccion-edad ?restr))
+    (> ?restr 15)
+    =>
+    (send ?m delete)
+    (retract ?m)   
+)
+(defrule asociacion-heuristica::elimina-mas-dieciocho
+    (declare (salience 10))
+    (problema-abstracto (edad 16_O_MAS))
+    ?m <- (object (is-a Manga) (restriccion-edad ?restr))
+    (> ?restr 17)
+    =>
+    (send ?m delete)
+    (retract ?m)   
+)
+
 ; Ejemplo tratar con instancias de clases
 (defrule owo
 	?m <- (object (is-a Manga) (titulo ?t) (capitulos ?c))
@@ -2117,3 +2207,22 @@
 	(format t "El manga %s tiene mas de 1000 capitulos" ?t)
   (printout t crlf)
 )
+
+; Add an instance of Item to the Container
+;(deffunction add-instance-to-container (?container ?item)
+;    (if (not (member$ ?item (slot-value ?container instances)))
+;        then
+;            (modify ?container (instances ?item&:(create$ (slot-value ?container instances) ?item)))
+;            (printout t "Instance added successfully." crlf)
+;        else
+;            (printout t "Instance already exists." crlf)
+;    )
+;)
+
+; Function to add a value to the multislot
+;(deffunction AddValueToMultislot (?newValue)
+;    (bind ?factToModify (find-fact ((?f ExampleFact)) TRUE))
+;    (if ?factToModify then
+;        (modify ?factToModify (exampleMultislot (create$ (get-?factToModify exampleMultislot) ?newValue)))
+;    )
+;)
