@@ -1777,6 +1777,7 @@
 ; sea correcto, entonces devuelve el valor leido
 (deffunction preguntas-usuario::pregunta-numerica (?pregunta ?rangini ?rangfi)
     (format t "%s [%d, %d] " ?pregunta ?rangini ?rangfi)
+	(printout t crlf)
     (bind ?respuesta (read))
     (while (not(and(> ?respuesta ?rangini)(< ?respuesta ?rangfi))) do
         (format t "%s [%d, %d] " ?pregunta ?rangini ?rangfi)
@@ -1791,6 +1792,7 @@
         (?var ?valores-permitidos)
         (lowcase ?var))
     (format t "%s (%s) " ?pregunta (implode$ ?valores-permitidos))
+	(printout t crlf)
     (bind ?respuesta (read))
     (while (not (member$ (lowcase ?respuesta) ?valores-permitidos)) do
         (format t "%s (%s) " ?pregunta (implode$ ?valores-permitidos))
@@ -1804,6 +1806,7 @@
         (?var ?valores-permitidos)
         (lowcase ?var))
     (format t "%s (%s) " ?pregunta ?comentario)
+	(printout t crlf)
     (bind ?respuesta (read))
     (while (not (member$ (lowcase ?respuesta) ?valores-permitidos)) do
         (format t "%s (%s) " ?pregunta ?comentario)
