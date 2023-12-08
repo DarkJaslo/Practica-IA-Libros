@@ -2103,7 +2103,8 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad MENOS_12))
-    (modify ?req (edad-hecho TRUE))
+	(retract (edad-hecho))
+    (assert (edad-hecho TRUE))
 )
 (defrule abstraccion-problema::edad-12-mas
     ?req <- (edad-hecho FALSE)
@@ -2112,7 +2113,8 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad 12_O_MAS))
-    (modify ?req (edad-hecho TRUE))
+	(retract (edad-hecho))
+    (assert (edad-hecho TRUE))
 )
 (defrule abstraccion-problema::edad-16-mas
     ?req <- (edad-hecho FALSE)
@@ -2121,7 +2123,8 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad 16_O_MAS))
-    (modify ?req (edad-hecho TRUE))
+	(retract (edad-hecho))
+    (assert (edad-hecho TRUE))
 )
 (defrule abstraccion-problema::edad-18-mas
     ?req <- (edad-hecho FALSE)
@@ -2130,7 +2133,8 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad 18_O_MAS))
-    (modify ?req (edad-hecho TRUE))
+	(retract (edad-hecho))
+    (assert (edad-hecho TRUE))
 )
 
 ; Cantidad mangas leidos
@@ -2141,7 +2145,8 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos pocos))
-    (modify ?req (cantidad-hecho TRUE))
+	(retract (cantidad-hecho))
+	(assert (cantidad-hecho TRUE))
 )
 (defrule abstraccion-problema::cantidad-mangas-bastantes
     ?req <- (cantidad-hecho FALSE)
@@ -2150,7 +2155,8 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos bastantes))
-    (modify ?req (cantidad-hecho TRUE))
+	(retract (cantidad-hecho))
+    (assert (cantidad-hecho TRUE))
 )
 (defrule abstraccion-problema::cantidad-mangas-muchos
     ?req <- (cantidad-hecho FALSE)
@@ -2159,7 +2165,8 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos muchos))
-    (modify ?req (cantidad-hecho TRUE))
+	(retract (cantidad-hecho))
+    (assert (cantidad-hecho TRUE))
 )
 
 ; Generos preferibles
@@ -2169,7 +2176,8 @@
     (usuario (gusto-generos ?gen))
     =>
     (modify ?usr (preferencia-generos (create$ ?gen ?absGen)))
-    (modify ?req (preferencia-generos-hecho TRUE))
+    (retract (preferencia-generos-hecho))
+	(assert (preferencia-generos-hecho TRUE))
 )
 
 ; Temas preferibles
@@ -2179,7 +2187,8 @@
     (usuario (gusto-temas ?tem))
     =>
     (modify ?usr (preferencia-temas (create$ ?tem ?absTem)))
-    (modify ?req (preferencia-temas-hecho TRUE))
+    (retract (preferencia-temas-hecho))
+	(assert (preferencia-temas-hecho TRUE))
 )
 
 ; Prefiere acabados
@@ -2189,7 +2198,8 @@
 	?usr <- (problema-abstracto)
 	=>
 	(modify ?usr (prefiere-acabados TRUE))
-	(modify ?req (preferencia-acabados-hecho TRUE))
+	(retract (preferencia-acabados-hecho))
+	(assert (preferencia-acabados-hecho TRUE))
 )
 ; No prefiere acabados
 (defrule abstraccion-problema::preferencia-acabados-false
@@ -2198,7 +2208,8 @@
 	?usr <- (problema-abstracto)
 	=>
 	(modify ?usr (prefiere-acabados FALSE))
-	(modify ?req (preferencia-acabados-hecho TRUE))
+	(retract (preferencia-acabados-hecho))
+	(assert (preferencia-acabados-hecho TRUE))
 )
 
 ; Prefiere sin anime
@@ -2208,7 +2219,8 @@
 	?usr <- (problema-abstracto)
 	=>
 	(modify ?usr (prefiere-sin-anime TRUE))
-	(modify ?req (preferencia-sin-anime-hecho TRUE))
+	(retract (preferencia-sin-anime-hecho))
+	(assert (preferencia-sin-anime-hecho TRUE))
 )
 ; No prefiere sin anime
 (defrule abstraccion-problema::preferencia-sin-anime-false
@@ -2217,7 +2229,8 @@
 	?usr <- (problema-abstracto)
 	=>
 	(modify ?usr (prefiere-sin-anime FALSE))
-	(modify ?req (preferencia-sin-anime-hecho TRUE))
+	(retract (preferencia-sin-anime-hecho))
+	(assert (preferencia-sin-anime-hecho TRUE))
 )
 
 ; Quiere doujinshis
@@ -2227,7 +2240,8 @@
 	?usr <- (problema-abstracto)
 	=>
 	(modify ?usr (quiere-doujinshis TRUE))
-	(modify ?req (quiere-doujinshis-hecho TRUE))
+	(retract (quiere-doujinshis-hecho))
+	(assert (quiere-doujinshis-hecho TRUE))
 )
 ; No quiere doujinshis
 (defrule abstraccion-problema::quiere-doujinshis-false
@@ -2236,7 +2250,8 @@
 	?usr <- (problema-abstracto)
 	=>
 	(modify ?usr (quiere-doujinshis FALSE))
-	(modify ?req (quiere-doujinshis-hecho TRUE))
+	(retract (quiere-doujinshis-hecho))
+	(assert (quiere-doujinshis-hecho TRUE))
 )
 
 
