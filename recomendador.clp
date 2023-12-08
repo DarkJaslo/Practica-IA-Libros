@@ -2211,15 +2211,74 @@
     (retract ?m)   
 )
 
+; Recomienda si es excelente y extremadamente popular
 (defrule asociacion-heuristica::muy-bueno-muy-popular
-	(not (problema-abstracto (mangas-leidos muchos)))
-	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias))
-	(test (> ?val ?asoc_excelente))
-	(test (> ?copias ?asoc_extr_popular))
-	?rec <- (solucion-abstracta (recomendables))
-	(not (member$ ?m (slot-value ?rec)))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t))
+	(test (> ?val ?*asoc_excelente*))
+	(test (> ?copias ?*asoc_extr_popular*))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (not (member$ ?m $?rec)))
 	=>
-	(modify ?rec ?m&:(create$ (slot-value ?rec) ?m))
+	(modify ?sol (recomendables $?rec ?m))
+)
+
+; Recomienda si es bueno, popular y el usuario ha leido pocos mangas
+(defrule asociacion-heuristica::muy-bueno-popular-pocos-leidos
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias))
+	(test (> ?val ?*asoc_bueno*))
+	(problema-abstracto (mangas-leidos pocos))
+	(test (> ?copias ?*asoc_popular*))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (not (member$ ?m $?rec)))
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+)
+
+; Recomienda si es excelente, popular y el usuario ha leido bastantes mangas
+(defrule asociacion-heuristica::muy-bueno-popular-pocos-leidos
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias))
+	(test (> ?val ?*asoc_excelente*))
+	(problema-abstracto (mangas-leidos bastantes))
+	(test (> ?copias ?*asoc_popular*))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (not (member$ ?m $?rec)))
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+)
+
+; Si prefiere doujinshi y está bien (FALTA VERIFICAR QUE ES DOUJINSHI)
+(defrule asociacion-heuristica::pref-doujinshi
+	?m <- (object (is-a Manga) (valoracion ?val) ())
+	(problema-abstracto (quiere-doujinshis TRUE))
+	(test (> ?val ?*asoc_bueno*))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (not (member$ ?m $?rec)))
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+)
+
+; Si prefiere sin anime, el manga no tiene anime y está bien
+(defrule asociacion-heuristica::pref-sin-anime
+	?m <- (object (is-a Manga) (valoracion ?val) (tiene-anime ?anime))
+	(test (?anime FALSE))
+	(problema-abstracto (prefiere-sin-anime TRUE))
+	(test (> ?val ?*asoc_bueno*))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (not (member$ ?m $?rec)))
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+)
+
+; Si prefiere acabados, el manga está acabado y está bien
+(defrule asociacion-heuyristica::pref-acabados
+	?m <- (object (is-a Manga) (valoracion ?val) (estado-publicacion ?publ))
+	(test (== ?publ "acabado"))
+	(problema-abstracto (prefiere-acabados TRUE))
+	(test (> ?val ?*asoc_bueno*))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (not (member$ ?m $?rec)))
+	=>
+	(modify ?sol (recomendables $?rec ?m))
 )
 
 ; Ejemplo tratar con instancias de clases
