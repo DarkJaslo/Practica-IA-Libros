@@ -2086,9 +2086,8 @@
 ; Edad
 (defrule abstraccion-problema::edad-menos-12
 	(not (edad-hecho))
-    ?req <- (edad-hecho FALSE)
     (usuario (edad ?e))
-    (< ?e 12)
+    (test (< ?e 12))
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad MENOS_12))
@@ -2096,9 +2095,8 @@
 )
 (defrule abstraccion-problema::edad-12-mas
 	(not (edad-hecho))
-    ?req <- (edad-hecho FALSE)
     (usuario (edad ?e))
-    (> ?e 11)
+    (test (and (> ?e 11) (< ?e 16)))
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad 12_O_MAS))
@@ -2106,9 +2104,8 @@
 )
 (defrule abstraccion-problema::edad-16-mas
 	(not (edad-hecho))
-    ?req <- (edad-hecho FALSE)
     (usuario (edad ?e))
-    (> ?e 15)
+    (test (and (> ?e 15) (< ?e 18)))
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad 16_O_MAS))
@@ -2116,9 +2113,8 @@
 )
 (defrule abstraccion-problema::edad-18-mas
 	(not (edad-hecho))
-    ?req <- (edad-hecho FALSE)
     (usuario (edad ?e))
-    (> ?e 17)
+    (test (> ?e 17))
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad 18_O_MAS))
@@ -2128,9 +2124,8 @@
 ; Cantidad mangas leidos
 (defrule abstraccion-problema::cantidad-mangas-pocos
 	(not (cantidad-hecho))
-    ?req <- (cantidad-hecho FALSE)
     (usuario (mangas-leidos ?m))
-    (== ?m pocos)
+    (test (eq ?m pocos))
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos pocos))
@@ -2138,9 +2133,8 @@
 )
 (defrule abstraccion-problema::cantidad-mangas-bastantes
 	(not (cantidad-hecho))
-    ?req <- (cantidad-hecho FALSE)
     (usuario (mangas-leidos ?m))
-    (== ?m normal)
+    (test (eq ?m normal))
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos bastantes))
@@ -2148,9 +2142,8 @@
 )
 (defrule abstraccion-problema::cantidad-mangas-muchos
 	(not (cantidad-hecho))
-    ?req <- (cantidad-hecho FALSE)
     (usuario (mangas-leidos ?m))
-    (== ?m muchos)
+    (test (eq ?m muchos))
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos muchos))
@@ -2160,7 +2153,6 @@
 ; Generos preferibles
 (defrule abstraccion-problema::generos-preferidos
 	(not (preferencia-generos-hecho))
-    ?req <- (preferencia-generos-hecho FALSE)
     ?usr <- (problema-abstracto (preferencia-generos $?absGen))
     (usuario (gusto-generos ?gen))
     =>
@@ -2171,7 +2163,6 @@
 ; Temas preferibles
 (defrule abstraccion-problema::temas-preferidos
 	(not (preferencia-temas-hecho))
-    ?req <- (preferencia-temas-hecho FALSE)
     ?usr <- (problema-abstracto (preferencia-temas $?absTem))
     (usuario (gusto-temas ?tem))
     =>
@@ -2182,7 +2173,6 @@
 ; Prefiere acabados
 (defrule abstraccion-problema::preferencia-acabados-true
 	(not (preferencia-acabados-hecho))
-	?req <- (preferencia-acabados-hecho FALSE)
 	(usuario (prefiere-acabados TRUE))
 	?usr <- (problema-abstracto)
 	=>
@@ -2192,7 +2182,6 @@
 ; No prefiere acabados
 (defrule abstraccion-problema::preferencia-acabados-false
 	(not (preferencia-acabados-hecho))
-	?req <- (preferencia-acabados-hecho FALSE)
 	(usuario (prefiere-acabados FALSE))
 	?usr <- (problema-abstracto)
 	=>
@@ -2203,7 +2192,6 @@
 ; Prefiere sin anime
 (defrule abstraccion-problema::preferencia-sin-anime-true
 	(not (preferencia-sin-anime-hecho))
-	?req <- (preferencia-sin-anime-hecho FALSE)
 	(usuario (prefiere-sin-anime TRUE))
 	?usr <- (problema-abstracto)
 	=>
@@ -2213,7 +2201,6 @@
 ; No prefiere sin anime
 (defrule abstraccion-problema::preferencia-sin-anime-false
 	(not (preferencia-sin-anime-hecho))
-	?req <- (preferencia-sin-anime-hecho FALSE)
 	(usuario (prefiere-sin-anime FALSE))
 	?usr <- (problema-abstracto)
 	=>
@@ -2224,7 +2211,6 @@
 ; Quiere doujinshis
 (defrule abstraccion-problema::quiere-doujinshis-true
 	(not (quiere-doujinshis-hecho))
-	?req <- (quiere-doujinshis-hecho FALSE)
 	(usuario (quiere-doujinshis TRUE))
 	?usr <- (problema-abstracto)
 	=>
@@ -2234,7 +2220,6 @@
 ; No quiere doujinshis
 (defrule abstraccion-problema::quiere-doujinshis-false
 	(not (quiere-doujinshis-hecho))
-	?req <- (quiere-doujinshis-hecho FALSE)
 	(usuario (quiere-doujinshis FALSE))
 	?usr <- (problema-abstracto)
 	=>
@@ -2273,8 +2258,8 @@
     ?m <- (object (is-a Manga) (restriccion-edad ?restr) (titulo ?t))
     (test (> ?restr 11))
     =>
-	;(format t "Manga %s fuera" ?t)
-	;(printout t crlf)
+	(format t "Manga %s fuera" ?t)
+	(printout t crlf)
     (send ?m delete)
     ;(retract ?m)   
 )
@@ -2284,8 +2269,8 @@
     ?m <- (object (is-a Manga) (restriccion-edad ?restr) (titulo ?t))
     (test (> ?restr 15))
     =>
-	;(format t "Manga %s fuera" ?t)
-	;(printout t crlf)
+	(format t "Manga %s fuera" ?t)
+	(printout t crlf)
     (send ?m delete)
     ;(retract ?m)   
 )
@@ -2295,8 +2280,8 @@
     ?m <- (object (is-a Manga) (restriccion-edad ?restr) (titulo ?t))
     (test (> ?restr 17))
     =>
-	;(format t "Manga %s fuera" ?t)
-	;(printout t crlf)
+	(format t "Manga %s fuera" ?t)
+	(printout t crlf)
     (send ?m delete)
     ;(retract ?m)   
 )
