@@ -2103,7 +2103,7 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad MENOS_12))
-	(retract (edad-hecho))
+	(retract edad-hecho)
     (assert (edad-hecho TRUE))
 )
 (defrule abstraccion-problema::edad-12-mas
@@ -2113,7 +2113,7 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad 12_O_MAS))
-	(retract (edad-hecho))
+	(retract edad-hecho)
     (assert (edad-hecho TRUE))
 )
 (defrule abstraccion-problema::edad-16-mas
@@ -2123,7 +2123,7 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad 16_O_MAS))
-	(retract (edad-hecho))
+	(retract edad-hecho)
     (assert (edad-hecho TRUE))
 )
 (defrule abstraccion-problema::edad-18-mas
@@ -2133,7 +2133,7 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (edad 18_O_MAS))
-	(retract (edad-hecho))
+	(retract edad-hecho)
     (assert (edad-hecho TRUE))
 )
 
@@ -2145,7 +2145,7 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos pocos))
-	(retract (cantidad-hecho))
+	(retract cantidad-hecho)
 	(assert (cantidad-hecho TRUE))
 )
 (defrule abstraccion-problema::cantidad-mangas-bastantes
@@ -2155,7 +2155,7 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos bastantes))
-	(retract (cantidad-hecho))
+	(retract cantidad-hecho)
     (assert (cantidad-hecho TRUE))
 )
 (defrule abstraccion-problema::cantidad-mangas-muchos
@@ -2165,7 +2165,7 @@
     ?usr <- (problema-abstracto)
     =>
     (modify ?usr (mangas-leidos muchos))
-	(retract (cantidad-hecho))
+	(retract cantidad-hecho)
     (assert (cantidad-hecho TRUE))
 )
 
@@ -2176,7 +2176,7 @@
     (usuario (gusto-generos ?gen))
     =>
     (modify ?usr (preferencia-generos (create$ ?gen ?absGen)))
-    (retract (preferencia-generos-hecho))
+    (retract preferencia-generos-hecho)
 	(assert (preferencia-generos-hecho TRUE))
 )
 
@@ -2187,7 +2187,7 @@
     (usuario (gusto-temas ?tem))
     =>
     (modify ?usr (preferencia-temas (create$ ?tem ?absTem)))
-    (retract (preferencia-temas-hecho))
+    (retract preferencia-temas-hecho)
 	(assert (preferencia-temas-hecho TRUE))
 )
 
@@ -2198,7 +2198,7 @@
 	?usr <- (problema-abstracto)
 	=>
 	(modify ?usr (prefiere-acabados TRUE))
-	(retract (preferencia-acabados-hecho))
+	(retract preferencia-acabados-hecho)
 	(assert (preferencia-acabados-hecho TRUE))
 )
 ; No prefiere acabados
@@ -2208,7 +2208,7 @@
 	?usr <- (problema-abstracto)
 	=>
 	(modify ?usr (prefiere-acabados FALSE))
-	(retract (preferencia-acabados-hecho))
+	(retract preferencia-acabados-hecho)
 	(assert (preferencia-acabados-hecho TRUE))
 )
 
@@ -2219,7 +2219,7 @@
 	?usr <- (problema-abstracto)
 	=>
 	(modify ?usr (prefiere-sin-anime TRUE))
-	(retract (preferencia-sin-anime-hecho))
+	(retract preferencia-sin-anime-hecho)
 	(assert (preferencia-sin-anime-hecho TRUE))
 )
 ; No prefiere sin anime
@@ -2229,7 +2229,7 @@
 	?usr <- (problema-abstracto)
 	=>
 	(modify ?usr (prefiere-sin-anime FALSE))
-	(retract (preferencia-sin-anime-hecho))
+	(retract preferencia-sin-anime-hecho)
 	(assert (preferencia-sin-anime-hecho TRUE))
 )
 
@@ -2240,7 +2240,7 @@
 	?usr <- (problema-abstracto)
 	=>
 	(modify ?usr (quiere-doujinshis TRUE))
-	(retract (quiere-doujinshis-hecho))
+	(retract quiere-doujinshis-hecho)
 	(assert (quiere-doujinshis-hecho TRUE))
 )
 ; No quiere doujinshis
@@ -2250,7 +2250,7 @@
 	?usr <- (problema-abstracto)
 	=>
 	(modify ?usr (quiere-doujinshis FALSE))
-	(retract (quiere-doujinshis-hecho))
+	(retract quiere-doujinshis-hecho)
 	(assert (quiere-doujinshis-hecho TRUE))
 )
 
