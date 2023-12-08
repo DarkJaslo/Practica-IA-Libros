@@ -2269,8 +2269,8 @@
     ?m <- (object (is-a Manga) (restriccion-edad ?restr) (titulo ?t))
     (test (> ?restr 11))
     =>
-	(format t "Manga %s fuera" ?t)
-	(printout t crlf)
+	;(format t "Manga %s fuera" ?t)
+	;(printout t crlf)
     (send ?m delete)
     ;(retract ?m)   
 )
@@ -2280,8 +2280,8 @@
     ?m <- (object (is-a Manga) (restriccion-edad ?restr) (titulo ?t))
     (test (> ?restr 15))
     =>
-	(format t "Manga %s fuera" ?t)
-	(printout t crlf)
+	;(format t "Manga %s fuera" ?t)
+	;(printout t crlf)
     (send ?m delete)
     ;(retract ?m)   
 )
@@ -2291,8 +2291,8 @@
     ?m <- (object (is-a Manga) (restriccion-edad ?restr) (titulo ?t))
     (test (> ?restr 17))
     =>
-	(format t "Manga %s fuera" ?t)
-	(printout t crlf)
+	;(format t "Manga %s fuera" ?t)
+	;(printout t crlf)
     (send ?m delete)
     ;(retract ?m)   
 )
@@ -2306,8 +2306,8 @@
 	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
-	(format t "El manga %s entra" ?t)
-	(printout t crlf)
+	;(format t "El manga %s entra" ?t)
+	;(printout t crlf)
 )
 
 ; Recomienda si es bueno, extremadamente popular y el usuario ha leido pocos mangas
@@ -2320,8 +2320,8 @@
 	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
-	(format t "El manga %s entra" ?t)
-	(printout t crlf)
+	;(format t "El manga %s entra" ?t)
+	;(printout t crlf)
 )
 
 ; Recomienda si es excelente, popular y el usuario ha leido bastantes mangas
@@ -2334,8 +2334,8 @@
 	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
-	(format t "El manga %s entra" ?t)
-	(printout t crlf)
+	;(format t "El manga %s entra" ?t)
+	;(printout t crlf)
 )
 
 ; Si prefiere doujinshi y está bien
@@ -2348,8 +2348,8 @@
 	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
-	(format t "El manga %s entra" ?t)
-	(printout t crlf)
+	;(format t "El manga %s entra" ?t)
+	;(printout t crlf)
 )
 
 ; Si prefiere sin anime, el manga no tiene anime y está bien
@@ -2361,8 +2361,8 @@
 	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
-	(format t "El manga %s entra" ?t)
-	(printout t crlf)
+	;(format t "El manga %s entra" ?t)
+	;(printout t crlf)
 )
 
 ; Si prefiere acabados, el manga está acabado y está bien
@@ -2375,8 +2375,8 @@
 	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
-	(format t "El manga %s entra" ?t)
-	(printout t crlf)
+	;(format t "El manga %s entra" ?t)
+	;(printout t crlf)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;; Modulo de refinamiento de la solucion ;;;;;;;;;;;;;;;;;;;;;;;
