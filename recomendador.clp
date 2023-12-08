@@ -2259,8 +2259,11 @@
 (defglobal ?*asoc_conocido* = 100000) ;100K
 (defglobal ?*asoc_desconocido* = 0)
 
-(deffacts asociacion-heuristica::requisitos-asoc
-    
+; Crea solucion abstracta
+(defrule asociacion-heuristica::crea-solucion
+	(not (solucion-abstracta))
+    =>
+    (assert (solucion-abstracta))
 )
 
 ; Elimina instancias que no cumplan la edad mínima
