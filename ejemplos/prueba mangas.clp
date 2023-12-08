@@ -1777,7 +1777,6 @@
 	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
-	;(modify ?sol (recomendables $?rec (insert$ $?rec (+ (length$ $?rec) 1) ?m)))
 	(format t "El manga %s entra" ?t)
 	(printout t crlf)
 )
