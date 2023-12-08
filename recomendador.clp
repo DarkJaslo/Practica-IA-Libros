@@ -2301,11 +2301,13 @@
 	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
+	(format t "El manga %s entra" ?t)
+	(printout t crlf)
 )
 
 ; Recomienda si es bueno, extremadamente popular y el usuario ha leido pocos mangas
 (defrule asociacion-heuristica::muy-bueno-popular-pocos-leidos
-	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t))
 	(test (> ?val ?*asoc_bueno*))
 	(problema-abstracto (mangas-leidos pocos))
 	(test (> ?copias ?*asoc_extr_popular*))
@@ -2313,11 +2315,13 @@
 	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
+	(format t "El manga %s entra" ?t)
+	(printout t crlf)
 )
 
 ; Recomienda si es excelente, popular y el usuario ha leido bastantes mangas
 (defrule asociacion-heuristica::muy-bueno-popular-bastantes-leidos
-	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t))
 	(test (> ?val ?*asoc_excelente*))
 	(problema-abstracto (mangas-leidos bastantes))
 	(test (> ?copias ?*asoc_popular*))
@@ -2325,11 +2329,13 @@
 	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
+	(format t "El manga %s entra" ?t)
+	(printout t crlf)
 )
 
 ; Si prefiere doujinshi y está bien
 (defrule asociacion-heuristica::pref-doujinshi
-	?m <- (object (is-a Manga) (valoracion ?val) (publicado-por ?publ))
+	?m <- (object (is-a Manga) (valoracion ?val) (publicado-por ?publ) (titulo ?t))
 	(problema-abstracto (quiere-doujinshis TRUE))
 	(test (eq (class ?publ) Autopublicador))
 	(test (> ?val ?*asoc_bueno*))
@@ -2337,22 +2343,26 @@
 	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
+	(format t "El manga %s entra" ?t)
+	(printout t crlf)
 )
 
 ; Si prefiere sin anime, el manga no tiene anime y está bien
 (defrule asociacion-heuristica::pref-sin-anime
-	?m <- (object (is-a Manga) (valoracion ?val) (tiene-anime FALSE))
+	?m <- (object (is-a Manga) (valoracion ?val) (tiene-anime FALSE) (titulo ?t))
 	(problema-abstracto (prefiere-sin-anime TRUE))
 	(test (> ?val ?*asoc_bueno*))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
+	(format t "El manga %s entra" ?t)
+	(printout t crlf)
 )
 
 ; Si prefiere acabados, el manga está acabado y está bien
 (defrule asociacion-heuristica::pref-acabados
-	?m <- (object (is-a Manga) (valoracion ?val) (estado-publicacion ?publ))
+	?m <- (object (is-a Manga) (valoracion ?val) (estado-publicacion ?publ) (titulo ?t))
 	(test (eq ?publ "acabado"))
 	(problema-abstracto (prefiere-acabados TRUE))
 	(test (> ?val ?*asoc_bueno*))
@@ -2360,6 +2370,8 @@
 	(test (not (member$ ?m $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
+	(format t "El manga %s entra" ?t)
+	(printout t crlf)
 )
 
 ; Add an instance of Item to the Container
