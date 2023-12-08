@@ -1781,5 +1781,16 @@
 	(printout t crlf)
 )
 
-
+; Si prefiere doujinshi y está bien (FALTA VERIFICAR QUE ES DOUJINSHI)
+(defrule pref-doujinshi
+	?m <- (object (is-a Manga) (valoracion ?val) (publicado-por ?publ))
+	;(problema-abstracto (quiere-doujinshis TRUE))
+	(test (> ?val ?*asoc_bueno*))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (not (member$ ?m $?rec)))
+	(test (eq (class ?publ) Editorial))
+	=>
+	;(modify ?sol (recomendables $?rec ?m))
+	(printout t "El manga " ?m "es un doujinshi" crlf)
+)
 
