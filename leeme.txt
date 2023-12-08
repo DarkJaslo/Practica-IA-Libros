@@ -1,0 +1,18 @@
+Prototipo de un recomendador de manga.
+
+Se hace una serie de preguntas al usuario por consola, que debera contestar:
+
+pregunta1
+pregunta2
+pregunta3
+
+Basandonos en las respuestas, se recomendaran 3 mangas (cualquiera) que cumplan criterios de momento muy generales:
+-Que se cumplan las restricciones de edad
+-Muy buena valoracion y popularidad muy alta
+-Si el usuario ha leido pocos mangas, se recomiendan mangas muy populares bien valorados (bien)
+-Si ha leido unos cuantos, se recomiendan mangas muy bien valorados y no hiper populares
+-Si el usuario tiene preferencias de doujinshis (mangas autopublicados), mangas sin adaptacion al anime o mangas terminados,
+estos se recomendaran si tienen valoracion buena
+
+A esto se añadira que coincidan en generos y/o temas (y cuantos, pero por lo menos uno), que se tenga en 
+cuenta la dificultad de lectura, el numero de capitulos, etc.
