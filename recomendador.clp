@@ -2286,7 +2286,7 @@
 )
 
 ; Recomienda si es excelente, popular y el usuario ha leido bastantes mangas
-(defrule asociacion-heuristica::muy-bueno-popular-pocos-leidos
+(defrule asociacion-heuristica::muy-bueno-popular-bastantes-leidos
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias))
 	(test (> ?val ?*asoc_excelente*))
 	(problema-abstracto (mangas-leidos bastantes))
