@@ -2185,30 +2185,57 @@
 ; Prefiere acabados
 (defrule abstraccion-problema::preferencia-acabados
 	?req <- (preferencia-acabados-hecho FALSE)
-	(usuario (prefiere-acabados ?pref))
+	(usuario (prefiere-acabados TRUE))
 	?usr <- (problema-abstracto)
 	=>
-	(modify ?usr (prefiere-acabados ?pref))
+	(modify ?usr (prefiere-acabados TRUE))
+	(modify ?req (preferencia-acabados-hecho TRUE))
+)
+; No prefiere acabados
+(defrule abstraccion-problema::preferencia-acabados
+	?req <- (preferencia-acabados-hecho FALSE)
+	(usuario (prefiere-acabados FALSE))
+	?usr <- (problema-abstracto)
+	=>
+	(modify ?usr (prefiere-acabados FALSE))
 	(modify ?req (preferencia-acabados-hecho TRUE))
 )
 
 ; Prefiere sin anime
 (defrule abstraccion-problema::preferencia-sin-anime
 	?req <- (preferencia-sin-anime-hecho FALSE)
-	(usuario (prefiere-sin-anime ?pref))
+	(usuario (prefiere-sin-anime TRUE))
 	?usr <- (problema-abstracto)
 	=>
-	(modify ?usr (prefiere-sin-anime ?pref))
+	(modify ?usr (prefiere-sin-anime TRUE))
+	(modify ?req (preferencia-sin-anime-hecho TRUE))
+)
+; No prefiere sin anime
+(defrule abstraccion-problema::preferencia-sin-anime
+	?req <- (preferencia-sin-anime-hecho FALSE)
+	(usuario (prefiere-sin-anime FALSE))
+	?usr <- (problema-abstracto)
+	=>
+	(modify ?usr (prefiere-sin-anime FALSE))
 	(modify ?req (preferencia-sin-anime-hecho TRUE))
 )
 
 ; Quiere doujinshis
 (defrule abstraccion-problema::quiere-doujinshis
 	?req <- (quiere-doujinshis-hecho FALSE)
-	(usuario (quiere-doujinshis ?quiere))
+	(usuario (quiere-doujinshis TRUE))
 	?usr <- (problema-abstracto)
 	=>
-	(modify ?usr (quiere-doujinshis ?quiere))
+	(modify ?usr (quiere-doujinshis TRUE))
+	(modify ?req (quiere-doujinshis-hecho TRUE))
+)
+; No quiere doujinshis
+(defrule abstraccion-problema::quiere-doujinshis
+	?req <- (quiere-doujinshis-hecho FALSE)
+	(usuario (quiere-doujinshis FALSE))
+	?usr <- (problema-abstracto)
+	=>
+	(modify ?usr (quiere-doujinshis FALSE))
 	(modify ?req (quiere-doujinshis-hecho TRUE))
 )
 
