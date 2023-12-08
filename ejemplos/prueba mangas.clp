@@ -1740,7 +1740,26 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(deftemplate solucion-abstracta
+    (multislot recomendables (type INSTANCE)) ;instancias de mangas
+)
 
+(defglobal ?*asoc_excelente* = 9.0)
+(defglobal ?*asoc_bueno* = 8.0)
+(defglobal ?*asoc_normal* = 6.0)
+(defglobal ?*asoc_malo* = 0.0)
+
+(defglobal ?*asoc_extr_popular* = 10000000)
+(defglobal ?*asoc_popular* = 1000000)
+(defglobal ?*asoc_conocido* = 100000)
+(defglobal ?*asoc_desconocido* = 0)
+
+(defrule crea-sol
+	(declare(salience 10))
+	(not (solucion-abstracta))
+	=>
+	(assert (solucion-abstracta))
+)
 
 (defrule owo
 	?m <- (object (is-a Manga) (titulo ?t) (capitulos ?c))
@@ -1750,6 +1769,17 @@
   (printout t crlf)
 )
 
+(defrule muy-bueno-muy-popular
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias))
+	(test (> ?val ?asoc_excelente))
+	(test (> ?copias ?asoc_extr_popular))
+	?sol <- (solucion-abstracta (recomendables ?rec))
+	(not (member$ ?m ?rec))
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+	(format t "El manga %s entra" ?t)
+	(printout t crlf)
+)
 
 
 
