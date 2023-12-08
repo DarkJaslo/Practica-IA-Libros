@@ -2270,29 +2270,35 @@
 (defrule asociacion-heuristica::elimina-mas-doce
     (declare (salience 10))
     (problema-abstracto (edad MENOS_12))
-    ?m <- (object (is-a Manga) (restriccion-edad ?restr))
-    (> ?restr 11)
+    ?m <- (object (is-a Manga) (restriccion-edad ?restr) (titulo ?t))
+    (test (> ?restr 11))
     =>
+	;(format t "Manga %s fuera" ?t)
+	;(printout t crlf)
     (send ?m delete)
-    (retract ?m)   
+    ;(retract ?m)   
 )
 (defrule asociacion-heuristica::elimina-mas-dieciseis
     (declare (salience 10))
     (problema-abstracto (edad 12_O_MAS))
-    ?m <- (object (is-a Manga) (restriccion-edad ?restr))
-    (> ?restr 15)
+    ?m <- (object (is-a Manga) (restriccion-edad ?restr) (titulo ?t))
+    (test (> ?restr 15))
     =>
+	;(format t "Manga %s fuera" ?t)
+	;(printout t crlf)
     (send ?m delete)
-    (retract ?m)   
+    ;(retract ?m)   
 )
 (defrule asociacion-heuristica::elimina-mas-dieciocho
     (declare (salience 10))
     (problema-abstracto (edad 16_O_MAS))
-    ?m <- (object (is-a Manga) (restriccion-edad ?restr))
-    (> ?restr 17)
+    ?m <- (object (is-a Manga) (restriccion-edad ?restr) (titulo ?t))
+    (test (> ?restr 17))
     =>
+	;(format t "Manga %s fuera" ?t)
+	;(printout t crlf)
     (send ?m delete)
-    (retract ?m)   
+    ;(retract ?m)   
 )
 
 ; Recomienda si es excelente y extremadamente popular
