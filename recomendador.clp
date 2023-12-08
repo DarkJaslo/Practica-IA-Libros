@@ -2250,7 +2250,7 @@
 (defrule asociacion-heuristica::pref-doujinshi
 	?m <- (object (is-a Manga) (valoracion ?val) (publicado-por ?publ))
 	(problema-abstracto (quiere-doujinshis TRUE))
-	(test (eq (class ?publ) Editorial))
+	(test (eq (class ?publ) Autopublicador))
 	(test (> ?val ?*asoc_bueno*))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?m $?rec)))
