@@ -133,7 +133,7 @@
         (create-accessor read-write))
 )
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Instancias ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Instancias (hasta linea 1742) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (definstances instancias
 ([one-piece] of Serializado
@@ -1924,12 +1924,6 @@
 	(multislot recomendaciones (type INSTANCE))
 )
 
-; Definir template para solucion abstracta
-; (deftemplate...)
-
-; Definir template para solucion concreta/refinada
-; (deftemplate)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Main ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1943,19 +1937,16 @@
     =>
     (focus preguntas-usuario)
 )
-
 (defrule MAIN::abstrae-problema
 	(declare (salience 9))
 	=>
 	(focus abstraccion-problema)
 )
-
 (defrule MAIN::resuelve-problema
 	(declare (salience 8))
 	=>
 	(focus asociacion-heuristica)
 )
-
 (defrule MAIN::refina-problema
 	(declare (salience 7))
 	=>
@@ -2427,7 +2418,7 @@
 )
 
 
-
+; Posiblemente util para mas adelante
 ;(deffunction cuenta-matches (?multislot1 ?multislot2)
 ;    (bind ?matches 0)
 ;    (foreach ?item1 (slot-value ?multislot1)
