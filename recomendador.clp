@@ -2386,21 +2386,24 @@
 (deftemplate refinamiento-solucion::counter
    (slot num-rec (type INTEGER) (default 0))
    (slot enseñados (type INTEGER) (default 0))
+   (slot total-recomendables (type INTEGER))
 )
 
 (defrule refinamiento-solucion::crea-solucion-concreta
   (not (solucion-concreta))
+  ?abs <- (solucion-abstracta (recomendables $?opciones))
   =>
   (assert (solucion-concreta))
-  (assert (counter))
+  ; se guarda el numero de mangas recomendables
+  (assert (counter (total-recomendables (length$ ?opciones))))
 )
 
 (defrule refinamiento-solucion::escoge-mangas
   (declare (salience 10))
   ?abs <- (solucion-abstracta (recomendables $?opciones))
   ?sol <- (solucion-concreta (recomendaciones $?rec))
-  ?counter <- (counter (num-rec ?n))
-  (test (and (< ?n 3) (< ?n (length$ ?opciones))))
+  ?counter <- (counter (num-rec ?n) (total-recomendables ?max))
+  (test (and (< ?n 3) (< ?n ?max)))
   =>
   (bind ?index (random 1 (length$ ?opciones)))
   (bind ?manga (nth$ ?index ?opciones))
