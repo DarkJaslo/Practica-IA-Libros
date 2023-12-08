@@ -177,7 +177,7 @@
 	(trata-de  [delincuencia]  [historico]  [superpoderes])
 	(tomos  17)
 	(capitulos  155)
-	(copias-vendidas  10000000)
+	(copias-vendidas  9000000)
 	(dificultad-lectura  "media")
 	(estado-publicacion  "acabado")
 	(frecuencia-publicacion  "semanal")
@@ -194,7 +194,7 @@
 	(trata-de  [escolar]  [superpoderes])
 	(tomos  18)
 	(capitulos  174)
-	(copias-vendidas  100000)
+	(copias-vendidas  2000000)
 	(dificultad-lectura  "media")
 	(estado-publicacion  "acabado")
 	(frecuencia-publicacion  "semanal")
@@ -211,7 +211,7 @@
 	(trata-de  [superpoderes]  [historico])
 	(tomos  16)
 	(capitulos  152)
-	(copias-vendidas  94600)
+	(copias-vendidas  4000000)
 	(dificultad-lectura  "media")
 	(estado-publicacion  "acabado")
 	(frecuencia-publicacion  "semanal")
@@ -228,7 +228,7 @@
 	(trata-de  [superpoderes]  [vampiros]  [historico])
 	(tomos  7)
 	(capitulos  69)
-	(copias-vendidas  102000)
+	(copias-vendidas  1000000)
 	(dificultad-lectura  "media")
 	(estado-publicacion  "acabado")
 	(frecuencia-publicacion  "semanal")
@@ -245,7 +245,7 @@
 	(trata-de  [superpoderes]  [vampiros]  [historico])
 	(tomos  5)
 	(capitulos  44)
-	(copias-vendidas  125000)
+	(copias-vendidas  200000)
 	(dificultad-lectura  "media")
 	(estado-publicacion  "acabado")
 	(frecuencia-publicacion  "semanal")
@@ -1907,7 +1907,7 @@
 )
 
 (deftemplate asociacion-heuristica::solucion-abstracta
-    (multislot recomendables (type INSTANCE)) ;instancias de mangas
+    (multislot recomendables (type INSTANCE) (allowed-items Manga)) ;instancias de mangas
 )
 
 (deftemplate refinamiento-solucion::solucion-concreta
@@ -2166,6 +2166,18 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Control de reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; Sobre la valoracion
+(defglobal ?*asoc_excelente* = 9.0)
+(defglobal ?*asoc_bueno* = 8.0)
+(defglobal ?*asoc_normal* = 6.0)
+(defglobal ?*asoc_malo* = 0.0)
+
+; Sobre la popularidad
+(defglobal ?*asoc_extr_popular* = 10000000) ;10M
+(defglobal ?*asoc_popular* = 1000000) ;1M
+(defglobal ?*asoc_conocido* = 100000) ;100K
+(defglobal ?*asoc_desconocido* = 0)
+
 (deffacts asociacion-heuristica::requisitos-asoc
     
 )
@@ -2199,6 +2211,17 @@
     (retract ?m)   
 )
 
+(defrule asociacion-heuristica::muy-bueno-muy-popular
+	(not (problema-abstracto (mangas-leidos muchos)))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias))
+	(test (> ?val ?asoc_excelente))
+	(test (> ?copias ?asoc_extr_popular))
+	?rec <- (solucion-abstracta (recomendables))
+	(not (member$ ?m (slot-value ?rec)))
+	=>
+	(modify ?rec ?m&:(create$ (slot-value ?rec) ?m))
+)
+
 ; Ejemplo tratar con instancias de clases
 (defrule owo
 	?m <- (object (is-a Manga) (titulo ?t) (capitulos ?c))
@@ -2226,3 +2249,15 @@
 ;        (modify ?factToModify (exampleMultislot (create$ (get-?factToModify exampleMultislot) ?newValue)))
 ;    )
 ;)
+
+(deffunction cuenta-matches (?multislot1 ?multislot2)
+    (bind ?matches 0)
+    (foreach ?item1 (slot-value ?multislot1)
+             ?item2 (slot-value ?multislot2)
+        (if (eq ?item1 ?item2)
+            then
+                (bind ?matches (+ ?matches 1))
+        )
+    )
+    (return ?matches)
+)

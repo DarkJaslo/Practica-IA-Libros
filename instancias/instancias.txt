@@ -36,7 +36,7 @@ Sobrenatural
 Delincuencia
 Historico
 Superpoderes
-s 17 155 10000000 m ac 1s 1995-11-28 a y 8.17 12
+s 17 155 9000000 m ac 1s 1995-11-28 a y 8.17 12
 
 JoJo no Kimyou na bouken part 4: Diamond wa kudakenai
 Hirohiko Araki
@@ -50,7 +50,7 @@ Sobrenatural
 2
 Escolar
 Superpoderes
-s 18 174 100000 m ac 1s 1992-04-21 a y 8.57 12
+s 18 174 2000000 m ac 1s 1992-04-21 a y 8.57 12
 
 JoJo no Kimyou na bouken part 3: Stardust crusaders
 Hirohiko Araki
@@ -64,7 +64,7 @@ Suspense
 2
 Superpoderes
 Historico
-s 16 152 94600 m ac 1s 1989-04-21 a y 8.10 12
+s 16 152 4000000 m ac 1s 1989-04-21 a y 8.10 12
 
 JoJo no Kimyou na bouken part 2: Battle tendency
 Hirohiko Araki
@@ -78,7 +78,7 @@ Suspense
 Superpoderes
 Vampiros
 Historico
-s 7 69 102000 m ac 1s 1987-04-21 a y 8.15 12
+s 7 69 1000000 m ac 1s 1987-04-21 a y 8.15 12
 
 JoJo no Kimyou na bouken part 1: Phantom blood
 Hirohiko Araki
@@ -92,7 +92,7 @@ Suspense
 Superpoderes
 Vampiros
 Historico
-s 5 44 125000 m ac 1s 1985-04-21 a y 7.60 12
+s 5 44 200000 m ac 1s 1985-04-21 a y 7.60 12
 
 Kaguya-sama wa kokurasetai: Tensai-tachi no renai zunousen
 Aka Akasaka
