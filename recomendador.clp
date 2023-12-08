@@ -2246,10 +2246,11 @@
 	(modify ?sol (recomendables $?rec ?m))
 )
 
-; Si prefiere doujinshi y está bien (FALTA VERIFICAR QUE ES DOUJINSHI)
+; Si prefiere doujinshi y está bien
 (defrule asociacion-heuristica::pref-doujinshi
-	?m <- (object (is-a Manga) (valoracion ?val) ())
+	?m <- (object (is-a Manga) (valoracion ?val) (publicado-por ?publ))
 	(problema-abstracto (quiere-doujinshis TRUE))
+	(test (eq (class ?publ) Editorial))
 	(test (> ?val ?*asoc_bueno*))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?m $?rec)))
@@ -2309,14 +2310,14 @@
 ;    )
 ;)
 
-(deffunction cuenta-matches (?multislot1 ?multislot2)
-    (bind ?matches 0)
-    (foreach ?item1 (slot-value ?multislot1)
-             ?item2 (slot-value ?multislot2)
-        (if (eq ?item1 ?item2)
-            then
-                (bind ?matches (+ ?matches 1))
-        )
-    )
-    (return ?matches)
-)
+;(deffunction cuenta-matches (?multislot1 ?multislot2)
+;    (bind ?matches 0)
+;    (foreach ?item1 (slot-value ?multislot1)
+;             ?item2 (slot-value ?multislot2)
+;        (if (eq ?item1 ?item2)
+;            then
+;                (bind ?matches (+ ?matches 1))
+;        )
+;    )
+;    (return ?matches)
+;)
