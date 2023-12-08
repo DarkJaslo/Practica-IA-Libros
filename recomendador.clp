@@ -1765,7 +1765,7 @@
 
 ; Modulo para refinar la solucion (si lo llegamos a necesitar)
 (defmodule refinamiento-solucion
-    (import MAIN ?ALL)
+    (import asociacion-heuristica ?ALL)
     (export ?ALL)
 )
 
@@ -1864,6 +1864,12 @@
     )
 )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Message handlers ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defmessage-handler Manga print ()
+	(printout t ?self:titulo crlf)
+)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Templates ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (deftemplate preguntas-usuario::usuario
@@ -1915,6 +1921,7 @@
 )
 
 (deftemplate refinamiento-solucion::solucion-concreta
+	(multislot recomendaciones (type INSTANCE))
 )
 
 ; Definir template para solucion abstracta
@@ -1949,7 +1956,11 @@
 	(focus asociacion-heuristica)
 )
 
-
+(defrule MAIN::refina-problema
+	(declare (salience 7))
+	=>
+	(focus refinamiento-solucion)
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Preguntas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -2368,24 +2379,51 @@
 	(printout t crlf)
 )
 
-; Add an instance of Item to the Container
-;(deffunction add-instance-to-container (?container ?item)
-;    (if (not (member$ ?item (slot-value ?container instances)))
-;        then
-;            (modify ?container (instances ?item&:(create$ (slot-value ?container instances) ?item)))
-;            (printout t "Instance added successfully." crlf)
-;        else
-;            (printout t "Instance already exists." crlf)
-;    )
-;)
+;;;;;;;;;;;;;;;;;;;;;; Modulo de refinamiento de la solucion ;;;;;;;;;;;;;;;;;;;;;;;
 
-; Function to add a value to the multislot
-;(deffunction AddValueToMultislot (?newValue)
-;    (bind ?factToModify (find-fact ((?f ExampleFact)) TRUE))
-;    (if ?factToModify then
-;        (modify ?factToModify (exampleMultislot (create$ (get-?factToModify exampleMultislot) ?newValue)))
-;    )
-;)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Control de reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(deftemplate refinamiento-solucion::counter
+   (slot num-rec (type INTEGER) (default 0))
+   (slot enseñados (type INTEGER) (default 0))
+)
+
+(defrule refinamiento-solucion::crea-solucion-concreta
+  (not (solucion-concreta))
+  =>
+  (assert (solucion-concreta))
+  (assert (counter))
+)
+
+(defrule refinamiento-solucion::escoge-mangas
+  (declare (salience 10))
+  ?counter <- (counter (num-rec ?n))
+  (test (< ?n 3))
+  ?abs <- (solucion-abstracta (recomendables $?opciones))
+  ?sol <- (solucion-concreta (recomendaciones $?rec))
+  =>
+  (bind ?index (random 1 (length$ ?opciones)))
+  (bind ?manga (nth$ ?index ?opciones))
+  ; lo añadimos a las recomendaciones
+  (modify ?sol (recomendaciones $?rec ?manga))
+  ; importante borrarlo
+  (modify ?abs (recomendables (delete$ ?opciones ?index ?index)))
+  (modify ?counter (num-rec (+ ?n 1)))
+)
+
+(defrule refinamiento-solucion::imprime-solucion
+	?counter <- (counter (num-rec ?n-rec) (enseñados ?n-ens))
+	(test (< ?n-ens ?n-rec))
+	(solucion-concreta (recomendaciones $?rec))
+	=>
+	(bind ?index (+ ?n-ens 1))
+	(bind ?manga (nth$ ?index ?rec))
+	(printout t "Recomendacion: ")
+	(send ?manga print)
+	(modify ?counter (enseñados (+ ?n-ens 1)))
+)
+
+
 
 ;(deffunction cuenta-matches (?multislot1 ?multislot2)
 ;    (bind ?matches 0)
