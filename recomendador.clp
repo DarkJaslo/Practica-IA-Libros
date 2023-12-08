@@ -2074,18 +2074,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Modulo de abstraccion ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Control de reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(deffacts abstraccion-problema::requisitos
-    (preferencia-generos-hecho FALSE)
-    (preferencia-temas-hecho FALSE)
-    (edad-hecho FALSE)
-    (cantidad-hecho FALSE)
-	(preferencia-acabados-hecho FALSE)
-	(preferencia-sin-anime-hecho FALSE)
-	(quiere-doujinshis-hecho FALSE)
-)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Crea problema abstracto
