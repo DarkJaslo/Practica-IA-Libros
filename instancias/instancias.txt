@@ -814,3 +814,61 @@ Historico
 Supervivencia
 Tradicional japones
 s 23 207 102000000 b ac 1s 2016-02-15 a y 8.21 12
+
+Umibe no Etranger
+Kanna Kii
+Kanna Kii
+Shodensha
+2
+Romance
+Slice of life
+1
+Yaoi
+o 4 100000 m 2013-04-25 f n 7.86 12
+
+Citrus
+Saburouta
+Saburouta
+Ichijinsha
+2
+Romance
+Drama
+2
+Escolar
+Yuri
+s 10 50 5000000 m ac 1m 2012-11-17 f y 7.53 12
+
+Kininatteru Hito ga Otoko ja Nakatta
+Agu
+Agu
+Kadokawa Shoten
+2
+Romance
+Slice of life
+6
+Artes
+Escolar
+Genero
+Musica
+Reconfortante
+Yuri
+s 5 69 2000000 b pu 2s 2022-04-10 a n 8.32 7
+
+Kono Subarashii Sekai ni Shukufuku wo!
+Natsume Akatsuki
+Masahito Watari
+Fujimi Shobo
+4
+Accion
+Aventura
+Comedia
+Fantasia
+6
+Humor absurdo
+Isekai
+Magia
+Parodia
+Reconfortante
+Superpoderes
+s 18 84 10000000 b pu 6m 2015-04-09 f y 7.99 0
+
