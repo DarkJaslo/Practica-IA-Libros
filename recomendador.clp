@@ -23,66 +23,60 @@
 
 (defclass Manga
     (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
+    (role abstract)
+    (pattern-match non-reactive)
     (multislot pertenece-a
         (type INSTANCE)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (visibility public))
     (slot publicado-por
         (type INSTANCE)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (visibility public))
     (multislot trata-de
         (type INSTANCE)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (visibility public))
     (slot capitulos
         (type INTEGER)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (visibility public))
     (slot copias-vendidas
         (type INTEGER)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (visibility public))
     ;;; Valores: (baja | media | alta)
     (slot dificultad-lectura
         (type STRING)
         (create-accessor read-write)
+        (visibility public)
         (allowed-values "baja" "media" "alta"))
-    ;;; Valores: (acabado | en publicacion | en pausa | cancelado)
-    (slot estado-publicacion
-        (type STRING)
-        (create-accessor read-write)
-        (allowed-values "acabado" "en publicacion" "en pausa" "cancelado"))
-    (slot fin-publicacion
-        (type SYMBOL)
-        (create-accessor read-write))
-    ;;; Valores: (semanal | quincenal | mensual | bimestral | trimestral | semestral | irregular)
-    (slot frecuencia-publicacion
-        (type STRING)
-        (create-accessor read-write)
-        (allowed-values "semanal" "quincenal" "mensual" "bimestral" "trimestral" "semestral" "irregular"))
     (slot inicio-publicacion
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (visibility public))
     ;;; Valores: (digital | fisico | ambos)
     (slot metodo-distribucion
         (type STRING)
         (create-accessor read-write)
+        (visibility public)
         (allowed-values "digital" "fisico" "ambos"))
-    ;;; Valores: (gratuito | de pago)
-    (slot precio
-        (type STRING)
-        (create-accessor read-write)
-        (allowed-values "gratuito" "de pago"))
     (slot restriccion-edad
         (type INTEGER)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (visibility public))
     (slot tiene-anime
         (type SYMBOL)
-        (create-accessor read-write))
-    (slot valoracion
-        (type FLOAT)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (visibility public))
     (slot titulo
         (type STRING)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (visibility public))
+    (slot valoracion
+        (type FLOAT)
+        (create-accessor read-write)
+        (visibility public))
 )
 
 (defclass One-shot
@@ -95,6 +89,17 @@
     (is-a Manga)
     (role concrete)
     (pattern-match reactive)
+    ;;; Valores: (acabado | en publicacion | en pausa | cancelado)
+    (slot estado-publicacion
+        (type STRING)
+        (create-accessor read-write)
+        (visibility public)
+        (allowed-values "acabado" "en publicacion" "en pausa" "cancelado"))
+    ;;; Valores: (semanal | quincenal | mensual | bimestral | trimestral | semestral | irregular)
+    (slot frecuencia-publicacion
+        (type STRING)
+        (create-accessor read-write)
+        (allowed-values "semanal" "quincenal" "mensual" "bimestral" "trimestral" "semestral" "irregular"))
     (slot tomos
         (type INTEGER)
         (create-accessor read-write))
@@ -1866,8 +1871,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Message handlers ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defmessage-handler Manga print ()
+
+(defmessage-handler Serializado print ()
 	(printout t ?self:titulo crlf)
+	(printout t ?self:inicio-publicacion crlf)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Templates ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
