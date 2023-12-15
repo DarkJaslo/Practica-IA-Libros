@@ -1,0 +1,11 @@
+Redirigir entradas en clips no va, tendremos que probarlos a mano
+
+(reset)
+(run)
+edad: 20
+mangas leidos: bastantes
+generos: 2
+temas: 1
+mang acabados: no
+mang sin anime: no
+mang doujinshi: no
