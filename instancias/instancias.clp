@@ -252,7 +252,7 @@
 	(escrito-por  [akihito-tsukushi])
 	(ilustrado-por  [akihito-tsukushi])
 	(pertenece-a  [aventura]  [ciencia-ficcion]  [drama]  [fantasia]  [horror]  [misterio]  [psicologico])
-	(trata-de  [gore]  [supervivencia])
+	(trata-de  [gore]  [supervivencia]  [tragedia])
 	(tomos  12)
 	(capitulos  66)
 	(copias-vendidas  1965000)
@@ -491,7 +491,7 @@
 	(metodo-distribucion  "ambos")
 	(tiene-anime  TRUE)
 	(valoracion  8.2)
-	(restriccion-edad  7)
+	(restriccion-edad  12)
 )
 ([black-lagoon] of Serializado
 	(titulo  "Black Lagoon")

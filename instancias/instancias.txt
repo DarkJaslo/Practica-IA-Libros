@@ -184,9 +184,10 @@ Fantasia
 Horror
 Misterio
 Psicologico
-2
+3
 Gore
 Supervivencia
+Tragedia
 s 12 66 1965000 a pu ir 2012-10-20 a y 8.77 18
 
 Pretty Soldier Sailor Moon
@@ -344,7 +345,7 @@ Sobrenatural
 2
 Artes marciales
 Mitologia
-s 19 176 50000000 m ac 1s 1990-11-20 a y 8.20 7
+s 19 176 50000000 m ac 1s 1990-11-20 a y 8.20 12
 
 Black Lagoon
 Rei Hiroe
