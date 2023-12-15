@@ -2,6 +2,8 @@
 ([one-piece] of Serializado
 	(titulo  "One Piece")
 	(publicado-por  [shueisha])
+	(escrito-por  [eiichiro-oda])
+	(ilustrado-por  [eiichiro-oda])
 	(pertenece-a  [accion]  [aventura]  [comedia]  [fantasia])
 	(trata-de  [superpoderes])
 	(tomos  107)
@@ -19,6 +21,8 @@
 ([hunter-x-hunter] of Serializado
 	(titulo  "Hunter x Hunter")
 	(publicado-por  [shueisha])
+	(escrito-por  [yoshihiro-togashi])
+	(ilustrado-por  [yoshihiro-togashi])
 	(pertenece-a  [accion]  [aventura]  [fantasia])
 	(trata-de  [superpoderes])
 	(tomos  37)
@@ -36,6 +40,8 @@
 ([jojo-no-kimyou-na-bouken-part-5-ougon-no-kaze] of Serializado
 	(titulo  "JoJo no Kimyou na bouken part 5: Ougon no kaze")
 	(publicado-por  [shueisha])
+	(escrito-por  [hirohiko-araki])
+	(ilustrado-por  [hirohiko-araki])
 	(pertenece-a  [accion]  [aventura]  [drama]  [sobrenatural])
 	(trata-de  [delincuencia]  [historico]  [superpoderes])
 	(tomos  17)
@@ -53,6 +59,8 @@
 ([jojo-no-kimyou-na-bouken-part-4-diamond-wa-kudakenai] of Serializado
 	(titulo  "JoJo no Kimyou na bouken part 4: Diamond wa kudakenai")
 	(publicado-por  [shueisha])
+	(escrito-por  [hirohiko-araki])
+	(ilustrado-por  [hirohiko-araki])
 	(pertenece-a  [accion]  [slice-of-life]  [misterio]  [sobrenatural])
 	(trata-de  [escolar]  [superpoderes])
 	(tomos  18)
@@ -70,6 +78,8 @@
 ([jojo-no-kimyou-na-bouken-part-3-stardust-crusaders] of Serializado
 	(titulo  "JoJo no Kimyou na bouken part 3: Stardust crusaders")
 	(publicado-por  [shueisha])
+	(escrito-por  [hirohiko-araki])
+	(ilustrado-por  [hirohiko-araki])
 	(pertenece-a  [accion]  [aventura]  [sobrenatural]  [suspense])
 	(trata-de  [superpoderes]  [historico])
 	(tomos  16)
@@ -87,6 +97,8 @@
 ([jojo-no-kimyou-na-bouken-part-2-battle-tendency] of Serializado
 	(titulo  "JoJo no Kimyou na bouken part 2: Battle tendency")
 	(publicado-por  [shueisha])
+	(escrito-por  [hirohiko-araki])
+	(ilustrado-por  [hirohiko-araki])
 	(pertenece-a  [accion]  [aventura]  [suspense])
 	(trata-de  [superpoderes]  [vampiros]  [historico])
 	(tomos  7)
@@ -104,6 +116,8 @@
 ([jojo-no-kimyou-na-bouken-part-1-phantom-blood] of Serializado
 	(titulo  "JoJo no Kimyou na bouken part 1: Phantom blood")
 	(publicado-por  [shueisha])
+	(escrito-por  [hirohiko-araki])
+	(ilustrado-por  [hirohiko-araki])
 	(pertenece-a  [accion]  [aventura]  [suspense])
 	(trata-de  [superpoderes]  [vampiros]  [historico])
 	(tomos  5)
@@ -121,6 +135,8 @@
 ([kaguya-sama-wa-kokurasetai-tensai-tachi-no-renai-zunousen] of Serializado
 	(titulo  "Kaguya-sama wa kokurasetai: Tensai-tachi no renai zunousen")
 	(publicado-por  [shueisha])
+	(escrito-por  [aka-akasaka])
+	(ilustrado-por  [aka-akasaka])
 	(pertenece-a  [romance]  [comedia]  [psicologico])
 	(trata-de  [escolar])
 	(tomos  28)
@@ -138,6 +154,8 @@
 ([world-trigger] of Serializado
 	(titulo  "World Trigger")
 	(publicado-por  [shueisha])
+	(escrito-por  [daisuke-aishihara])
+	(ilustrado-por  [daisuke-aishihara])
 	(pertenece-a  [ciencia-ficcion]  [accion])
 	(trata-de  [superpoderes])
 	(tomos  17)
@@ -155,6 +173,8 @@
 ([naruto] of Serializado
 	(titulo  "Naruto")
 	(publicado-por  [shueisha])
+	(escrito-por  [masashi-kishimoto])
+	(ilustrado-por  [masashi-kishimoto])
 	(pertenece-a  [accion]  [aventura]  [fantasia]  [drama])
 	(trata-de  [artes-marciales]  [tradicional-japones]  [superpoderes]  [venganza])
 	(tomos  72)
@@ -172,6 +192,8 @@
 ([shingeki-no-kyojin] of Serializado
 	(titulo  "Shingeki no Kyojin")
 	(publicado-por  [kodansha])
+	(escrito-por  [hajime-isayama])
+	(ilustrado-por  [hajime-isayama])
 	(pertenece-a  [accion]  [drama])
 	(trata-de  [gore]  [guerra]  [supervivencia]  [postapocaliptico])
 	(tomos  34)
@@ -189,6 +211,8 @@
 ([death-note] of Serializado
 	(titulo  "Death Note")
 	(publicado-por  [shueisha])
+	(escrito-por  [tsugumi-ohba])
+	(ilustrado-por  [takeshi-obata])
 	(pertenece-a  [sobrenatural]  [suspense]  [psicologico])
 	(trata-de  [detectives]  [personajes-adultos])
 	(tomos  12)
@@ -206,6 +230,8 @@
 ([detective-conan] of Serializado
 	(titulo  "Detective Conan")
 	(publicado-por  [shogakukan])
+	(escrito-por  [gosho-aoyama])
+	(ilustrado-por  [gosho-aoyama])
 	(pertenece-a  [aventura]  [comedia]  [misterio])
 	(trata-de  [detectives])
 	(tomos  104)
@@ -223,6 +249,8 @@
 ([made-in-abyss] of Serializado
 	(titulo  "Made in Abyss")
 	(publicado-por  [takeshobo])
+	(escrito-por  [akihito-tsukushi])
+	(ilustrado-por  [akihito-tsukushi])
 	(pertenece-a  [aventura]  [ciencia-ficcion]  [drama]  [fantasia]  [horror]  [misterio]  [psicologico])
 	(trata-de  [gore]  [supervivencia])
 	(tomos  12)
@@ -240,6 +268,8 @@
 ([pretty-soldier-sailor-moon] of Serializado
 	(titulo  "Pretty Soldier Sailor Moon")
 	(publicado-por  [kodansha])
+	(escrito-por  [naoko-takeuchi])
+	(ilustrado-por  [naoko-takeuchi])
 	(pertenece-a  [fantasia]  [romance])
 	(trata-de  [mahou-shoujo]  [mitologia])
 	(tomos  18)
@@ -257,6 +287,8 @@
 ([one-punch-man] of Serializado
 	(titulo  "One Punch Man")
 	(publicado-por  [shueisha])
+	(escrito-por  [one])
+	(ilustrado-por  [yusuke-murata])
 	(pertenece-a  [accion]  [comedia]  [ciencia-ficcion])
 	(trata-de  [parodia]  [personajes-adultos]  [superpoderes])
 	(tomos  29)
@@ -274,6 +306,8 @@
 ([berserk] of Serializado
 	(titulo  "Berserk")
 	(publicado-por  [hakusensha])
+	(escrito-por  [kentaro-miura])
+	(ilustrado-por  [kentaro-miura])
 	(pertenece-a  [accion]  [aventura]  [drama]  [fantasia]  [horror]  [sobrenatural]  [psicologico])
 	(trata-de  [gore]  [guerra]  [mitologia]  [tragedia]  [venganza])
 	(tomos  42)
@@ -291,6 +325,8 @@
 ([bobobo-bo-bo-bobo] of Serializado
 	(titulo  "Bobobo-bo Bo-bobo")
 	(publicado-por  [shueisha])
+	(escrito-por  [yoshio-sawai])
+	(ilustrado-por  [yoshio-sawai])
 	(pertenece-a  [aventura]  [comedia]  [ciencia-ficcion])
 	(trata-de  [humor-absurdo]  [parodia])
 	(tomos  21)
@@ -308,6 +344,8 @@
 ([yotsuba-to] of Serializado
 	(titulo  "Yotsuba to!")
 	(publicado-por  [ascii-media-works])
+	(escrito-por  [kiyohiko-azuma])
+	(ilustrado-por  [kiyohiko-azuma])
 	(pertenece-a  [comedia]  [slice-of-life])
 	(trata-de  [familiar]  [reconfortante])
 	(tomos  15)
@@ -325,6 +363,8 @@
 ([ijiranaide-nagatoro-san] of Serializado
 	(titulo  "Ijiranaide, Nagatoro-san")
 	(publicado-por  [kodansha])
+	(escrito-por  [nanashi])
+	(ilustrado-por  [nanashi])
 	(pertenece-a  [comedia]  [romance]  [slice-of-life])
 	(trata-de  [escolar]  [artes])
 	(tomos  17)
@@ -342,6 +382,8 @@
 ([haikyuu] of Serializado
 	(titulo  "Haikyuu!!")
 	(publicado-por  [shueisha])
+	(escrito-por  [haruichi-furudate])
+	(ilustrado-por  [haruichi-furudate])
 	(pertenece-a  [deportes])
 	(trata-de  [escolar])
 	(tomos  45)
@@ -359,6 +401,8 @@
 ([uzumaki] of Serializado
 	(titulo  "Uzumaki")
 	(publicado-por  [shogakukan])
+	(escrito-por  [junji-ito])
+	(ilustrado-por  [junji-ito])
 	(pertenece-a  [drama]  [horror]  [sobrenatural])
 	(trata-de  [gore])
 	(tomos  3)
@@ -376,6 +420,8 @@
 ([initial-d] of Serializado
 	(titulo  "Initial D")
 	(publicado-por  [kodansha])
+	(escrito-por  [shuuichi-shigeno])
+	(ilustrado-por  [shuuichi-shigeno])
 	(pertenece-a  [accion]  [drama])
 	(trata-de  [carreras]  [personajes-adultos])
 	(tomos  48)
@@ -393,6 +439,8 @@
 ([a-story-about-a-cat-reincarnated-in-a-different-world-where-there-are-no-cats] of Serializado
 	(titulo  "A Story about a Cat Reincarnated in a Different World Where There are no Cats")
 	(publicado-por  [publ-ema-tooyama])
+	(escrito-por  [ema-tooyama])
+	(ilustrado-por  [ema-tooyama])
 	(pertenece-a  [comedia]  [fantasia]  [slice-of-life])
 	(trata-de  [animales]  [isekai])
 	(tomos  0)
@@ -410,6 +458,8 @@
 ([wangan-midnight] of Serializado
 	(titulo  "Wangan Midnight")
 	(publicado-por  [kodansha])
+	(escrito-por  [michiharu-kusunoki])
+	(ilustrado-por  [michiharu-kusunoki])
 	(pertenece-a  [accion]  [drama])
 	(trata-de  [carreras])
 	(tomos  42)
@@ -427,6 +477,8 @@
 ([yu-yu-hakusho] of Serializado
 	(titulo  "Yu Yu Hakusho")
 	(publicado-por  [shueisha])
+	(escrito-por  [yoshihiro-togashi])
+	(ilustrado-por  [yoshihiro-togashi])
 	(pertenece-a  [accion]  [comedia]  [drama]  [fantasia]  [sobrenatural])
 	(trata-de  [artes-marciales]  [mitologia])
 	(tomos  19)
@@ -444,6 +496,8 @@
 ([black-lagoon] of Serializado
 	(titulo  "Black Lagoon")
 	(publicado-por  [shogakukan])
+	(escrito-por  [rei-hiroe])
+	(ilustrado-por  [rei-hiroe])
 	(pertenece-a  [accion]  [drama])
 	(trata-de  [personajes-adultos]  [guerra]  [delincuencia])
 	(tomos  12)
@@ -461,6 +515,8 @@
 ([shin-lupin-iii] of Serializado
 	(titulo  "Shin Lupin III")
 	(publicado-por  [futabasha])
+	(escrito-por  [monkey-punch])
+	(ilustrado-por  [monkey-punch])
 	(pertenece-a  [accion]  [aventura]  [comedia]  [misterio])
 	(trata-de  [personajes-adultos]  [delincuencia])
 	(tomos  17)
@@ -478,6 +534,8 @@
 ([hanma-baki] of Serializado
 	(titulo  "Hanma Baki")
 	(publicado-por  [akita-shoten])
+	(escrito-por  [keisuke-itagaki])
+	(ilustrado-por  [keisuke-itagaki])
 	(pertenece-a  [accion]  [aventura]  [deportes])
 	(trata-de  [gore]  [artes-marciales])
 	(tomos  37)
@@ -495,6 +553,8 @@
 ([hajime-no-ippo] of Serializado
 	(titulo  "Hajime no Ippo")
 	(publicado-por  [kodansha])
+	(escrito-por  [jyoji-morikawa])
+	(ilustrado-por  [jyoji-morikawa])
 	(pertenece-a  [accion]  [comedia]  [drama]  [deportes])
 	(trata-de  [artes-marciales])
 	(tomos  139)
@@ -512,6 +572,8 @@
 ([oliver-y-benji] of Serializado
 	(titulo  "Oliver y Benji")
 	(publicado-por  [shueisha])
+	(escrito-por  [yoichi-takahashi])
+	(ilustrado-por  [yoichi-takahashi])
 	(pertenece-a  [accion]  [deportes])
 	(trata-de  [escolar])
 	(tomos  37)
@@ -529,6 +591,8 @@
 ([assassination-classroom] of Serializado
 	(titulo  "Assassination Classroom")
 	(publicado-por  [shueisha])
+	(escrito-por  [yuusei-matsui])
+	(ilustrado-por  [yuusei-matsui])
 	(pertenece-a  [accion]  [comedia])
 	(trata-de  [escolar])
 	(tomos  21)
@@ -546,6 +610,8 @@
 ([tomodachi-game] of Serializado
 	(titulo  "Tomodachi Game")
 	(publicado-por  [kodansha])
+	(escrito-por  [mikoto-yamaguchi])
+	(ilustrado-por  [yuuki-satou])
 	(pertenece-a  [psicologico]  [suspense])
 	(trata-de  [battle-royale]  [juegos-de-estrategia])
 	(tomos  23)
@@ -563,6 +629,8 @@
 ([kingdom] of Serializado
 	(titulo  "Kingdom")
 	(publicado-por  [shueisha])
+	(escrito-por  [yasuhisa-hara])
+	(ilustrado-por  [yasuhisa-hara])
 	(pertenece-a  [accion]  [aventura]  [drama])
 	(trata-de  [guerra]  [historico])
 	(tomos  70)
@@ -580,6 +648,8 @@
 ([beastars] of Serializado
 	(titulo  "Beastars")
 	(publicado-por  [akita-shoten])
+	(escrito-por  [paru-itagaki])
+	(ilustrado-por  [paru-itagaki])
 	(pertenece-a  [drama]  [slice-of-life]  [psicologico])
 	(trata-de  [animales]  [escolar])
 	(tomos  22)
@@ -597,6 +667,8 @@
 ([mazinger-z] of Serializado
 	(titulo  "Mazinger Z")
 	(publicado-por  [shueisha])
+	(escrito-por  [go-nagai])
+	(ilustrado-por  [go-nagai])
 	(pertenece-a  [accion]  [comedia]  [drama]  [ciencia-ficcion])
 	(trata-de  [robots])
 	(tomos  5)
@@ -614,6 +686,8 @@
 ([dr-stone] of Serializado
 	(titulo  "Dr. Stone")
 	(publicado-por  [shueisha])
+	(escrito-por  [riichiro-inagaki])
+	(ilustrado-por  [boichi])
 	(pertenece-a  [aventura]  [ciencia-ficcion])
 	(trata-de  [viajes-en-el-tiempo]  [supervivencia])
 	(tomos  26)
@@ -631,6 +705,8 @@
 ([bokkou] of Serializado
 	(titulo  "Bokkou")
 	(publicado-por  [shogakukan])
+	(escrito-por  [kenichi-sakemi])
+	(ilustrado-por  [hideki-mori])
 	(pertenece-a  [accion]  [drama])
 	(trata-de  [guerra]  [historico])
 	(tomos  11)
@@ -648,6 +724,8 @@
 ([liar-game] of Serializado
 	(titulo  "Liar Game")
 	(publicado-por  [shueisha])
+	(escrito-por  [shinobu-kaitani])
+	(ilustrado-por  [shinobu-kaitani])
 	(pertenece-a  [drama]  [psicologico])
 	(trata-de  [battle-royale]  [juegos-de-estrategia])
 	(tomos  19)
@@ -665,6 +743,8 @@
 ([mach-gogogo] of Serializado
 	(titulo  "Mach Gogogo")
 	(publicado-por  [shueisha])
+	(escrito-por  [tatsuo-yoshida])
+	(ilustrado-por  [tatsuo-yoshida])
 	(pertenece-a  [accion])
 	(trata-de  [carreras])
 	(tomos  2)
@@ -682,6 +762,8 @@
 ([manhole] of Serializado
 	(titulo  "Manhole")
 	(publicado-por  [square-enix])
+	(escrito-por  [tetsuya-tsutsui])
+	(ilustrado-por  [tetsuya-tsutsui])
 	(pertenece-a  [drama]  [horror]  [misterio])
 	(trata-de  [detectives]  [gore])
 	(tomos  3)
@@ -699,6 +781,8 @@
 ([monster] of Serializado
 	(titulo  "Monster")
 	(publicado-por  [shogakukan])
+	(escrito-por  [naoki-urasawa])
+	(ilustrado-por  [naoki-urasawa])
 	(pertenece-a  [drama]  [misterio]  [psicologico]  [suspense])
 	(trata-de  [personajes-adultos])
 	(tomos  18)
@@ -716,6 +800,8 @@
 ([doomsday-with-my-dog] of Serializado
 	(titulo  "Doomsday with my dog")
 	(publicado-por  [publ-yuu-ishihara])
+	(escrito-por  [yuu-ishihara])
+	(ilustrado-por  [yuu-ishihara])
 	(pertenece-a  [aventura]  [comedia]  [slice-of-life])
 	(trata-de  [animales]  [postapocaliptico]  [supervivencia])
 	(tomos  4)
@@ -733,6 +819,8 @@
 ([planetes] of Serializado
 	(titulo  "Planetes")
 	(publicado-por  [kodansha])
+	(escrito-por  [makoto-yukimura])
+	(ilustrado-por  [makoto-yukimura])
 	(pertenece-a  [ciencia-ficcion]  [drama]  [romance]  [psicologico]  [slice-of-life])
 	(trata-de  [espacio-exterior]  [personajes-adultos])
 	(tomos  4)
@@ -750,6 +838,8 @@
 ([hellsing] of Serializado
 	(titulo  "Hellsing")
 	(publicado-por  [shonen-gahosha])
+	(escrito-por  [kouta-hirano])
+	(ilustrado-por  [kouta-hirano])
 	(pertenece-a  [accion]  [horror]  [sobrenatural])
 	(trata-de  [gore]  [historico]  [personajes-adultos]  [vampiros])
 	(tomos  10)
@@ -767,6 +857,8 @@
 ([sono-bisque-doll-wa-koi-wo-suru] of Serializado
 	(titulo  "Sono Bisque Doll wa Koi wo Suru")
 	(publicado-por  [square-enix])
+	(escrito-por  [shinichi-fukuda])
+	(ilustrado-por  [shinichi-fukuda])
 	(pertenece-a  [romance]  [comedia])
 	(trata-de  [artes]  [escolar]  [reconfortante])
 	(tomos  12)
@@ -784,6 +876,8 @@
 ([uchi-no-neko-ga-onnanoko-de-kawaii] of Serializado
 	(titulo  "Uchi no Neko ga Onnanoko de Kawaii")
 	(publicado-por  [publ-shimahara])
+	(escrito-por  [shimahara])
+	(ilustrado-por  [shimahara])
 	(pertenece-a  [comedia]  [slice-of-life])
 	(trata-de  [animales]  [humor-absurdo]  [reconfortante])
 	(tomos  3)
@@ -801,6 +895,8 @@
 ([dekihime-no-usui-hon] of Serializado
 	(titulo  "Dekihime no Usui Hon")
 	(publicado-por  [publ-ajiichi])
+	(escrito-por  [ajiichi])
+	(ilustrado-por  [ajiichi])
 	(pertenece-a  [romance])
 	(trata-de  [escolar]  [yuri])
 	(tomos  5)
@@ -818,6 +914,8 @@
 ([orange] of Serializado
 	(titulo  "Orange")
 	(publicado-por  [futabasha])
+	(escrito-por  [ichigo-takano])
+	(ilustrado-por  [ichigo-takano])
 	(pertenece-a  [romance]  [drama])
 	(trata-de  [escolar]  [triangulo-amoroso]  [viajes-en-el-tiempo])
 	(tomos  7)
@@ -835,6 +933,8 @@
 ([given] of Serializado
 	(titulo  "Given")
 	(publicado-por  [shinshokan])
+	(escrito-por  [natsuki-kizu])
+	(ilustrado-por  [natsuki-kizu])
 	(pertenece-a  [drama]  [romance])
 	(trata-de  [artes]  [escolar]  [musica]  [yaoi])
 	(tomos  9)
@@ -852,6 +952,8 @@
 ([yoake-ni-furu] of Serializado
 	(titulo  "Yoake ni Furu")
 	(publicado-por  [taiyoh-tosho])
+	(escrito-por  [nojiko-hayakawa])
+	(ilustrado-por  [nojiko-hayakawa])
 	(pertenece-a  [romance])
 	(trata-de  [escolar]  [triangulo-amoroso]  [yaoi])
 	(tomos  2)
@@ -869,6 +971,8 @@
 ([mahou-shoujo-madoka-magica] of Serializado
 	(titulo  "Mahou Shoujo Madoka Magica")
 	(publicado-por  [houbunsha])
+	(escrito-por  [magica-quartet])
+	(ilustrado-por  [hanokage])
 	(pertenece-a  [drama]  [fantasia]  [horror]  [sobrenatural])
 	(trata-de  [escolar]  [magia]  [mahou-shoujo])
 	(tomos  3)
@@ -886,6 +990,8 @@
 ([wotaku-ni-koi-wa-muzukashii] of Serializado
 	(titulo  "Wotaku ni Koi wa Muzukashii")
 	(publicado-por  [ichijinsha])
+	(escrito-por  [fujita])
+	(ilustrado-por  [fujita])
 	(pertenece-a  [comedia]  [romance])
 	(trata-de  [personajes-adultos])
 	(tomos  11)
@@ -903,6 +1009,8 @@
 ([gril-crush] of Serializado
 	(titulo  "Gril Crush")
 	(publicado-por  [shinchosha])
+	(escrito-por  [midori-tayama])
+	(ilustrado-por  [midori-tayama])
 	(pertenece-a  [comedia]  [romance])
 	(trata-de  [artes]  [idols]  [musica])
 	(tomos  7)
@@ -920,6 +1028,8 @@
 ([jujutsu-kaisen] of Serializado
 	(titulo  "Jujutsu Kaisen")
 	(publicado-por  [shueisha])
+	(escrito-por  [gege-akutami])
+	(ilustrado-por  [gege-akutami])
 	(pertenece-a  [accion]  [drama]  [sobrenatural])
 	(trata-de  [escolar]  [mitologia]  [superpoderes])
 	(tomos  24)
@@ -937,6 +1047,8 @@
 ([bungou-stray-dogs] of Serializado
 	(titulo  "Bungou Stray Dogs")
 	(publicado-por  [kadokawa-shoten])
+	(escrito-por  [kafka-asagiri])
+	(ilustrado-por  [harukawa35])
 	(pertenece-a  [accion]  [sobrenatural]  [misterio])
 	(trata-de  [personajes-adultos]  [delincuencia]  [detectives]  [superpoderes])
 	(tomos  23)
@@ -954,6 +1066,8 @@
 ([oshi-no-ko] of Serializado
 	(titulo  "Oshi no Ko")
 	(publicado-por  [shueisha])
+	(escrito-por  [aka-akasaka])
+	(ilustrado-por  [mengo-yokoyari])
 	(pertenece-a  [drama]  [misterio]  [sobrenatural])
 	(trata-de  [idols]  [musica]  [tragedia]  [venganza])
 	(tomos  12)
@@ -971,6 +1085,8 @@
 ([kagurabachi] of Serializado
 	(titulo  "Kagurabachi")
 	(publicado-por  [shueisha])
+	(escrito-por  [takeru-hokazono])
+	(ilustrado-por  [takeru-hokazono])
 	(pertenece-a  [accion]  [fantasia])
 	(trata-de  [gore]  [tradicional-japones]  [venganza])
 	(tomos  1)
@@ -988,6 +1104,8 @@
 ([chainsaw-man] of Serializado
 	(titulo  "Chainsaw Man")
 	(publicado-por  [shueisha])
+	(escrito-por  [tatsuki-fujimoto])
+	(ilustrado-por  [tatsuki-fujimoto])
 	(pertenece-a  [accion]  [drama]  [sobrenatural]  [psicologico])
 	(trata-de  [gore]  [superpoderes]  [tragedia])
 	(tomos  16)
@@ -1005,6 +1123,8 @@
 ([banana-fish] of Serializado
 	(titulo  "Banana Fish")
 	(publicado-por  [shogakukan])
+	(escrito-por  [akimi-yoshida])
+	(ilustrado-por  [akimi-yoshida])
 	(pertenece-a  [accion]  [aventura]  [drama])
 	(trata-de  [delincuencia]  [tragedia])
 	(tomos  19)
@@ -1022,6 +1142,8 @@
 ([tokyo-ghoul] of Serializado
 	(titulo  "Tokyo Ghoul")
 	(publicado-por  [shueisha])
+	(escrito-por  [sui-ishida])
+	(ilustrado-por  [sui-ishida])
 	(pertenece-a  [accion]  [fantasia]  [horror]  [psicologico])
 	(trata-de  [gore]  [vampiros])
 	(tomos  14)
@@ -1039,6 +1161,8 @@
 ([kimetsu-no-yaiba] of Serializado
 	(titulo  "Kimetsu no Yaiba")
 	(publicado-por  [shueisha])
+	(escrito-por  [koyoharu-gotouge])
+	(ilustrado-por  [koyoharu-gotouge])
 	(pertenece-a  [accion]  [fantasia])
 	(trata-de  [historico]  [supervivencia]  [tradicional-japones])
 	(tomos  23)
@@ -1053,9 +1177,87 @@
 	(valoracion  8.21)
 	(restriccion-edad  12)
 )
+([umibe-no-etranger] of One-shot
+	(titulo  "Umibe no Etranger")
+	(publicado-por  [shodensha])
+	(escrito-por  [kanna-kii])
+	(ilustrado-por  [kanna-kii])
+	(pertenece-a  [romance]  [slice-of-life])
+	(trata-de  [yaoi])
+	(capitulos  4)
+	(copias-vendidas  100000)
+	(dificultad-lectura  "media")
+	(inicio-publicacion  "2013-04-25")
+	(metodo-distribucion  "fisico")
+	(tiene-anime  FALSE)
+	(valoracion  7.86)
+	(restriccion-edad  12)
+)
+([citrus] of Serializado
+	(titulo  "Citrus")
+	(publicado-por  [ichijinsha])
+	(escrito-por  [saburouta])
+	(ilustrado-por  [saburouta])
+	(pertenece-a  [romance]  [drama])
+	(trata-de  [escolar]  [yuri])
+	(tomos  10)
+	(capitulos  50)
+	(copias-vendidas  5000000)
+	(dificultad-lectura  "media")
+	(estado-publicacion  "acabado")
+	(frecuencia-publicacion  "mensual")
+	(inicio-publicacion  "2012-11-17")
+	(metodo-distribucion  "fisico")
+	(tiene-anime  TRUE)
+	(valoracion  7.53)
+	(restriccion-edad  12)
+)
+([kininatteru-hito-ga-otoko-ja-nakatta] of Serializado
+	(titulo  "Kininatteru Hito ga Otoko ja Nakatta")
+	(publicado-por  [kadokawa-shoten])
+	(escrito-por  [agu])
+	(ilustrado-por  [agu])
+	(pertenece-a  [romance]  [slice-of-life])
+	(trata-de  [artes]  [escolar]  [genero]  [musica]  [reconfortante]  [yuri])
+	(tomos  5)
+	(capitulos  69)
+	(copias-vendidas  2000000)
+	(dificultad-lectura  "baja")
+	(estado-publicacion  "en publicacion")
+	(frecuencia-publicacion  "quincenal")
+	(inicio-publicacion  "2022-04-10")
+	(metodo-distribucion  "ambos")
+	(tiene-anime  FALSE)
+	(valoracion  8.32)
+	(restriccion-edad  7)
+)
+([kono-subarashii-sekai-ni-shukufuku-wo] of Serializado
+	(titulo  "Kono Subarashii Sekai ni Shukufuku wo!")
+	(publicado-por  [fujimi-shobo])
+	(escrito-por  [natsume-akatsuki])
+	(ilustrado-por  [masahito-watari])
+	(pertenece-a  [accion]  [aventura]  [comedia]  [fantasia])
+	(trata-de  [humor-absurdo]  [isekai]  [magia]  [parodia]  [reconfortante]  [superpoderes])
+	(tomos  18)
+	(capitulos  84)
+	(copias-vendidas  10000000)
+	(dificultad-lectura  "baja")
+	(estado-publicacion  "en publicacion")
+	(frecuencia-publicacion  "semestral")
+	(inicio-publicacion  "2015-04-09")
+	(metodo-distribucion  "fisico")
+	(tiene-anime  TRUE)
+	(valoracion  7.99)
+	(restriccion-edad  12)
+)
 
 ; Autores
 
+([agu] of Autor
+	(nombre  "Agu")
+	(escribe  [kininatteru-hito-ga-otoko-ja-nakatta])
+	(ilustra  [kininatteru-hito-ga-otoko-ja-nakatta])
+)
 ([ajiichi] of Autor
 	(nombre  "Ajiichi")
 	(escribe  [dekihime-no-usui-hon])
@@ -1170,6 +1372,11 @@
 	(nombre  "Kafka Asagiri")
 	(escribe  [bungou-stray-dogs])
 )
+([kanna-kii] of Autor
+	(nombre  "Kanna Kii")
+	(escribe  [umibe-no-etranger])
+	(ilustra  [umibe-no-etranger])
+)
 ([keisuke-itagaki] of Autor
 	(nombre  "Keisuke Itagaki")
 	(escribe  [hanma-baki])
@@ -1207,6 +1414,10 @@
 	(nombre  "Makoto Yukimura")
 	(escribe  [planetes])
 	(ilustra  [planetes])
+)
+([masahito-watari] of Autor
+	(nombre  "Masahito Watari")
+	(ilustra  [kono-subarashii-sekai-ni-shukufuku-wo])
 )
 ([masashi-kishimoto] of Autor
 	(nombre  "Masashi Kishimoto")
@@ -1256,6 +1467,10 @@
 	(escribe  [given])
 	(ilustra  [given])
 )
+([natsume-akatsuki] of Autor
+	(nombre  "Natsume Akatsuki")
+	(escribe  [kono-subarashii-sekai-ni-shukufuku-wo])
+)
 ([nojiko-hayakawa] of Autor
 	(nombre  "Nojiko Hayakawa")
 	(escribe  [yoake-ni-furu])
@@ -1278,6 +1493,11 @@
 ([riichiro-inagaki] of Autor
 	(nombre  "Riichiro Inagaki")
 	(escribe  [dr-stone])
+)
+([saburouta] of Autor
+	(nombre  "Saburouta")
+	(escribe  [citrus])
+	(ilustra  [citrus])
 )
 ([shimahara] of Autor
 	(nombre  "Shimahara")
@@ -1381,6 +1601,9 @@
 ([ascii-media-works] of Editorial
 	(nombre  "ASCII Media Works")
 )
+([fujimi-shobo] of Editorial
+	(nombre  "Fujimi Shobo")
+)
 ([futabasha] of Editorial
 	(nombre  "Futabasha")
 )
@@ -1404,6 +1627,9 @@
 )
 ([shinshokan] of Editorial
 	(nombre  "Shinshokan")
+)
+([shodensha] of Editorial
+	(nombre  "Shodensha")
 )
 ([shogakukan] of Editorial
 	(nombre  "Shogakukan")

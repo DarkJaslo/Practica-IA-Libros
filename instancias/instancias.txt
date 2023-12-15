@@ -870,5 +870,4 @@ Magia
 Parodia
 Reconfortante
 Superpoderes
-s 18 84 10000000 b pu 6m 2015-04-09 f y 7.99 0
-
+s 18 84 10000000 b pu 6m 2015-04-09 f y 7.99 12

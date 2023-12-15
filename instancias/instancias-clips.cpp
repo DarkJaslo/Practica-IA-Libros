@@ -245,16 +245,22 @@ struct Manga
         cout << "[" << titulosClips[titulo] << "] of " << tipo << "\n";
         cout << "\t(titulo  \"" << titulo << "\")\n";
         cout << "\t(publicado-por  [" << publicadora << "])\n";
+        cout << "\t(escrito-por  [" << autor << "])\n";
+        cout << "\t(ilustrado-por  [" << ilustrador << "])\n";
         if(generos.size() > 0)
             cout << "\t(pertenece-a" << generosToClips() << ")\n";
         if(temas.size() > 0)
             cout << "\t(trata-de" << temasToClips() << ")\n";
-        cout << "\t(tomos  " << tomos << ")\n";
+        if(tipo != "One-shot")
+            cout << "\t(tomos  " << tomos << ")\n";
         cout << "\t(capitulos  " << capitulos << ")\n";
         cout << "\t(copias-vendidas  " << copias << ")\n";
         cout << "\t(dificultad-lectura  \"" << dificultad << "\")\n";
-        cout << "\t(estado-publicacion  \"" << estado << "\")\n";
-        cout << "\t(frecuencia-publicacion  \"" << frecuencia << "\")\n";
+        if(tipo != "One-shot")
+        {
+            cout << "\t(estado-publicacion  \"" << estado << "\")\n";
+            cout << "\t(frecuencia-publicacion  \"" << frecuencia << "\")\n";
+        }
         cout << "\t(inicio-publicacion  \"" << ini << "\")\n";
         cout << "\t(metodo-distribucion  \"" << metodo << "\")\n";
         cout << "\t(tiene-anime  " << tieneAnime() << ")\n";
@@ -345,9 +351,12 @@ bool readManga(Manga& m)
     cin >> l;
     m.tipo = tipo(l);
 
-    //Lee tomos
-    cin >> n;
-    m.tomos = n;
+    if(m.tipo != "One-shot")
+    {
+        //Lee tomos
+        cin >> n;
+        m.tomos = n;
+    }
 
     //Lee capitulos
     cin >> n;
@@ -361,13 +370,16 @@ bool readManga(Manga& m)
     cin >> l;
     m.dificultad = dif(l);
 
-    //Lee estado publicacion
-    cin >> l;
-    m.estado = estado(l);
+    if(m.tipo != "One-shot")
+    {
+        //Lee estado publicacion
+        cin >> l;
+        m.estado = estado(l);
 
-    //Lee frecuencia de publicacion
-    cin >> l;
-    m.frecuencia = frec(l);
+        //Lee frecuencia de publicacion
+        cin >> l;
+        m.frecuencia = frec(l);
+    }
 
     //Lee fecha inicio
     cin >> l;
