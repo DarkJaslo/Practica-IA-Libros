@@ -27,10 +27,12 @@
     (pattern-match non-reactive)
 		(slot escrito-por
         (type INSTANCE)
-        (create-accessor read-write))
+        (create-accessor read-write)
+				(visibility public))
     (slot ilustrado-por
         (type INSTANCE)
-        (create-accessor read-write))
+        (create-accessor read-write)
+				(visibility public))
     (multislot pertenece-a
         (type INSTANCE)
         (create-accessor read-write)
@@ -2106,14 +2108,14 @@
 (defmessage-handler Serializado print ()
 	(printout t crlf)
 	(format t "  %s %n" ?self:titulo)
-	;(bind ?escritor (send ?self:escritor get-nombre))
-	;(bind ?artista (send ?self:artista get-nombre))
-	;(if (eq ?escritor ?artista) then
-	;	(format t "  Escrito e ilustrado por %s %n" ?escritor)
-	;	else
-	; (format t "  Escrito por %s %n" ?escritor)
-	; (format t "  Ilustrado por %s %n" ?artista)
-	;)
+	(bind ?escritor (send ?self:escrito-por get-nombre))
+	(bind ?artista (send ?self:ilustrado-por get-nombre))
+	(if (eq ?escritor ?artista) then
+		(format t "  Escrito e ilustrado por %s %n" ?escritor)
+		else
+		(format t "  Escrito por %s %n" ?escritor)
+		(format t "  Ilustrado por %s %n" ?artista)
+	)
 	(format t "  Publicado por %s %n" (send ?self:publicado-por get-nombre))
 	(format t "  Estado de publicacion: %s %n" ?self:estado-publicacion)
 	(if (or (eq ?self:estado-publicacion "en publicacion") (eq ?self:estado-publicacion "en pausa")) then

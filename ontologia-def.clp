@@ -31,10 +31,12 @@
     (pattern-match non-reactive)
     (slot escrito-por
         (type INSTANCE)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (visibility public))
     (slot ilustrado-por
         (type INSTANCE)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (visibility public))
     (multislot pertenece-a
         (type INSTANCE)
         (create-accessor read-write)
