@@ -25,6 +25,12 @@
     (is-a USER)
     (role abstract)
     (pattern-match non-reactive)
+		(slot escrito-por
+        (type INSTANCE)
+        (create-accessor read-write))
+    (slot ilustrado-por
+        (type INSTANCE)
+        (create-accessor read-write))
     (multislot pertenece-a
         (type INSTANCE)
         (create-accessor read-write)
@@ -1781,43 +1787,43 @@
 ; lee el input y si es incorrecto vuelve a escribir la pregunta y leer hasta que
 ; sea correcto, entonces devuelve el valor leido
 (deffunction preguntas-usuario::pregunta-numerica (?pregunta ?rangini ?rangfi)
-    (format t "%s [%d, %d] " ?pregunta ?rangini ?rangfi)
+	(format t "%s [%d, %d] " ?pregunta ?rangini ?rangfi)
 	(printout t crlf)
-    (bind ?respuesta (read))
-    (while (not(and(> ?respuesta ?rangini)(< ?respuesta ?rangfi))) do
-        (format t "%s [%d, %d] " ?pregunta ?rangini ?rangfi)
-        (bind ?respuesta (read))
-    )
-    ?respuesta
+	(bind ?respuesta (read))
+	(while (not(and(> ?respuesta ?rangini)(< ?respuesta ?rangfi))) do
+		(format t "%s [%d, %d] " ?pregunta ?rangini ?rangfi)
+		(bind ?respuesta (read))
+	)
+	?respuesta
 )
 
 ; funcion que nos dan en el FAQ apartado 3.10
 (deffunction preguntas-usuario::pregunta-enum (?pregunta $?valores-permitidos)
-    (progn$
-        (?var ?valores-permitidos)
-        (lowcase ?var))
-    (format t "%s (%s) " ?pregunta (implode$ ?valores-permitidos))
+	(progn$
+		(?var ?valores-permitidos)
+		(lowcase ?var))
+	(format t "%s (%s) " ?pregunta (implode$ ?valores-permitidos))
 	(printout t crlf)
     (bind ?respuesta (read))
     (while (not (member$ (lowcase ?respuesta) ?valores-permitidos)) do
-        (format t "%s (%s) " ?pregunta (implode$ ?valores-permitidos))
-        (bind ?respuesta (read))
-    )
-    ?respuesta
+			(format t "%s (%s) " ?pregunta (implode$ ?valores-permitidos))
+			(bind ?respuesta (read))
+	)
+	?respuesta
 )
 
 (deffunction preguntas-usuario::pregunta-enum-comentario (?pregunta ?comentario $?valores-permitidos)
-    (progn$
-        (?var ?valores-permitidos)
-        (lowcase ?var))
-    (format t "%s (%s) " ?pregunta ?comentario)
+	(progn$
+			(?var ?valores-permitidos)
+			(lowcase ?var))
+	(format t "%s (%s) " ?pregunta ?comentario)
 	(printout t crlf)
     (bind ?respuesta (read))
     (while (not (member$ (lowcase ?respuesta) ?valores-permitidos)) do
-        (format t "%s (%s) " ?pregunta ?comentario)
-        (bind ?respuesta (read))
-    )
-    ?respuesta
+			(format t "%s (%s) " ?pregunta ?comentario)
+			(bind ?respuesta (read))
+	)
+	?respuesta
 )
 
 ; devuelve una lista con el indice de los valores escogidos
@@ -1833,48 +1839,123 @@
 	(bind ?respuesta (readline))
 
 	; la respuesta esta en un solo string asi que la separamos
-    (bind ?respuesta (explode$ ?respuesta))
-    (bind $?lista (create$))
+	(bind ?respuesta (explode$ ?respuesta))
+	(bind $?lista (create$))
 
 	; si ha escrito un numero que no pertenece a ningun genero, pide que responda otra vez
 	(while (not (progn$ (?valor ?respuesta)
-					(and (integerp ?valor) (and (>= ?valor 0) (<= ?valor (length$ ?valores-posibles))))
-				)
-	)
+			(and (integerp ?valor) (and (>= ?valor 0) (<= ?valor (length$ ?valores-posibles))))
+		))
 	do
-        (printout t "Algo ha ocurrido mal. Vuelve a escribir tu respuesta." crlf)
-        (bind ?respuesta (readline))
+		(printout t "Algo ha ocurrido mal. Vuelve a escribir tu respuesta." crlf)
+		(bind ?respuesta (readline))
 		(bind ?respuesta (explode$ ?respuesta))
-    )
+  )
 
 	; Cuando los valores sean válidos los guardamos
 	(progn$ (?valor ?respuesta)
 		(if (not (member$ ?valor ?lista))
 			then (bind ?lista (insert$ ?lista (+ (length$ ?lista) 1) ?valor))
 		)
-    )
+  )
 	; si no ha respondido nada o ha respondido 0, devolvemos una lista vacia
-    (if (or(member$ 0 ?lista)(= (length$ ?lista) 0)) then (bind ?lista (create$ )))
-    ?lista
+	(if (or(member$ 0 ?lista)(= (length$ ?lista) 0)) then (bind ?lista (create$ )))
+	?lista
 )
 
 ; funcion que nos dan en el FAQ apartado 3.10
 (deffunction preguntas-usuario::pregunta-si-no (?pregunta)
-    (format t "%s (si/no)" ?pregunta)
+	(format t "%s (si/no)" ?pregunta)
 	(printout t crlf)
-    (bind ?respuesta (read))
-    (if (eq (lowcase ?respuesta) si)
-        then TRUE
-        else FALSE
-    )
+	(bind ?respuesta (read))
+	(if (eq (lowcase ?respuesta) si)
+			then TRUE
+			else FALSE
+	)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Message handlers ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (defmessage-handler Serializado print ()
-	(printout t ?self:titulo crlf)
-	(printout t ?self:inicio-publicacion crlf)
+	(printout t crlf)
+	(format t "  %s %n" ?self:titulo)
+	;(bind ?escritor (send ?self:escritor get-nombre))
+	;(bind ?artista (send ?self:artista get-nombre))
+	;(if (eq ?escritor ?artista) then
+	;	(format t "  Escrito e ilustrado por %s %n" ?escritor)
+	;	else
+	; (format t "  Escrito por %s %n" ?escritor)
+	; (format t "  Ilustrado por %s %n" ?artista)
+	;)
+	(format t "  Publicado por %s %n" (send ?self:publicado-por get-nombre))
+	(format t "  Estado de publicacion: %s %n" ?self:estado-publicacion)
+	(if (or (eq ?self:estado-publicacion "en publicacion") (eq ?self:estado-publicacion "en pausa")) then
+		(format t "  Frecuencia de publicacion: %s %n" ?self:frecuencia-publicacion)
+	)
+	(format t "  Inicio de publicacion: %s %n" ?self:inicio-publicacion)
+	(format t "  Tomos: %d %n" ?self:tomos)
+	(format t "  Capitulos: %d %n" ?self:capitulos)
+	(format t "  Valoracion: %.2f %n" ?self:valoracion)
+	(if (eq ?self:metodo-distribucion "ambos") then
+		(format t "  Se puede leer en formato tanto digital como fisico %n")
+		else
+		(format t "  Se puede leer en formato %s %n" ?self:metodo-distribucion)
+	)
+	(format t "  No se recomienda su lectura a menores de %d años %n" ?self:restriccion-edad)
+	; Generos
+	(format t "  Generos %n")
+	(bind $?generos ?self:pertenece-a)
+	(progn$ (?gen ?generos)
+		(bind ?nombre (send ?gen get-nombre))
+		(format t "%t - %s %n" ?nombre)
+	)
+	; Temas
+	(format t "  Temas %n")
+	(bind $?temas ?self:trata-de)
+	(progn$ (?tema ?temas)
+		(bind ?nombre (send ?tema get-nombre))
+		(format t "%t - %s %n" ?nombre)
+	)
+	(printout t crlf)
+)
+
+(defmessage-handler One-shot print ()
+	(printout t crlf)
+	(format t "  %s %n" ?self:titulo)
+	;(bind ?escritor (send ?self:escritor get-nombre))
+	;(bind ?artista (send ?self:artista get-nombre))
+	;(if (eq ?escritor ?artista) then
+	;	(format t "  Escrito e ilustrado por %s %n" ?escritor)
+	;	else
+	; (format t "  Escrito por %s %n" ?escritor)
+	; (format t "  Ilustrado por %s %n" ?artista)
+	;)
+	(format t "  Publicado por %s %n" (send ?self:publicado-por get-nombre))
+	(format t "  Inicio de publicacion: %s %n" ?self:inicio-publicacion)
+	(format t "  Capitulos: %d %n" ?self:capitulos)
+	(format t "  Valoracion: %.2f %n" ?self:valoracion)
+	(if (eq ?self:metodo-distribucion "ambos") then
+		(format t "  Se puede leer en formato tanto digital como fisico %n")
+		else
+		(format t "  Se puede leer en formato %s %n" ?self:metodo-distribucion)
+	)
+	(format t "  No se recomienda su lectura a menores de %d años %n" ?self:restriccion-edad)
+	; Generos
+	(format t "  Generos %n")
+	(bind $?generos ?self:pertenece-a)
+	(progn$ (?gen ?generos)
+		(bind ?nombre (send ?gen get-nombre))
+		(format t "%t - %s %n" ?nombre)
+	)
+	; Temas
+	(format t "  Temas %n")
+	(bind $?temas ?self:trata-de)
+	(progn$ (?tema ?temas)
+		(bind ?nombre (send ?tema get-nombre))
+		(format t "%t - %s %n" ?nombre)
+	)
+	(printout t crlf)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Templates ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
