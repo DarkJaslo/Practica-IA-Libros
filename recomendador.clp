@@ -2075,7 +2075,7 @@
 			(and (integerp ?valor) (and (>= ?valor 0) (<= ?valor (length$ ?valores-posibles))))
 		))
 	do
-		(printout t "Algo ha ocurrido mal. Vuelve a escribir tu respuesta." crlf)
+		(printout t "Algo ha salido mal. Vuelve a escribir tu respuesta." crlf)
 		(bind ?respuesta (readline))
 		(bind ?respuesta (explode$ ?respuesta))
   )
@@ -2200,7 +2200,10 @@
     (multislot gusto-generos (type INSTANCE))
     (multislot gusto-temas (type INSTANCE))
     (slot tiempo-lectura (type INTEGER))
-	(slot prefiere-acabados (type SYMBOL)
+		(slot prefiere-no-violentos (type SYMBOL)
+                            		(allowed-values TRUE FALSE)
+                            		(default FALSE))
+		(slot prefiere-acabados (type SYMBOL)
                             (allowed-values TRUE FALSE)
                             (default FALSE))
     (slot prefiere-sin-anime (type SYMBOL)
@@ -2363,8 +2366,17 @@
     (assert (temas-preguntado))
 )
 
-(defrule preguntas-usuario::prefiere-acabados
+(defrule preguntas-usuario::prefiere-no-violentos
 	(temas-preguntado)
+	(not (prefiere-no-violentos-preguntado))
+	?usr <- (usuario)
+	=>
+	(modify ?usr (prefiere-no-violentos (pregunta-si-no "¿Te molestan la violencia explícita o los temas desagradables?")))
+	(assert (prefiere-no-violentos-preguntado))
+)
+
+(defrule preguntas-usuario::prefiere-acabados
+	(prefiere-no-violentos-preguntado)
 	(not (prefiere-acabados-preguntado))
 	?usr <- (usuario)
 	=>
