@@ -102,8 +102,9 @@ Shueisha
 Romance
 Comedia
 Psicologico
-1
+2
 Escolar
+Reconfortante
 s 28 281 22000000 b ac 1s 2015-05-19 a y 8.91 12
 
 World Trigger
@@ -197,7 +198,8 @@ Kodansha
 2
 Fantasia
 Romance
-2
+3
+Magia
 Mahou shoujo
 Mitologia
 s 18 52 46000000 b ac 1m 1991-12-28 a y 8.20 7
@@ -210,7 +212,8 @@ Shueisha
 Accion
 Comedia
 Ciencia ficcion
-3
+4
+Humor absurdo
 Parodia
 Personajes adultos
 Superpoderes
@@ -240,14 +243,13 @@ Bobobo-bo Bo-bobo
 Yoshio Sawai
 Yoshio Sawai
 Shueisha
-3
+2
 Aventura
 Comedia
-Ciencia ficcion
 2
 Humor absurdo
 Parodia
-s 21 230 7000000 b ac 1m 2001-02-20 a y 7.49 10
+s 21 230 7000000 b ac 1m 2001-02-20 a y 7.49 12
 
 Yotsuba to!
 Kiyohiko Azuma
@@ -278,7 +280,8 @@ Haikyuu!!
 Haruichi Furudate
 Haruichi Furudate
 Shueisha
-1
+2
+Comedia
 Deportes
 1
 Escolar
@@ -458,7 +461,7 @@ Psicologico
 2
 Animales
 Escolar
-s 22 196 7500000 a ac 1s 2016-09-08 a y 8.25 18
+s 22 196 7500000 a ac 1s 2016-09-08 a y 8.25 16
 
 Mazinger Z
 Go Nagai
@@ -541,7 +544,8 @@ Drama
 Misterio
 Psicologico
 Suspense
-1
+2
+Detectives
 Personajes adultos
 s 18 162 20000000 a ac ir 1994-12-05 a y 9.15 18
 
@@ -672,7 +676,7 @@ Houbunsha
 4
 Drama
 Fantasia
-Horror
+Psicologico
 Sobrenatural
 3
 Escolar
@@ -684,11 +688,13 @@ Wotaku ni Koi wa Muzukashii
 Fujita
 Fujita
 Ichijinsha
-2
+3
 Comedia
 Romance
-1
+Slice of life
+2
 Personajes adultos
+Reconfortante
 s 11 105 10000000 b ac 1m 2015-04-30 a y 8.36 7
 
 Gril Crush
@@ -859,16 +865,14 @@ Kono Subarashii Sekai ni Shukufuku wo!
 Natsume Akatsuki
 Masahito Watari
 Fujimi Shobo
-4
-Accion
+3
 Aventura
 Comedia
 Fantasia
-6
+5
 Humor absurdo
 Isekai
 Magia
 Parodia
 Reconfortante
-Superpoderes
 s 18 84 10000000 b pu 6m 2015-04-09 f y 7.99 12
