@@ -29,6 +29,12 @@
     (is-a USER)
     (role abstract)
     (pattern-match non-reactive)
+    (slot escrito-por
+        (type INSTANCE)
+        (create-accessor read-write))
+    (slot ilustrado-por
+        (type INSTANCE)
+        (create-accessor read-write))
     (multislot pertenece-a
         (type INSTANCE)
         (create-accessor read-write)

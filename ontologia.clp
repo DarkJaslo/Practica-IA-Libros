@@ -2,33 +2,18 @@
 ;;; ontologia.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontologia.ttl
-;;; :Date 04/12/2023 08:50:00
-
-(defclass Publicador
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-    (slot nombre
-        (type STRING)
-        (create-accessor read-write))
-)
-
-(defclass Autopublicador
-    (is-a Publicador)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Editorial
-    (is-a Publicador)
-    (role concrete)
-    (pattern-match reactive)
-)
+;;; :Date 15/12/2023 01:09:35
 
 (defclass Manga
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
+    (slot escrito-por
+        (type INSTANCE)
+        (create-accessor read-write))
+    (slot ilustrado-por
+        (type INSTANCE)
+        (create-accessor read-write))
     (multislot pertenece-a
         (type INSTANCE)
         (create-accessor read-write))
@@ -47,21 +32,18 @@
     ;;; Valores: (baja | media | alta)
     (slot dificultad-lectura
         (type STRING)
-        (create-accessor read-write)
-        (allowed-values "baja" "media" "alta"))
+        (create-accessor read-write))
     ;;; Valores: (acabado | en publicacion | en pausa | cancelado)
     (slot estado-publicacion
         (type STRING)
-        (create-accessor read-write)
-        (allowed-values "acabado" "en publicacion" "en pausa" "cancelado"))
+        (create-accessor read-write))
     (slot inicio-publicacion
         (type SYMBOL)
         (create-accessor read-write))
     ;;; Valores: (digital | fisico | ambos)
     (slot metodo-distribucion
         (type STRING)
-        (create-accessor read-write)
-        (allowed-values "digital" "fisico" "ambos"))
+        (create-accessor read-write))
     (slot restriccion-edad
         (type INTEGER)
         (create-accessor read-write))
@@ -89,11 +71,31 @@
     ;;; Valores: (semanal | quincenal | mensual | bimestral | trimestral | semestral | irregular)
     (slot frecuencia-publicacion
         (type STRING)
-        (create-accessor read-write)
-        (allowed-values "semanal" "quincenal" "mensual" "bimestral" "trimestral" "semestral" "irregular"))
+        (create-accessor read-write))
     (slot tomos
         (type INTEGER)
         (create-accessor read-write))
+)
+
+(defclass Publicador
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (slot nombre
+        (type STRING)
+        (create-accessor read-write))
+)
+
+(defclass Autopublicador
+    (is-a Publicador)
+    (role concrete)
+    (pattern-match reactive)
+)
+
+(defclass Editorial
+    (is-a Publicador)
+    (role concrete)
+    (pattern-match reactive)
 )
 
 (defclass Autor

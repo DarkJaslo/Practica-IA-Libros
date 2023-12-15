@@ -12,6 +12,20 @@
 #    Object Properties
 #################################################################
 
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#escrito-por
+:escrito-por rdf:type owl:ObjectProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :Manga ;
+             rdfs:range :Autor .
+
+
+###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2#ilustrado-por
+:ilustrado-por rdf:type owl:ObjectProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain :Manga ;
+               rdfs:range :Autor .
+
+
 ###  http://www.semanticweb.org/sandra/ontologies/2023/10/untitled-ontology-2/escribe
 :escribe rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf owl:topObjectProperty ;
