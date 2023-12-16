@@ -2623,11 +2623,11 @@
     ;(retract ?m)   
 )
 
-
+; Faltan reglas para excluir material violento o turbio
 
 
 (defrule asociacion-heuristica::calcula-coincidencias
-	(declare (salience 9))
+	(declare (salience 5))
 	?m <- (object (is-a Manga) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
 	=>
@@ -2952,34 +2952,3 @@
 	(send ?manga print)
 	(modify ?counter (enseñados (+ ?n-ens 1)))
 )
-
-
-; Posiblemente util para mas adelante
-;(deffunction cuenta-matches (?multislot1 ?multislot2)
-;    (bind ?matches 0)
-;    (foreach ?item1 (slot-value ?multislot1)
-;             ?item2 (slot-value ?multislot2)
-;        (if (eq ?item1 ?item2)
-;            then
-;                (bind ?matches (+ ?matches 1))
-;        )
-;    )
-;    (return ?matches)
-;)
-
-; Devuelve la cantidad de elementos que conjunto1 comparte con conjunto2
-;(deffunction refinamiento-solucion::cuenta-matches (?conjunto1 ?conjunto2)
-;	(bind ?compartidos 0)
-;	; compara cada elemento de conjunto 1 con los 
-;	; elementos del conjunto 2 buscando coincidencias
-;	(loop-for-count ?i 1 (length$ ?conjunto1) do
-;		(bind ?elem1 (nth$ ?i ?conjunto1))
-;		(loop-for-count ?j 1 (length$ ?conjunto2) do
-;			(bind ?elem2 (nth? ?j ?conjunto2))
-;			(if (eq ?elem1 ?elem2) then
-;				(bind ?compartidos (+ ?compartidos 1))
-;			)
-;		)
-;	)
-;	(return ?compartidos)    
-;)
