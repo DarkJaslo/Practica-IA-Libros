@@ -2630,6 +2630,10 @@
     ;(retract ?m)   
 )
 
+;;;;;;;;;;;;;;;;;;;;;;; Asociacion heuristica sin preferencias ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; reglas generales aqui
+
 ;;;;;;;;;;;;;;;;;;;;;;; Asociacion heuristica con preferencias ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Si el usuario prefiere mangas sin anime, acabados y que sean doujinshis,
