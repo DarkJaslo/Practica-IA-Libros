@@ -2910,24 +2910,15 @@
 	(printout t crlf)
 )
 
-;;;;;;;;;;;;;;;;;;;;;; Modulo de refinamiento de la solucion ;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;; Modulo de refinamiento de la solucion ;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Control de reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;(deftemplate refinamiento-solucion::counter
-   ;(slot num-rec (type INTEGER) (default 0))
-   ;(slot enseñados (type INTEGER) (default 0))
-   ;(slot total-recomendables (type INTEGER))
-;)
-
-;(defrule refinamiento-solucion::crea-solucion-concreta
-  ; (not (solucion-concreta))
-;  ?abs <- (solucion-abstracta (recomendables $?opciones))
-;  =>
-  ; (assert (solucion-concreta))
-  ; se guarda el numero de mangas recomendables
-;  (assert (counter (total-recomendables (length$ ?opciones))))
-;)
+;;;;;;;;;;;;;;;;;;;;;;;;;; Coincidencia generos y temas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(deftemplate refinamiento-solucion::counter
+   (slot num-recomendados (type INTEGER) (default 0))
+   (slot total-recomendables (type INTEGER))
+)
 
 (defrule refinamiento-solucion::coincidencia-7
   (declare (salience 10))
@@ -2940,6 +2931,7 @@
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
+	(send ?m delete)
   (assert (recomendacion-coincidencia))
 )
 
@@ -2954,6 +2946,7 @@
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
+  (send ?m delete)
   (assert (recomendacion-coincidencia))
 )
 
@@ -2968,6 +2961,7 @@
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
+  (send ?m delete)
   (assert (recomendacion-coincidencia))
 )
 
@@ -2982,6 +2976,7 @@
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
+  (send ?m delete)
   (assert (recomendacion-coincidencia))
 )
 
@@ -2996,8 +2991,11 @@
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
+  (send ?m delete)
   (assert (recomendacion-coincidencia))
 )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Valoraciones ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule refinamiento-solucion::valoracion-excelente
 	(declare (salience 10))
@@ -3010,6 +3008,7 @@
   =>
 	(printout t "Manga por buena valoracion: ")
 	(send ?m print)
+  (send ?m delete)
   (assert (recomendacion-valoracion))
 )
 
@@ -3024,8 +3023,11 @@
   =>
 	(printout t "Manga por buena valoracion: ")
 	(send ?m print)
+  (send ?m delete)
   (assert (recomendacion-valoracion))
 )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Preferencias ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule refinamiento-solucion::preferencias
 	(declare (salience 10))
@@ -3038,33 +3040,8 @@
   =>
 	(printout t "Manga por cumplimiento de preferencias: ")
 	(send ?m print)
+  (send ?m delete)
   (assert (recomendacion-preferencias))
 )
 
-;(defrule refinamiento-solucion::escoge-mangas
-;  (declare (salience 10))
-;  ?abs <- (solucion-abstracta (recomendables $?opciones))
-;  ?sol <- (solucion-concreta (recomendaciones $?rec))
-;  ?counter <- (counter (num-rec ?n) (total-recomendables ?max))
-;  (test (and (< ?n 3) (< ?n ?max)))
-;  =>
-;  (bind ?index (random 1 (length$ ?opciones)))
-;  (bind ?manga (nth$ ?index ?opciones))
-;  ; lo añadimos a las recomendaciones
-;  (modify ?sol (recomendaciones $?rec ?manga))
-;  ; importante borrarlo
-;  (modify ?abs (recomendables (delete$ ?opciones ?index ?index)))
-;  (modify ?counter (num-rec (+ ?n 1)))
-;)
-
-;(defrule refinamiento-solucion::imprime-solucion
-;	?counter <- (counter (num-rec ?n-rec) (enseñados ?n-ens))
-;	(test (< ?n-ens ?n-rec))
-;	(solucion-concreta (recomendaciones $?rec))
-;	=>
-;	(bind ?index (+ ?n-ens 1))
-;	(bind ?manga (nth$ ?index ?rec))
-;	(printout t "Recomendacion: ")
-;	(send ?manga print)
-;	(modify ?counter (enseñados (+ ?n-ens 1)))
-;)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Auxiliares ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
