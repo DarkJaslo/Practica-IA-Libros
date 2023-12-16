@@ -876,3 +876,97 @@ Magia
 Parodia
 Reconfortante
 s 18 84 10000000 b pu 6m 2015-04-09 f y 7.99 12
+
+Cardcaptor Sakura
+CLAMP
+CLAMP
+Kodansha
+4
+Aventura
+Comedia
+Fantasia
+Romance
+3
+Escolar
+Magia
+Mahou shoujo
+s 12 50 22000000 b ac 1m 1996-05-02 a y 8.38 7
+
+Tengen Toppa Gurren Lagann
+Kazuki Nakashima
+Kotarou Mori
+ASCII Media Works
+4
+Accion
+Aventura
+Ciencia ficcion
+Comedia
+1
+Robots
+s 10 65 8000000 m ac 1m 2007-04-27 a y 7.95 12
+
+Hirugashi no Naku Koro ni
+Ryukishi07
+Karin Suzuragi
+Square Enix
+7
+Comedia
+Drama
+Horror
+Misterio
+Psicologico
+Sobrenatural
+Suspense
+1
+Tragedia
+s 2 7 140000 a ac 3m 2005-03-24 a y 8.11 16
+
+Umineko no Naku Koro ni
+Ryukishi07
+Kei Natsumi
+Square Enix
+7
+Drama
+Fantasia
+Horror
+Misterio
+Psicologico
+Sobrenatural
+Suspense
+1
+Tragedia
+s 50 258 12000000 a ac ir 2007-12-22 a y 7.82 16
+
+InuYasha
+Rumiko Takahashi
+Rumiko Takahashi
+Shogakukan
+6
+Aventura
+Comedia
+Drama
+Fantasia
+Romance
+Sobrenatural
+5
+Historico
+Isekai
+Mitologia
+Viajes en el tiempo
+Triangulo amoroso
+s 56 558 50000000 m ac 1s 1996-11-13 a y 7.86 12
+
+Elfen Lied
+Lynn Okamoto
+Lynn Okamoto
+Shueisha
+6
+Accion
+Drama
+Horror  
+Psicologico
+Romance
+Sobrenatural
+1
+Gore
+s 12 113 14000000 a ac 1s 2002-06-06 a y 7.82 18
