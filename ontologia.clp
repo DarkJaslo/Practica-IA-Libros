@@ -2,7 +2,28 @@
 ;;; ontologia.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontologia.ttl
-;;; :Date 15/12/2023 01:09:35
+;;; :Date 16/12/2023 19:16:12
+
+(defclass Publicador
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (slot nombre
+        (type STRING)
+        (create-accessor read-write))
+)
+
+(defclass Autopublicador
+    (is-a Publicador)
+    (role concrete)
+    (pattern-match reactive)
+)
+
+(defclass Editorial
+    (is-a Publicador)
+    (role concrete)
+    (pattern-match reactive)
+)
 
 (defclass Manga
     (is-a USER)
@@ -77,37 +98,10 @@
         (create-accessor read-write))
 )
 
-(defclass Publicador
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-    (slot nombre
-        (type STRING)
-        (create-accessor read-write))
-)
-
-(defclass Autopublicador
-    (is-a Publicador)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Editorial
-    (is-a Publicador)
-    (role concrete)
-    (pattern-match reactive)
-)
-
 (defclass Autor
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    (multislot escribe
-        (type INSTANCE)
-        (create-accessor read-write))
-    (multislot ilustra
-        (type INSTANCE)
-        (create-accessor read-write))
     (slot nombre
         (type STRING)
         (create-accessor read-write))
@@ -133,8 +127,6 @@
 
 (definstances instances
     ([eiichiro-oda] of Autor
-         (escribe  [one-piece])
-         (ilustra  [one-piece])
          (nombre  "Eiichiro Oda")
     )
 

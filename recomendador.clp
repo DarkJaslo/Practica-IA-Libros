@@ -120,12 +120,6 @@
     (multislot escribe
         (type INSTANCE)
         (create-accessor read-write))
-    (multislot ilustra
-        (type INSTANCE)
-        (create-accessor read-write))
-    (slot nombre
-        (type STRING)
-        (create-accessor read-write))
 )
 
 (defclass Genero
