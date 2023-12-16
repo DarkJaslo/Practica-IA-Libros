@@ -2151,14 +2151,14 @@
 (defmessage-handler One-shot print ()
 	(printout t crlf)
 	(format t "  %s %n" ?self:titulo)
-	;(bind ?escritor (send ?self:escritor get-nombre))
-	;(bind ?artista (send ?self:artista get-nombre))
-	;(if (eq ?escritor ?artista) then
-	;	(format t "  Escrito e ilustrado por %s %n" ?escritor)
-	;	else
-	; (format t "  Escrito por %s %n" ?escritor)
-	; (format t "  Ilustrado por %s %n" ?artista)
-	;)
+	(bind ?escritor (send ?self:escrito-por get-nombre))
+	(bind ?artista (send ?self:ilustrado-por get-nombre))
+	(if (eq ?escritor ?artista) then
+		(format t "  Escrito e ilustrado por %s %n" ?escritor)
+		else
+		(format t "  Escrito por %s %n" ?escritor)
+		(format t "  Ilustrado por %s %n" ?artista)
+	)
 	(format t "  Publicado por %s %n" (send ?self:publicado-por get-nombre))
 	(format t "  Inicio de publicacion: %s %n" ?self:inicio-publicacion)
 	(format t "  Capitulos: %d %n" ?self:capitulos)
@@ -2212,7 +2212,6 @@
     (slot quiere-doujinshis (type SYMBOL)
                             (allowed-values TRUE FALSE)
                             (default FALSE))
-    ; faltan cosas, las voy añadiendo conforme hago las preguntas
 )
 
 ; Definir template para problema abstracto
@@ -2230,13 +2229,20 @@
     (slot quiere-doujinshis (type SYMBOL)
                             (allowed-values TRUE FALSE)
                             (default FALSE))
-    ;(slot longitud-preferida ()) no trivial
     (multislot preferencia-generos (type INSTANCE))
     (multislot preferencia-temas (type INSTANCE))
 )
 
 (deftemplate asociacion-heuristica::solucion-abstracta
     (multislot recomendables (type INSTANCE)) ;instancias de mangas
+)
+
+(deftemplate asociacion-heuristica::datos-manga
+	(slot manga (type INSTANCE))
+	(slot generos (type INTEGER)
+								(default 0))
+	(slot temas (type INTEGER)
+								(default 0))
 )
 
 (deftemplate refinamiento-solucion::solucion-concreta
@@ -2628,6 +2634,26 @@
 	;(printout t crlf)
     (send ?m delete)
     ;(retract ?m)   
+)
+
+(defrule asociacion-heuristica::calcula-coincidencias
+	(declare (salience 9))
+	?m <- (object (is-a Manga) (pertenece-a $?generos) (trata-de $?temas))
+	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
+	=>
+	(bind ?count-gen 0)
+	(progn$ (?gen ?generos)
+		(if (member$ ?gen $?pgeneros)
+			(bind ?count-gen (+ ?count-gen 1))
+		)
+	)
+	(bind ?count-tem 0)
+	(progn$ (?tem ?temas)
+		(if (member$ ?tem $?ptemas)
+			(bind ?count-tem (+ ?count-tem 1))
+		)
+	)
+	assert(datos-manga (manga ?m) (generos ?count-gen) (temas ?count-tem))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;; Asociacion heuristica sin preferencias ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
