@@ -117,8 +117,8 @@
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    (multislot escribe
-        (type INSTANCE)
+    (slot nombre
+        (type STRING)
         (create-accessor read-write))
 )
 
