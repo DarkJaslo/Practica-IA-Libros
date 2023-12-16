@@ -2656,9 +2656,92 @@
 	assert(datos-manga (manga ?m) (generos ?count-gen) (temas ?count-tem))
 )
 
-;;;;;;;;;;;;;;;;;;;;;;; Asociacion heuristica sin preferencias ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;; Asociacion heuristica general (sin preferencias) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; reglas generales aqui
+;Si coinciden 1 o mas generos/temas y excelente valoracion --> recomendar
+(defrule asociacion-heuristica::general-1match-excelente
+	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	(test (not (member$ ?m $?rec)))
+	(test (> ?val ?*asoc_excelente*))
+	;FALTA COMPROBAR MATCHES GENEROS Y TEMAS
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+)
+
+;Si coinciden 2 o más generos/temas y buena valoracion --> recomendar
+(defrule asociacion-heuristica::general-2match-bueno
+	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	(test (not (member$ ?m $?rec)))
+	(test (> ?val ?*asoc_bueno*))
+	;FALTA COMPROBAR MATCHES GENEROS Y TEMAS
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+)
+
+;Si coinciden 4 o mas géneros/temas y valoracion normal --> recomendar
+(defrule asociacion-heuristica::general-4match-normal
+	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	(test (not (member$ ?m $?rec)))
+	(test (> ?val ?*asoc_normal*))
+	;FALTA COMPROBAR MATCHES GENEROS Y TEMAS
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+)
+
+;Si coinciden 6 o mas generos/temas y mala valoracion --> recomendar
+(defrule asociacion-heuristica::general-6match-malo
+	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	(test (not (member$ ?m $?rec)))
+	(test (> ?val ?*asoc_malo*))
+	;FALTA COMPROBAR MATCHES GENEROS Y TEMAS
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+)
+
+;Si la persona lee pocos mangas, el manga es popular o mas, 
+;coincide en al menos 1 genero/tema y valoración normal o mejor --> recomendar
+(defrule asociacion-heuristica::general-lee-pocos-popular
+	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas) (mangas-leidos pocos))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	(test (not (member$ ?m $?rec)))
+	(test (> ?copias ?*asoc_popular*))
+	(test (> ?val ?*asoc_normal*))
+	;FALTA COMPROBAR MATCHES GENEROS Y TEMAS
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+)
+
+;Si la persona lee bastantes mangas, el manga es conocido,
+;coincide al menos 1 genero/tema y valoracion normal o mejor --> recomendar
+(defrule asociacion-heuristica::general-lee-bastantes-conocido
+	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas) (mangas-leidos bastantes))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	(test (not (member$ ?m $?rec)))
+	(test (> ?copias ?*asoc_conocido*))
+	(test (> ?val ?*asoc_normal*))
+	;FALTA COMPROBAR MATCHES GENEROS Y TEMAS
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+)
+
+;Si la persona lee muchos mangas, el manga es desconocido
+;coincide al menos 1 genero/tema y valoracion normal o mejor --> recomendar
+(defrule asociacion-heuristica::general-lee-muchos-desconocido
+	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas) (mangas-leidos muchos))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	(test (not (member$ ?m $?rec)))
+	(test (> ?copias ?*asoc_desconocido*))
+	(test (> ?val ?*asoc_normal*))
+	;FALTA COMPROBAR MATCHES GENEROS Y TEMAS
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+)
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;; Asociacion heuristica con preferencias ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
