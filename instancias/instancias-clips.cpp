@@ -444,7 +444,7 @@ void printAutores()
         cout << "([" << nombreClips << "] of Autor\n";
         cout << "\t(nombre  \"" << autoresNormal[nombreClips] << "\")\n";
 
-        for(const MangaYAutoria& manga : mangasClips)
+        /*for(const MangaYAutoria& manga : mangasClips)
         {
             if(manga.escribe)
             {
@@ -454,7 +454,7 @@ void printAutores()
             {
                 cout << "\t(ilustra  [" << titulosClips[manga.nombre] << "])\n";
             }
-        }
+        }*/
         cout << ")\n";
     }
 }
