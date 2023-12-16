@@ -2490,7 +2490,7 @@
 (defrule abstraccion-problema::generos-preferidos
 	(not (preferencia-generos-hecho))
     ?usr <- (problema-abstracto (preferencia-generos $?absGen))
-    (usuario (gusto-generos ?gen))
+    (usuario (gusto-generos $?gen))
     =>
     (modify ?usr (preferencia-generos (create$ ?gen ?absGen)))
 	(assert (preferencia-generos-hecho))
@@ -2500,7 +2500,7 @@
 (defrule abstraccion-problema::temas-preferidos
 	(not (preferencia-temas-hecho))
     ?usr <- (problema-abstracto (preferencia-temas $?absTem))
-    (usuario (gusto-temas ?tem))
+    (usuario (gusto-temas $?tem))
     =>
     (modify ?usr (preferencia-temas (create$ ?tem ?absTem)))
 	(assert (preferencia-temas-hecho))
@@ -2565,20 +2565,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;; Modulo de asociacion heuristica ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; Esta funcion no es legal, hay que calcularlo en una regla
-(deffunction asociacion-heuristica::cuenta-matches (?multislot1 ?multislot2)
-  (bind ?count 0) ; Initializing a variable to store the count of matching elements
-  (loop-for-count (?i (length$ ?multislot1)) ; Loop through elements of the first multislot
-    (loop-for-count (?j (length$ ?multislot2)) ; Loop through elements of the second multislot
-      (if (eq (nth$ ?i ?multislot1) (nth$ ?j ?multislot2)) ; Check if elements match
-        then
-          (bind ?count (+ ?count 1)) ; Increment count if elements match
-      )
-    )
-  )
-  ?count ; Return the final count of matching elements
-)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Control de reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -2645,24 +2631,19 @@
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
 	=>
 	(bind ?count-gen 0)
-	(loop-for-count (?i (length$ $?generos)) ; Loop through elements of the first multislot
-		(loop-for-count (?j (length$ $?pgeneros)) ; Loop through elements of the second multislot
-			(if (eq (nth$ ?i ?generos) (nth$ ?j ?pgeneros)) ; Check if elements match
-				then
-				(printout t "match genero" crlf)
-				(bind ?count-gen (+ ?count-gen 1)) ; Increment count if elements match
-			)
+	(progn$ (?gen ?generos)
+		(if (member$ ?gen ?pgeneros) then
+			(bind ?count-gen (+ ?count-gen 1))
 		)
 	)
 	(bind ?count-tem 0)
 	(progn$ (?tem ?temas)
 		(if (member$ ?tem ?ptemas) then
-			(printout t "match tema" crlf)
 			(bind ?count-tem (+ ?count-tem 1))
 		)
 	)
-	(format t "%s gen %d tem %d" ?t ?count-gen ?count-tem)
-	(printout t crlf)
+	;(format t "%s gen %d tem %d" ?t ?count-gen ?count-tem)
+	;(printout t crlf)
 	(assert(datos-manga (manga ?m) (generos ?count-gen) (temas ?count-tem)))
 )
 
@@ -2764,20 +2745,21 @@
 
 ; Si el usuario prefiere mangas sin anime, acabados y que sean doujinshis,
 ; Recomienda los que no esten valorados mal y coincidan al menos 1 genero o 1 tema
-;(defrule asociacion-heuristica::3-preferencias
-;	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (pertenece-a $?generos) (trata-de $?temas))
-;	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
-;	?sol <- (solucion-abstracta (recomendables $?rec))
-;	(test (not (member$ ?m $?rec)))
-;	; Esto no funciona
-;	(bind ?res1 (cuenta-matches $?generos $?pgeneros))
-;	(bind ?res2 (cuenta-matches $?temas $?ptemas))
-;	(test (> (+ ?res1 ?res2) 0))
-;	=>
-;	(modify ?sol (recomendables $?rec ?m))
-;	(format t "El manga %s entra por match" ?t)
-;	(printout t crlf)
-;)
+(defrule asociacion-heuristica::3-preferencias
+	?dat <- (datos-manga (manga ?m))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (pertenece-a $?generos) (trata-de $?temas))
+	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (not (member$ ?m $?rec)))
+	; Esto no funciona
+	(bind ?res1 (cuenta-matches $?generos $?pgeneros))
+	(bind ?res2 (cuenta-matches $?temas $?ptemas))
+	(test (> (+ ?res1 ?res2) 0))
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+	(format t "El manga %s entra por match" ?t)
+	(printout t crlf)
+)
 
 ; Recomienda si es excelente y extremadamente popular
 (defrule asociacion-heuristica::muy-bueno-muy-popular
