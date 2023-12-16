@@ -1,11 +1,12 @@
-Redirigir entradas en clips no va, tendremos que probarlos a mano
-
+(load ../recomendador.clp)
 (reset)
 (run)
-edad: 20
-mangas leidos: bastantes
-generos: 2
-temas: 1
-mang acabados: no
-mang sin anime: no
-mang doujinshi: no
+20
+bastantes
+2
+1
+no
+no
+no
+no
+(exit)

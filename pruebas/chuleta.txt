@@ -1,0 +1,14 @@
+-----Ejecutar con (batch nombreArchivo) desde la carpeta pruebas------
+
+(load ../recomendador.clp)
+(reset)
+(run)
+edad: 20
+mangas leidos: pocos/bastantes/muchos
+generos: 1 2 3
+temas: 1 2 3
+manga acabados: si/no
+manga sin anime: si/no
+manga doujinshi: si/no
+manga desagradables: si/no
+(exit)
