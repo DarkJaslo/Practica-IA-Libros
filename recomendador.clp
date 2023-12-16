@@ -2560,6 +2560,20 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;; Modulo de asociacion heuristica ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; Esta funcion no es legal, hay que calcularlo en una regla
+(deffunction asociacion-heuristica::cuenta-matches (?multislot1 ?multislot2)
+  (bind ?count 0) ; Initializing a variable to store the count of matching elements
+  (loop-for-count (?i (length$ ?multislot1)) ; Loop through elements of the first multislot
+    (loop-for-count (?j (length$ ?multislot2)) ; Loop through elements of the second multislot
+      (if (eq (nth$ ?i ?multislot1) (nth$ ?j ?multislot2)) ; Check if elements match
+        then
+          (bind ?count (+ ?count 1)) ; Increment count if elements match
+      )
+    )
+  )
+  ?count ; Return the final count of matching elements
+)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Control de reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Sobre la valoracion
@@ -2616,9 +2630,28 @@
     ;(retract ?m)   
 )
 
+;;;;;;;;;;;;;;;;;;;;;;; Asociacion heuristica con preferencias ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Si el usuario prefiere mangas sin anime, acabados y que sean doujinshis,
+; Recomienda los que no esten valorados mal y coincidan al menos 1 genero o 1 tema
+(defrule asociacion-heuristica::3-preferencias
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (pertenece-a $?generos) (trata-de $?temas))
+	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (not (member$ ?m $?rec)))
+	; Esto no funciona
+	(bind ?res1 (cuenta-matches $?generos $?pgeneros))
+	(bind ?res2 (cuenta-matches $?temas $?ptemas))
+	(test (> (+ ?res1 ?res2) 0))
+	=>
+	(modify ?sol (recomendables $?rec ?m))
+	(format t "El manga %s entra por match" ?t)
+	(printout t crlf)
+)
+
 ; Recomienda si es excelente y extremadamente popular
 (defrule asociacion-heuristica::muy-bueno-muy-popular
-	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (pertenece-a ?generos) (trata-de ?temas))
 	(test (> ?val ?*asoc_excelente*))
 	(test (> ?copias ?*asoc_extr_popular*))
 	?sol <- (solucion-abstracta (recomendables $?rec))
@@ -2757,4 +2790,21 @@
 ;        )
 ;    )
 ;    (return ?matches)
+;)
+
+; Devuelve la cantidad de elementos que conjunto1 comparte con conjunto2
+;(deffunction refinamiento-solucion::cuenta-matches (?conjunto1 ?conjunto2)
+;	(bind ?compartidos 0)
+;	; compara cada elemento de conjunto 1 con los 
+;	; elementos del conjunto 2 buscando coincidencias
+;	(loop-for-count ?i 1 (length$ ?conjunto1) do
+;		(bind ?elem1 (nth$ ?i ?conjunto1))
+;		(loop-for-count ?j 1 (length$ ?conjunto2) do
+;			(bind ?elem2 (nth? ?j ?conjunto2))
+;			(if (eq ?elem1 ?elem2) then
+;				(bind ?compartidos (+ ?compartidos 1))
+;			)
+;		)
+;	)
+;	(return ?compartidos)    
 ;)
