@@ -2245,7 +2245,7 @@
 )
 
 (deftemplate asociacion-heuristica::datos-manga
-	(slot manga (type INSTANCE))
+	(slot manga (type STRING))
 	(slot generos (type INTEGER)
 								(default 0))
 	(slot temas (type INTEGER)
@@ -2651,7 +2651,7 @@
 	)
 	;(format t "%s gen %d tem %d" ?t ?count-gen ?count-tem)
 	;(printout t crlf)
-	(assert(datos-manga (manga ?m) (generos ?count-gen) (temas ?count-tem)))
+	(assert(datos-manga (manga ?t) (generos ?count-gen) (temas ?count-tem)))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;; Asociacion heuristica general (sin preferencias) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2753,15 +2753,12 @@
 ; Si el usuario prefiere mangas sin anime, acabados y que sean doujinshis,
 ; Recomienda los que no esten valorados mal y coincidan al menos 1 genero o 1 tema
 (defrule asociacion-heuristica::3-preferencias
-	?dat <- (datos-manga (manga ?m))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (pertenece-a $?generos) (trata-de $?temas))
-	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
+	?usr <- (problema-abstracto)
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?m $?rec)))
-	; Esto no funciona
-	(bind ?res1 (cuenta-matches $?generos $?pgeneros))
-	(bind ?res2 (cuenta-matches $?temas $?ptemas))
-	(test (> (+ ?res1 ?res2) 0))
+	(test (> (+ ?match-gen ?match-tem) 0))
 	=>
 	(modify ?sol (recomendables $?rec ?m))
 	(format t "El manga %s entra por match" ?t)
