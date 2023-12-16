@@ -2636,24 +2636,34 @@
     ;(retract ?m)   
 )
 
+
+
+
 (defrule asociacion-heuristica::calcula-coincidencias
 	(declare (salience 9))
-	?m <- (object (is-a Manga) (pertenece-a $?generos) (trata-de $?temas))
+	?m <- (object (is-a Manga) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
 	=>
 	(bind ?count-gen 0)
-	(progn$ (?gen ?generos)
-		(if (member$ ?gen $?pgeneros)
-			(bind ?count-gen (+ ?count-gen 1))
+	(loop-for-count (?i (length$ $?generos)) ; Loop through elements of the first multislot
+		(loop-for-count (?j (length$ $?pgeneros)) ; Loop through elements of the second multislot
+			(if (eq (nth$ ?i ?generos) (nth$ ?j ?pgeneros)) ; Check if elements match
+				then
+				(printout t "match genero" crlf)
+				(bind ?count-gen (+ ?count-gen 1)) ; Increment count if elements match
+			)
 		)
 	)
 	(bind ?count-tem 0)
 	(progn$ (?tem ?temas)
-		(if (member$ ?tem $?ptemas)
+		(if (member$ ?tem ?ptemas) then
+			(printout t "match tema" crlf)
 			(bind ?count-tem (+ ?count-tem 1))
 		)
 	)
-	assert(datos-manga (manga ?m) (generos ?count-gen) (temas ?count-tem))
+	(format t "%s gen %d tem %d" ?t ?count-gen ?count-tem)
+	(printout t crlf)
+	(assert(datos-manga (manga ?m) (generos ?count-gen) (temas ?count-tem)))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;; Asociacion heuristica general (sin preferencias) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2662,6 +2672,7 @@
 (defrule asociacion-heuristica::general-1match-excelente
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?m $?rec)))
 	(test (> ?val ?*asoc_excelente*))
 	;FALTA COMPROBAR MATCHES GENEROS Y TEMAS
@@ -2673,6 +2684,7 @@
 (defrule asociacion-heuristica::general-2match-bueno
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?m $?rec)))
 	(test (> ?val ?*asoc_bueno*))
 	;FALTA COMPROBAR MATCHES GENEROS Y TEMAS
@@ -2684,6 +2696,7 @@
 (defrule asociacion-heuristica::general-4match-normal
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?m $?rec)))
 	(test (> ?val ?*asoc_normal*))
 	;FALTA COMPROBAR MATCHES GENEROS Y TEMAS
@@ -2695,6 +2708,7 @@
 (defrule asociacion-heuristica::general-6match-malo
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?m $?rec)))
 	(test (> ?val ?*asoc_malo*))
 	;FALTA COMPROBAR MATCHES GENEROS Y TEMAS
@@ -2707,6 +2721,7 @@
 (defrule asociacion-heuristica::general-lee-pocos-popular
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas) (mangas-leidos pocos))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?m $?rec)))
 	(test (> ?copias ?*asoc_popular*))
 	(test (> ?val ?*asoc_normal*))
@@ -2720,6 +2735,7 @@
 (defrule asociacion-heuristica::general-lee-bastantes-conocido
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas) (mangas-leidos bastantes))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?m $?rec)))
 	(test (> ?copias ?*asoc_conocido*))
 	(test (> ?val ?*asoc_normal*))
@@ -2733,6 +2749,7 @@
 (defrule asociacion-heuristica::general-lee-muchos-desconocido
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas) (mangas-leidos muchos))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?m $?rec)))
 	(test (> ?copias ?*asoc_desconocido*))
 	(test (> ?val ?*asoc_normal*))
@@ -2747,20 +2764,20 @@
 
 ; Si el usuario prefiere mangas sin anime, acabados y que sean doujinshis,
 ; Recomienda los que no esten valorados mal y coincidan al menos 1 genero o 1 tema
-(defrule asociacion-heuristica::3-preferencias
-	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (pertenece-a $?generos) (trata-de $?temas))
-	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
-	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (not (member$ ?m $?rec)))
-	; Esto no funciona
-	(bind ?res1 (cuenta-matches $?generos $?pgeneros))
-	(bind ?res2 (cuenta-matches $?temas $?ptemas))
-	(test (> (+ ?res1 ?res2) 0))
-	=>
-	(modify ?sol (recomendables $?rec ?m))
-	(format t "El manga %s entra por match" ?t)
-	(printout t crlf)
-)
+;(defrule asociacion-heuristica::3-preferencias
+;	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (pertenece-a $?generos) (trata-de $?temas))
+;	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
+;	?sol <- (solucion-abstracta (recomendables $?rec))
+;	(test (not (member$ ?m $?rec)))
+;	; Esto no funciona
+;	(bind ?res1 (cuenta-matches $?generos $?pgeneros))
+;	(bind ?res2 (cuenta-matches $?temas $?ptemas))
+;	(test (> (+ ?res1 ?res2) 0))
+;	=>
+;	(modify ?sol (recomendables $?rec ?m))
+;	(format t "El manga %s entra por match" ?t)
+;	(printout t crlf)
+;)
 
 ; Recomienda si es excelente y extremadamente popular
 (defrule asociacion-heuristica::muy-bueno-muy-popular
