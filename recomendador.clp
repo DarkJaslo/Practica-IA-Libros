@@ -2911,9 +2911,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Control de reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Sobre la valoracion
-(defglobal ?*asoc_excelente* = 9.0)
+(defglobal ?*asoc_excelente* = 8.75)
 (defglobal ?*asoc_bueno* = 8.0)
-(defglobal ?*asoc_normal* = 6.0)
+(defglobal ?*asoc_normal* = 7.0)
 (defglobal ?*asoc_malo* = 0.0)
 
 ; Sobre la popularidad
@@ -3021,18 +3021,18 @@
 	(printout t crlf)
 )
 
-;Si coinciden 2 o más generos/temas y buena valoracion --> recomendar
-(defrule asociacion-heuristica::general-2match-bueno
+;Si coinciden 3 o más generos/temas y buena valoracion --> recomendar
+(defrule asociacion-heuristica::general-3match-bueno
 	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?dat $?rec)))
 	(test (> ?val ?*asoc_bueno*))
-	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
+	(test (> (+ ?match-gen ?match-tem) 2)) ; 3 matches
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por 2match val>bueno" ?t)
+	(format t "El manga %s entra por 3match val>bueno" ?t)
 	(printout t crlf)
 )
 
@@ -3067,7 +3067,7 @@
 )
 
 ;Si la persona lee pocos mangas, el manga es popular o mas, 
-;coincide en al menos 2 generos/temas y valoración normal o mejor --> recomendar
+;coincide en al menos 3 generos/temas y valoración normal o mejor --> recomendar
 (defrule asociacion-heuristica::general-lee-pocos-popular
 	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas) (mangas-leidos pocos))
@@ -3076,7 +3076,7 @@
 	(test (not (member$ ?dat $?rec)))
 	(test (> ?copias ?*asoc_popular*))
 	(test (> ?val ?*asoc_normal*))
-	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
+	(test (> (+ ?match-gen ?match-tem) 2)) ; 3 matches
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
 	(format t "El manga %s entra por leer pocos, manga popular>, 2 match valoracion normal>" ?t)
@@ -3227,8 +3227,25 @@
 )
 
 ; User prefiere acabados
-; Recomienda el que sea bueno, 2 matches
+; Recomienda el que sea bueno, 3 matches
 (defrule asociacion-heuristica::1-pref-acabado-matches
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (estado-publicacion ?epubl))
+	?usr <- (problema-abstracto (prefiere-acabados TRUE))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (eq ?epubl "acabado")) ; comprueba acabado
+	(test (> (+ ?match-gen ?match-tem) 2)) ; 3 matches
+	(test (> ?val ?*asoc_bueno*)) ; Bueno
+	(test (not (member$ ?dat $?rec)))
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por acabado 3 matches" ?t)
+	(printout t crlf)
+)
+
+; User prefiere acabado
+; Recomienda el que sea bueno, popular, 2 matches
+(defrule asociacion-heuristica::1-pref-acabado-popular
 	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (estado-publicacion ?epubl))
 	?usr <- (problema-abstracto (prefiere-acabados TRUE))
@@ -3236,28 +3253,11 @@
 	(test (eq ?epubl "acabado")) ; comprueba acabado
 	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
 	(test (> ?val ?*asoc_bueno*)) ; Bueno
-	(test (not (member$ ?dat $?rec)))
-	=>
-	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por acabado 2 matches" ?t)
-	(printout t crlf)
-)
-
-; User prefiere acabado
-; Recomienda el que sea bueno, popular, 1 match
-(defrule asociacion-heuristica::1-pref-acabado-popular
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
-	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (estado-publicacion ?epubl))
-	?usr <- (problema-abstracto (prefiere-acabados TRUE))
-	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (eq ?epubl "acabado")) ; comprueba acabado
-	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
-	(test (> ?val ?*asoc_bueno*)) ; Bueno
 	(test (> ?copias ?*asoc_popular*)) ; Popular
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por acabado 1 match popular" ?t)
+	(format t "El manga %s entra por acabado 2 matches popular" ?t)
 	(printout t crlf)
 )
 
