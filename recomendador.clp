@@ -3004,6 +3004,127 @@
 	(assert(datos-manga (manga ?t) (generos ?count-gen) (temas ?count-tem)))
 )
 
+;;;;;;;;;;;;;;;;;;;;;;; Reglas red ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+; Recomienda matches de 2 muy bien valorados
+(defrule asociacion-heuristica::regla-red-2-match-excel
+	(declare (salience -10))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?m <- (object (is-a Manga) (titulo ?t) (valoracion ?val))
+	?usr <- (problema-abstracto)
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (< (length$ ?rec) 4))
+	(test (not (member$ ?dat $?rec)))
+	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
+	(test (> ?val ?*asoc_excelente*)) ; Excelente
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+)
+
+; Recomienda matches de 2 bien valorados
+(defrule asociacion-heuristica::regla-red-2-match-bueno
+	(declare (salience -15))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?m <- (object (is-a Manga) (titulo ?t) (valoracion ?val))
+	?usr <- (problema-abstracto)
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (< (length$ ?rec) 4))
+	(test (not (member$ ?dat $?rec)))
+	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
+	(test (> ?val ?*asoc_bueno*)) ; Bien valorado
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+)
+
+; Recomienda matches de 2 populares
+(defrule asociacion-heuristica::regla-red-2-match-popular
+	(declare (salience -15))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?m <- (object (is-a Manga) (titulo ?t) (copias-vendidas ?copias))
+	?usr <- (problema-abstracto)
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (< (length$ ?rec) 4))
+	(test (not (member$ ?dat $?rec)))
+	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
+	(test (> ?copias ?*asoc_popular*)) ; popular
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+)
+
+; Recomienda matches de 1 muy bien valorados
+(defrule asociacion-heuristica::regla-red-1-match-excel
+	(declare (salience -20))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?m <- (object (is-a Manga) (titulo ?t) (valoracion ?val))
+	?usr <- (problema-abstracto)
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (< (length$ ?rec) 4))
+	(test (not (member$ ?dat $?rec)))
+	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	(test (> ?val ?*asoc_excelente*)) ; Excelente
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+)
+
+; Recomienda matches de 1 bien valorados
+(defrule asociacion-heuristica::regla-red-1-match-bueno
+	(declare (salience -25))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?m <- (object (is-a Manga) (titulo ?t) (valoracion ?val))
+	?usr <- (problema-abstracto)
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (< (length$ ?rec) 4))
+	(test (not (member$ ?dat $?rec)))
+	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	(test (> ?val ?*asoc_bueno*)) ; Bien valorado
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+)
+
+; Recomienda matches de 1 bien valorados
+(defrule asociacion-heuristica::regla-red-1-match-popular
+	(declare (salience -25))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?m <- (object (is-a Manga) (titulo ?t) (valoracion ?val))
+	?usr <- (problema-abstracto)
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (< (length$ ?rec) 4))
+	(test (not (member$ ?dat $?rec)))
+	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	(test (> ?copias ?*asoc_popular*)) ; popular
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+)
+
+
+; Recomienda matches de 1
+(defrule asociacion-heuristica::regla-red-1-match
+	(declare (salience -40))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?m <- (object (is-a Manga) (titulo ?t))
+	?usr <- (problema-abstracto)
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (< (length$ ?rec) 4))
+	(test (not (member$ ?dat $?rec)))
+	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+)
+
+; Recomienda cualquier manga
+(defrule asociacion-heuristica::regla-red
+	(declare (salience -50))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?m <- (object (is-a Manga) (titulo ?t))
+	?usr <- (problema-abstracto)
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (< (length$ ?rec) 4))
+	(test (not (member$ ?dat $?rec)))
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+)
+
 ;;;;;;;;;;;;;;;;;;;;;;; Asociacion heuristica general (sin preferencias) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;Si coinciden 2 o mas generos/temas y excelente valoracion --> recomendar
