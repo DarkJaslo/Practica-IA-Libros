@@ -1,0 +1,20 @@
+; Esto es lo que podria ponerle yo al recomendador (acierta bastante)
+
+(load ../recomendador.clp)
+(reset)
+(run)
+20
+muchos
+; accion, aventura, sci-fi, fantasia, psicologico, Sobrenatural
+1 2 3 7 10 13
+
+; superpoderes, tradicional japones
+29 31
+
+no
+; Sin anime
+si
+; Acabados prefiere
+si
+no
+(exit)
