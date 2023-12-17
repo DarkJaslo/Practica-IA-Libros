@@ -42,9 +42,8 @@ JoJo no Kimyou na bouken part 4: Diamond wa kudakenai
 Hirohiko Araki
 Hirohiko Araki
 Shueisha
-4
+3
 Accion
-Slice of life
 Misterio
 Sobrenatural
 2
@@ -338,10 +337,9 @@ Yu Yu Hakusho
 Yoshihiro Togashi
 Yoshihiro Togashi
 Shueisha
-5
+4
 Accion
 Comedia
-Drama
 Fantasia
 Sobrenatural
 2
@@ -417,7 +415,7 @@ Assassination Classroom
 Yuusei Matsui
 Yuusei Matsui
 Shueisha
-2
+4
 Accion
 Comedia
 Drama
@@ -902,7 +900,7 @@ Accion
 Aventura
 Ciencia ficcion
 Comedia
-1
+2
 Robots
 Espacio exterior
 s 10 65 8000000 m ac 1m 2007-04-27 a y 7.95 12
