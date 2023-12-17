@@ -1,0 +1,16 @@
+; Esto es lo que podria ponerle yo al recomendador
+
+(load ../recomendador.clp)
+(reset)
+(run)
+20
+muchos
+4 6 11
+
+8 21 27 38 39
+
+si
+si
+si
+no
+(exit)
