@@ -2565,11 +2565,11 @@
 								(default 0))
 )
 
-(deftemplate refinamiento-solucion::solucion-concreta
-	(multislot tematica (type INSTANCE))
-	(multislot valoracion (type INSTANCE))
-	(multislot restricciones (type INSTANCE))
-)
+;(deftemplate refinamiento-solucion::solucion-concreta
+;	(multislot tematica (type INSTANCE))
+;	(multislot valoracion (type INSTANCE))
+;	(multislot restricciones (type INSTANCE))
+;)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -3301,16 +3301,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Control de reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;; Coincidencia generos y temas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(deftemplate refinamiento-solucion::counter
-   (slot num-recomendados (type INTEGER) (default 0))
-   (slot total-recomendables (type INTEGER))
-)
+;(deftemplate refinamiento-solucion::counter
+;   (slot num-recomendados (type INTEGER) (default 0))
+;   (slot total-recomendables (type INTEGER))
+;)
 
-(defrule refinamiento-solucion::crea-solucion-concreta
-  (not (solucion-concreta))
-  =>
-	(assert (solucion-concreta))
-)
+;(defrule refinamiento-solucion::crea-solucion-concreta
+;  (not (solucion-concreta))
+;  =>
+;	(assert (solucion-concreta))
+;)
 
 (defrule refinamiento-solucion::coincidencia-7
   (declare (salience 10))
@@ -3323,6 +3323,7 @@
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
+  (send ?m delete)
   (assert (recomendacion-coincidencia))
 )
 
@@ -3337,6 +3338,7 @@
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
+  (send ?m delete)
   (assert (recomendacion-coincidencia))
 )
 
@@ -3351,6 +3353,7 @@
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
+  (send ?m delete)
   (assert (recomendacion-coincidencia))
 )
 
@@ -3365,6 +3368,7 @@
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
+  (send ?m delete)
   (assert (recomendacion-coincidencia))
 )
 
@@ -3379,6 +3383,7 @@
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
+  (send ?m delete)
   (assert (recomendacion-coincidencia))
 )
 
@@ -3452,3 +3457,4 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Auxiliares ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
