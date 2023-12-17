@@ -2230,6 +2230,9 @@
     (slot quiere-doujinshis (type SYMBOL)
                             (allowed-values TRUE FALSE)
                             (default FALSE))
+	(slot no-violentos 		(type SYMBOL)
+							(allowed-values TRUE FALSE)
+							(default TRUE))
     (multislot preferencia-generos (type INSTANCE))
     (multislot preferencia-temas (type INSTANCE))
 )
@@ -2560,6 +2563,24 @@
 	(modify ?usr (quiere-doujinshis FALSE))
 	(assert (quiere-doujinshis-hecho))
 )
+; Violencia ok
+(defrule abstraccion-problema::violencia-ok
+	(not (violencia-hecho))
+	(usuario (prefiere-no-violentos FALSE))
+	?usr <- (problema-abstracto)
+	=>
+	(modify ?usr (no-violentos FALSE))
+	(assert (violencia-hecho))
+)
+; Violencia no ok
+(defrule abstraccion-problema::violencia-no-ok
+	(not (violencia-hecho))
+	(usuario (prefiere-no-violentos TRUE))
+	?usr <- (problema-abstracto)
+	=>
+	(modify ?usr (no-violentos TRUE))
+	(assert (violencia-hecho))
+)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;; Modulo de asociacion heuristica ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2595,7 +2616,6 @@
 	;(format t "Manga %s fuera" ?t)
 	;(printout t crlf)
     (send ?m delete)
-    ;(retract ?m)   
 )
 (defrule asociacion-heuristica::elimina-mas-dieciseis
     (declare (salience 10))
@@ -2605,8 +2625,7 @@
     =>
 	;(format t "Manga %s fuera" ?t)
 	;(printout t crlf)
-    (send ?m delete)
-    ;(retract ?m)   
+    (send ?m delete) 
 )
 (defrule asociacion-heuristica::elimina-mas-dieciocho
     (declare (salience 10))
@@ -2617,11 +2636,28 @@
 	;(format t "Manga %s fuera" ?t)
 	;(printout t crlf)
     (send ?m delete)
-    ;(retract ?m)   
 )
 
-; Faltan reglas para excluir material violento o turbio
-
+; Si el usuario no quiere, hay que quitar material en general muy violento o perturbador
+(defrule asociacion-heuristica::elimina-violencia-temas-turbios
+	(declare (salience 8))
+	(problema-abstracto (no-violentos TRUE))
+	?m <- (object (is-a Manga) (restriccion-edad ?restr) (titulo ?t) (pertenece-a $?generos) (trata-de $?temas))
+	(test (or (> ?restr 17)
+			  (member$ [gore] $?temas)
+			  (member$ [horror] $?generos)
+			  (member$ [guerra] $?temas)
+			  (member$ [venganza] $?temas)
+			  (member$ [postapocaliptico] $?temas)
+			  (member$ [tragedia] $?temas)
+			  (member$ [vampiros] $?temas)
+		  )
+	)
+	=>
+	;(format t "Manga %s fuera" ?t)
+	;(printout t crlf)
+    (send ?m delete)
+)
 
 (defrule asociacion-heuristica::calcula-coincidencias
 	(declare (salience 5))
@@ -2647,7 +2683,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;; Asociacion heuristica general (sin preferencias) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;Si coinciden 1 o mas generos/temas y excelente valoracion --> recomendar
+;Si coinciden 2 o mas generos/temas y excelente valoracion --> recomendar
 (defrule asociacion-heuristica::general-1match-excelente
 	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
@@ -2655,10 +2691,10 @@
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?dat $?rec)))
 	(test (> ?val ?*asoc_excelente*))
-	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por 1 match val>excelente" ?t)
+	(format t "El manga %s entra por 2 match val>excelente" ?t)
 	(printout t crlf)
 )
 
@@ -2708,7 +2744,7 @@
 )
 
 ;Si la persona lee pocos mangas, el manga es popular o mas, 
-;coincide en al menos 1 genero/tema y valoración normal o mejor --> recomendar
+;coincide en al menos 2 generos/temas y valoración normal o mejor --> recomendar
 (defrule asociacion-heuristica::general-lee-pocos-popular
 	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas) (mangas-leidos pocos))
@@ -2717,10 +2753,10 @@
 	(test (not (member$ ?dat $?rec)))
 	(test (> ?copias ?*asoc_popular*))
 	(test (> ?val ?*asoc_normal*))
-	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por leer pocos, manga popular>, 1 match valoracion normal>" ?t)
+	(format t "El manga %s entra por leer pocos, manga popular>, 2 match valoracion normal>" ?t)
 	(printout t crlf)
 )
 
