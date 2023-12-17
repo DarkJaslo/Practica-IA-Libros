@@ -1774,6 +1774,120 @@
 	(valoracion  8.88)
 	(restriccion-edad  16)
 )
+([love-live-school-idol-project] of Serializado
+	(titulo  "Love Live! School Idol Project")
+	(publicado-por  [ascii-media-works])
+	(escrito-por  [sakurako-kimino])
+	(ilustrado-por  [arumi-tokita])
+	(pertenece-a  [slice-of-life])
+	(trata-de  [escolar]  [idols]  [musica])
+	(tomos  5)
+	(capitulos  43)
+	(copias-vendidas  2000000)
+	(dificultad-lectura  "baja")
+	(estado-publicacion  "en pausa")
+	(frecuencia-publicacion  "mensual")
+	(inicio-publicacion  "2012-01-30")
+	(metodo-distribucion  "fisico")
+	(tiene-anime  TRUE)
+	(valoracion  7.5)
+	(restriccion-edad  7)
+)
+([the-idolmaster] of Serializado
+	(titulo  "The iDOLMASTER")
+	(publicado-por  [publ-tatsuya-takahashi])
+	(escrito-por  [tatsuya-takahashi])
+	(ilustrado-por  [tatsuya-takahashi])
+	(pertenece-a  [comedia]  [drama])
+	(trata-de  [idols]  [musica])
+	(tomos  6)
+	(capitulos  42)
+	(copias-vendidas  100000)
+	(dificultad-lectura  "baja")
+	(estado-publicacion  "acabado")
+	(frecuencia-publicacion  "mensual")
+	(inicio-publicacion  "2012-08-27")
+	(metodo-distribucion  "fisico")
+	(tiene-anime  FALSE)
+	(valoracion  7.6)
+	(restriccion-edad  12)
+)
+([aikatsu] of Serializado
+	(titulo  "Aikatsu!")
+	(publicado-por  [publ-sunrise])
+	(escrito-por  [sunrise])
+	(ilustrado-por  [sunrise])
+	(pertenece-a  [slice-of-life])
+	(trata-de  [escolar]  [idols]  [musica])
+	(tomos  3)
+	(capitulos  28)
+	(copias-vendidas  40000)
+	(dificultad-lectura  "baja")
+	(estado-publicacion  "acabado")
+	(frecuencia-publicacion  "irregular")
+	(inicio-publicacion  "2012-10-08")
+	(metodo-distribucion  "ambos")
+	(tiene-anime  FALSE)
+	(valoracion  7.49)
+	(restriccion-edad  3)
+)
+([sword-art-online] of Serializado
+	(titulo  "Sword Art Online")
+	(publicado-por  [publ-reki-kawahara])
+	(escrito-por  [reki-kawahara])
+	(ilustrado-por  [reki-kawahara])
+	(pertenece-a  [accion]  [aventura]  [fantasia]  [romance])
+	(trata-de  [isekai]  [triangulo-amoroso]  [videojuegos])
+	(tomos  10)
+	(capitulos  72)
+	(copias-vendidas  200000)
+	(dificultad-lectura  "media")
+	(estado-publicacion  "acabado")
+	(frecuencia-publicacion  "mensual")
+	(inicio-publicacion  "2009-04-10")
+	(metodo-distribucion  "ambos")
+	(tiene-anime  FALSE)
+	(valoracion  7.99)
+	(restriccion-edad  12)
+)
+([accel-world] of Serializado
+	(titulo  "Accel World")
+	(publicado-por  [publ-reki-kawahara])
+	(escrito-por  [reki-kawahara])
+	(ilustrado-por  [reki-kawahara])
+	(pertenece-a  [accion]  [ciencia-ficcion]  [romance])
+	(trata-de  [escolar]  [robots]  [superpoderes]  [videojuegos])
+	(tomos  8)
+	(capitulos  45)
+	(copias-vendidas  80000)
+	(dificultad-lectura  "media")
+	(estado-publicacion  "acabado")
+	(frecuencia-publicacion  "mensual")
+	(inicio-publicacion  "2010-04-10")
+	(metodo-distribucion  "fisico")
+	(tiene-anime  FALSE)
+	(valoracion  7.25)
+	(restriccion-edad  12)
+)
+([yamada-kun-to-lv999-no-koi-wo-suru] of Serializado
+	(titulo  "Yamada-kun to Lv999 no Koi wo Suru")
+	(publicado-por  [publ-mashiro])
+	(escrito-por  [mashiro])
+	(ilustrado-por  [mashiro])
+	(pertenece-a  [romance])
+	(trata-de  [videojuegos])
+	(tomos  8)
+	(capitulos  72)
+	(copias-vendidas  3000000)
+	(dificultad-lectura  "baja")
+	(estado-publicacion  "en publicacion")
+	(frecuencia-publicacion  "mensual")
+	(inicio-publicacion  "2019-03-07")
+	(metodo-distribucion  "fisico")
+	(tiene-anime  FALSE)
+	(valoracion  8.15)
+	(restriccion-edad  7)
+)
 
 ; Autores
 
@@ -1797,6 +1911,9 @@
 )
 ([akimi-yoshida] of Autor
 	(nombre  "Akimi Yoshida")
+)
+([arumi-tokita] of Autor
+	(nombre  "Arumi Tokita")
 )
 ([boichi] of Autor
 	(nombre  "Boichi")
@@ -1921,6 +2038,9 @@
 ([masashi-kishimoto] of Autor
 	(nombre  "Masashi Kishimoto")
 )
+([mashiro] of Autor
+	(nombre  "Mashiro")
+)
 ([mengo-yokoyari] of Autor
 	(nombre  "Mengo Yokoyari")
 )
@@ -1975,6 +2095,9 @@
 ([reiji-miyajima] of Autor
 	(nombre  "Reiji Miyajima")
 )
+([reki-kawahara] of Autor
+	(nombre  "Reki Kawahara")
+)
 ([riichiro-inagaki] of Autor
 	(nombre  "Riichiro Inagaki")
 )
@@ -1989,6 +2112,9 @@
 )
 ([sakae-esuno] of Autor
 	(nombre  "Sakae Esuno")
+)
+([sakurako-kimino] of Autor
+	(nombre  "Sakurako Kimino")
 )
 ([shimahara] of Autor
 	(nombre  "Shimahara")
@@ -2008,6 +2134,9 @@
 ([sui-ishida] of Autor
 	(nombre  "Sui Ishida")
 )
+([sunrise] of Autor
+	(nombre  "Sunrise")
+)
 ([takeru-hokazono] of Autor
 	(nombre  "Takeru Hokazono")
 )
@@ -2022,6 +2151,9 @@
 )
 ([tatsuya-endou] of Autor
 	(nombre  "Tatsuya Endou")
+)
+([tatsuya-takahashi] of Autor
+	(nombre  "Tatsuya Takahashi")
 )
 ([tetsuya-tsutsui] of Autor
 	(nombre  "Tetsuya Tsutsui")
@@ -2122,8 +2254,20 @@
 ([publ-ema-tooyama] of Autopublicador
 	(nombre  "Ema Tooyama")
 )
+([publ-mashiro] of Autopublicador
+	(nombre  "Mashiro")
+)
+([publ-reki-kawahara] of Autopublicador
+	(nombre  "Reki Kawahara")
+)
 ([publ-shimahara] of Autopublicador
 	(nombre  "Shimahara")
+)
+([publ-sunrise] of Autopublicador
+	(nombre  "Sunrise")
+)
+([publ-tatsuya-takahashi] of Autopublicador
+	(nombre  "Tatsuya Takahashi")
 )
 ([publ-yuu-ishihara] of Autopublicador
 	(nombre  "Yuu Ishihara")
