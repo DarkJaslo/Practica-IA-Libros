@@ -2651,16 +2651,10 @@
 
 (deftemplate preguntas-usuario::usuario
     (slot edad (type INTEGER))
-    (slot ve-anime (type SYMBOL))
-    (slot leeria-anime-ya-visto (type SYMBOL)
-                                (default FALSE))
-    (slot mangas-leidos (type SYMBOL) ; esto lo cambiaria un poco
-                        (allowed-values pocos bastantes muchos))
-    (slot mangas-animes-vistos (type SYMBOL) ; esto lo cambiaria un poco
+    (slot mangas-leidos (type SYMBOL)
                         (allowed-values pocos bastantes muchos))
     (multislot gusto-generos (type INSTANCE))
     (multislot gusto-temas (type INSTANCE))
-    (slot tiempo-lectura (type INTEGER))
 		(slot prefiere-no-violentos (type SYMBOL)
                             		(allowed-values TRUE FALSE)
                             		(default FALSE))
@@ -2711,26 +2705,27 @@
 								(default 0))
 )
 
-;(deftemplate refinamiento-solucion::solucion-concreta
-;	(multislot tematica (type INSTANCE))
-;	(multislot valoracion (type INSTANCE))
-;	(multislot restricciones (type INSTANCE))
-;)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Main ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; Primera regla que se ejecuta en todo el programa
+; Para establecer que la estrategia de resolucion de conflictos (orden en 
+; el que se disparan reglas con misma saliencia) sea de forma aleatoria
+
+(defrule MAIN::set-estrategia
+	(declare (salience 100))
+	=>
+	(seed (nth$ 6 (local-time)))
+	(set-strategy random)
+)
+
 ; Aqui controlaremos en cambio entre los modulos del programa
 
-; Funcion que solo activa el modulo preguntas-usuario
-; salience para que se llame la primera
 (defrule MAIN::haz-preguntas-usuario
-    (declare (salience 10))
-    =>
-		(seed (nth$ 6 (local-time)))
-		(set-strategy random)
-    (focus preguntas-usuario)
+	(declare (salience 10))
+	=>
+	(focus preguntas-usuario)
 )
 (defrule MAIN::abstrae-problema
 	(declare (salience 9))
@@ -2759,25 +2754,18 @@
 )
 
 (defrule preguntas-usuario::pregunta-edad
-    ; control para que no se llame mas de una vez
     (not (edad-preguntada))
-    ; coge la direccion del fact usuario para modificarlo luego
     ?usr <- (usuario)
     =>
-    ; modifica la edad del usuario con el resultado que devuelve la funcion pregunta-numerica
     (modify ?usr (edad (pregunta-numerica "¿Cuantos años tienes?" 0 150)))
     (assert (edad-preguntada))
 )
 
 (defrule preguntas-usuario::pregunta-mangas-leidos
-    ; control orden
     (edad-preguntada)
-    ; control para que no se llame mas de una vez
     (not (mangas-leidos-preguntado))
-    ; coge la direccion del fact usuario para modificarlo luego
     ?usr <- (usuario)
     =>
-    ; modifica la edad del usuario con el resultado que devuelve la funcion pregunta-numerica
     (modify ?usr (mangas-leidos (pregunta-enum-comentario "¿Cuantos mangas has leido aproximadamente?" "pocos [0..10] bastantes [11..50] muchos [>51]" pocos bastantes muchos)))
     (assert (mangas-leidos-preguntado))
 )
@@ -2794,7 +2782,7 @@
 
 	; por cada genero guarda su nombre en nombres-gen
 	(progn$ (?gen ?generos)
-		(bind ?nombre (send ?gen get-nombre)) ; hace get del nombre del genero y lo guarda en ?nombre
+		(bind ?nombre (send ?gen get-nombre))
 		; insert$ devuelve la lista con el nombre nuevo insertado al final, y luego hace bind de esto en la variable
 		(bind $?nombres-gen(insert$ $?nombres-gen (+ (length$ $?nombres-gen) 1) ?nombre))
 	)
@@ -2814,7 +2802,6 @@
     (assert (generos-preguntado))
 )
 
-; esta puesta para que no salga del modulo y pueda comprobar que la de generos se ha hecho bien
 (defrule preguntas-usuario::pregunta-temas
     (generos-preguntado)
     (not (temas-preguntado))
@@ -2828,7 +2815,7 @@
 		(bind $?conj-nombres(insert$ $?conj-nombres (+ (length$ $?conj-nombres) 1) ?nombre))
 	)
 	
-	; devuelve los indices de los generos escogidos
+	; devuelve los indices de los temas escogidos
 	(bind ?respuesta (pregunta-multirespuesta "Escoge tus temas favoritos (separados por un espacio, o 0 si no tienes)" $?conj-nombres))
 
 	(bind $?instancias (create$))
@@ -3287,7 +3274,7 @@
 	?usr <- (problema-abstracto)
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (< (length$ ?rec) 3))
-	(test (> (?val ?*asoc_bueno*)))
+	(test (> ?val ?*asoc_bueno*))
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
@@ -3640,14 +3627,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;; Coincidencia generos y temas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (deftemplate refinamiento-solucion::counter
    (slot num-recomendados (type INTEGER) (default 0))
-   (slot total-recomendables (type INTEGER))
 )
 
 (defrule refinamiento-solucion::crea-solucion-concreta
-  (not (solucion-concreta))
+  (not (counter))
   =>
 	(assert (counter))
-	(assert (solucion-concreta))
 )
 
 ;(defrule refinamiento-solucion::coincidencia-7
@@ -3829,4 +3814,3 @@
   (send ?m delete)
 	(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
-
