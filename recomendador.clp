@@ -3058,8 +3058,8 @@
 
 ; Sobre la valoracion
 (defglobal ?*asoc_excelente* = 8.75)
-(defglobal ?*asoc_bueno* = 8.0)
-(defglobal ?*asoc_normal* = 7.0)
+(defglobal ?*asoc_bueno* = 7.5)
+(defglobal ?*asoc_normal* = 6.5)
 (defglobal ?*asoc_malo* = 0.0)
 
 ; Sobre la popularidad
@@ -3273,6 +3273,22 @@
 	(test (< (length$ ?rec) 3))
 	(test (not (member$ ?dat $?rec)))
 	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por regla red" ?t)
+	(printout t crlf)
+)
+
+; Recomienda cualquier manga bien valorado
+(defrule asociacion-heuristica::regla-red-bueno
+	(declare (salience -45))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?m <- (object (is-a Manga) (titulo ?t) (valoracion ?val))
+	?usr <- (problema-abstracto)
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (< (length$ ?rec) 3))
+	(test (> (?val ?*asoc_bueno*)))
+	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
 	(format t "El manga %s entra por regla red" ?t)
