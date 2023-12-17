@@ -1195,7 +1195,7 @@ Drama
 2
 Idols
 Musica
-s 6 42 100000 b ac 1m 2012-08-27 f y 7.60 12
+s 6 42 100000 b ac 1m 2012-08-27 f n 7.60 12
 
 Aikatsu!
 Sunrise
@@ -1207,7 +1207,7 @@ Slice of life
 Escolar
 Idols
 Musica
-3 28 40000 b ac ir 2012-10-08 a y 7.49 3
+3 28 40000 b ac ir 2012-10-08 a n 7.49 3
 
 Sword Art Online
 Reki Kawahara
@@ -1222,7 +1222,7 @@ Romance
 Isekai
 Triangulo amoroso
 Videojuegos
-s 10 72 200000 m ac 1m 2009-04-10 a y 7.99 12
+s 10 72 200000 m ac 1m 2009-04-10 a n 7.99 12
 
 Accel World
 Reki Kawahara
@@ -1237,4 +1237,14 @@ Escolar
 Robots
 Superpoderes
 Videojuegos
-s 8 45 80000 m ac 1m 2010-04-10 f y 7.25 12
+s 8 45 80000 m ac 1m 2010-04-10 f n 7.25 12
+
+Yamada-kun to Lv999 no Koi wo Suru
+Mashiro
+Mashiro
+Mashiro
+1
+Romance
+1
+Videojuegos
+s 8 72 3000000 b pu 1m 2019-03-07 f n 8.15 7
