@@ -2246,6 +2246,11 @@
 								(default 0))
 )
 
+(deftemplate refinamiento-solucion::solucion-concreta
+	(multislot tematica (type INSTANCE))
+	(multislot valoracion (type INSTANCE))
+	(multislot restricciones (type INSTANCE))
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -2947,79 +2952,154 @@
    (slot total-recomendables (type INTEGER))
 )
 
-(defrule refinamiento-solucion::coincidencia-7
-  (declare (salience 10))
-  (not (recomendacion-coincidencia))
+(defrule refinamiento-solucion::tematica-7
+  (declare (salience 100))
+	(not (recomendacion-tematica))
+
 	(solucion-abstracta (recomendables $?rec))
 	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
 	(test (member$ ?dat ?rec))
   ?m <- (object (is-a Manga) (titulo ?t))
   (test (>= (+ ?match-gen ?match-tem) 7))
+
+	?sol <- (solucion-concreta (tematica $?conj))
   =>
+	(modify ?sol (tematica $?conj ?m))
+	(assert (tematica-7))
+)
+
+(defrule refinamiento-solucion::recomienda-tematica-7
+	(declare (salience 95))
+	(not (recomendacion-tematica))
+	(solucion-concreta (tematica $?opciones))
+	(tematica-7)
+	=>
+	(bind ?index (random 1 (length$ ?opciones)))
+	(bind ?m (nth$ ?index ?opciones))
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
 	(send ?m delete)
-  (assert (recomendacion-coincidencia))
+  (assert (recomendacion-tematica))
 )
 
-(defrule refinamiento-solucion::coincidencia-6
-  (declare (salience 9))
-  (not (recomendacion-coincidencia))
+(defrule refinamiento-solucion::tematica-6
+  (declare (salience 90))
+	(not (recomendacion-tematica))
+
 	(solucion-abstracta (recomendables $?rec))
 	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
 	(test (member$ ?dat ?rec))
   ?m <- (object (is-a Manga) (titulo ?t))
   (test (>= (+ ?match-gen ?match-tem) 6))
+
+	?sol <- (solucion-concreta (tematica $?conj))
   =>
-	(printout t "Manga por coincidencia de generos y/o temas: ")
-	(send ?m print)
-  (send ?m delete)
-  (assert (recomendacion-coincidencia))
+	(modify ?sol (tematica $?conj ?m))
+	(assert (tematica-6))
 )
 
-(defrule refinamiento-solucion::coincidencia-5
-  (declare (salience 8))
-  (not (recomendacion-coincidencia))
+(defrule refinamiento-solucion::recomienda-tematica-6
+	(declare (salience 85))
+	(not (recomendacion-tematica))
+	(solucion-concreta (tematica $?opciones))
+	(tematica-6)
+	=>
+	(bind ?index (random 1 (length$ ?opciones)))
+	(bind ?m (nth$ ?index ?opciones))
+	(printout t "Manga por coincidencia de generos y/o temas: ")
+	(send ?m print)
+	(send ?m delete)
+  (assert (recomendacion-tematica))
+)
+
+(defrule refinamiento-solucion::tematica-5
+  (declare (salience 80))
+	(not (recomendacion-tematica))
+
 	(solucion-abstracta (recomendables $?rec))
 	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
 	(test (member$ ?dat ?rec))
   ?m <- (object (is-a Manga) (titulo ?t))
   (test (>= (+ ?match-gen ?match-tem) 5))
+
+	?sol <- (solucion-concreta (tematica $?conj))
   =>
-	(printout t "Manga por coincidencia de generos y/o temas: ")
-	(send ?m print)
-  (send ?m delete)
-  (assert (recomendacion-coincidencia))
+	(modify ?sol (tematica $?conj ?m))
+	(assert (tematica-5))
 )
 
-(defrule refinamiento-solucion::coincidencia-4
-  (declare (salience 7))
-  (not (recomendacion-coincidencia))
+(defrule refinamiento-solucion::recomienda-tematica-5
+	(declare (salience 75))
+	(not (recomendacion-tematica))
+	(solucion-concreta (tematica $?opciones))
+	(tematica-5)
+	=>
+	(bind ?index (random 1 (length$ ?opciones)))
+	(bind ?m (nth$ ?index ?opciones))
+	(printout t "Manga por coincidencia de generos y/o temas: ")
+	(send ?m print)
+	(send ?m delete)
+  (assert (recomendacion-tematica))
+)
+
+(defrule refinamiento-solucion::tematica-4
+  (declare (salience 70))
+	(not (recomendacion-tematica))
+
 	(solucion-abstracta (recomendables $?rec))
 	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
 	(test (member$ ?dat ?rec))
   ?m <- (object (is-a Manga) (titulo ?t))
   (test (>= (+ ?match-gen ?match-tem) 4))
+
+	?sol <- (solucion-concreta (tematica $?conj))
   =>
-	(printout t "Manga por coincidencia de generos y/o temas: ")
-	(send ?m print)
-  (send ?m delete)
-  (assert (recomendacion-coincidencia))
+	(modify ?sol (tematica $?conj ?m))
+	(assert (tematica-4))
 )
 
-(defrule refinamiento-solucion::coincidencia-3
-  (declare (salience 6))
-  (not (recomendacion-coincidencia))
+(defrule refinamiento-solucion::recomienda-tematica-4
+	(declare (salience 65))
+	(not (recomendacion-tematica))
+	(solucion-concreta (tematica $?opciones))
+	(tematica-4)
+	=>
+	(bind ?index (random 1 (length$ ?opciones)))
+	(bind ?m (nth$ ?index ?opciones))
+	(printout t "Manga por coincidencia de generos y/o temas: ")
+	(send ?m print)
+	(send ?m delete)
+  (assert (recomendacion-tematica))
+)
+
+(defrule refinamiento-solucion::tematica-3
+  (declare (salience 60))
+	(not (recomendacion-tematica))
+
 	(solucion-abstracta (recomendables $?rec))
 	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
 	(test (member$ ?dat ?rec))
   ?m <- (object (is-a Manga) (titulo ?t))
   (test (>= (+ ?match-gen ?match-tem) 3))
+
+	?sol <- (solucion-concreta (tematica $?conj))
   =>
+	(modify ?sol (tematica $?conj ?m))
+	(assert (tematica-3))
+)
+
+(defrule refinamiento-solucion::recomienda-tematica-3
+	(declare (salience 55))
+	(not (recomendacion-tematica))
+	(solucion-concreta (tematica $?opciones))
+	(tematica-3)
+	=>
+	(bind ?index (random 1 (length$ ?opciones)))
+	(bind ?m (nth$ ?index ?opciones))
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
-  (send ?m delete)
-  (assert (recomendacion-coincidencia))
+	(send ?m delete)
+  (assert (recomendacion-tematica))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Valoraciones ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
