@@ -127,11 +127,10 @@ Accion
 Aventura
 Fantasia
 Drama
-4
+3
 Artes marciales
 Tradicional japones
 Superpoderes
-Venganza
 s 72 700 250000000 m ac 1s 1999-01-01 a y 8.07 12
 
 Shingeki no Kyojin
