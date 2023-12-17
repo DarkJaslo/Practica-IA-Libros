@@ -2988,6 +2988,12 @@
    (slot total-recomendables (type INTEGER))
 )
 
+(defrule refinamiento-solucion::crea-solucion-concreta
+  (not (solucion-concreta))
+  =>
+	(assert (solucion-concreta))
+)
+
 (defrule refinamiento-solucion::tematica-7
   (declare (salience 100))
 	(not (recomendacion-tematica))
@@ -2999,9 +3005,11 @@
   (test (>= (+ ?match-gen ?match-tem) 7))
 
 	?sol <- (solucion-concreta (tematica $?conj))
+	(test (not (member$ ?m $?conj)))
   =>
 	(modify ?sol (tematica $?conj ?m))
 	(assert (tematica-7))
+	(printout t "tematica 7" crlf)
 )
 
 (defrule refinamiento-solucion::recomienda-tematica-7
@@ -3016,6 +3024,7 @@
 	(send ?m print)
 	(send ?m delete)
   (assert (recomendacion-tematica))
+	(printout t "imprime 7" crlf)
 )
 
 (defrule refinamiento-solucion::tematica-6
@@ -3029,9 +3038,11 @@
   (test (>= (+ ?match-gen ?match-tem) 6))
 
 	?sol <- (solucion-concreta (tematica $?conj))
+	(test (not (member$ ?m $?conj)))
   =>
 	(modify ?sol (tematica $?conj ?m))
 	(assert (tematica-6))
+	(printout t "tematica 6" crlf)
 )
 
 (defrule refinamiento-solucion::recomienda-tematica-6
@@ -3046,6 +3057,7 @@
 	(send ?m print)
 	(send ?m delete)
   (assert (recomendacion-tematica))
+	(printout t "imprime6" crlf)
 )
 
 (defrule refinamiento-solucion::tematica-5
@@ -3059,9 +3071,11 @@
   (test (>= (+ ?match-gen ?match-tem) 5))
 
 	?sol <- (solucion-concreta (tematica $?conj))
+	(test (not (member$ ?m $?conj)))
   =>
 	(modify ?sol (tematica $?conj ?m))
 	(assert (tematica-5))
+	(printout t "tematica 5" crlf)
 )
 
 (defrule refinamiento-solucion::recomienda-tematica-5
@@ -3076,6 +3090,7 @@
 	(send ?m print)
 	(send ?m delete)
   (assert (recomendacion-tematica))
+	(printout t "imprime 5" crlf)
 )
 
 (defrule refinamiento-solucion::tematica-4
@@ -3089,9 +3104,11 @@
   (test (>= (+ ?match-gen ?match-tem) 4))
 
 	?sol <- (solucion-concreta (tematica $?conj))
+	(test (not (member$ ?m $?conj)))
   =>
 	(modify ?sol (tematica $?conj ?m))
 	(assert (tematica-4))
+	(printout t "tematica 4" crlf)
 )
 
 (defrule refinamiento-solucion::recomienda-tematica-4
@@ -3106,6 +3123,7 @@
 	(send ?m print)
 	(send ?m delete)
   (assert (recomendacion-tematica))
+	(printout t "imprime 4" crlf)
 )
 
 (defrule refinamiento-solucion::tematica-3
@@ -3119,9 +3137,11 @@
   (test (>= (+ ?match-gen ?match-tem) 3))
 
 	?sol <- (solucion-concreta (tematica $?conj))
+	(test (not (member$ ?m $?conj)))
   =>
 	(modify ?sol (tematica $?conj ?m))
 	(assert (tematica-3))
+	(printout t "tematica 3" crlf)
 )
 
 (defrule refinamiento-solucion::recomienda-tematica-3
@@ -3136,6 +3156,7 @@
 	(send ?m print)
 	(send ?m delete)
   (assert (recomendacion-tematica))
+	(printout t "imprime 3" crlf)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Valoraciones ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
