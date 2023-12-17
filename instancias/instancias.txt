@@ -969,3 +969,205 @@ Sobrenatural
 1
 Gore
 s 12 113 14000000 a ac 1s 2002-06-06 a y 7.82 18
+
+Horimiya
+HERO
+Daisuke Hagiwara
+GFantasy
+3
+Comedia
+Romance
+Slice of life
+2
+Escolar
+Reconfortante
+s 17 139 1200000 b ac 1m 2011-10-18 a y 8.43 12
+
+Magi
+Shinobu Ohtaka
+Shinobu Ohtaka
+Shogakukan
+5
+Accion
+Aventura
+Comedia
+Drama
+Fantasia
+4
+Guerra
+Historico
+Magia
+Mitologia
+s 37 369 25000000 m ac 1s 2009-06-03 a y 8.27 12
+
+Noragami
+Adachitoka
+Adachitoka
+Kodansha
+5
+Accion
+Fantasia
+Comedia
+Drama
+Sobrenatural
+1
+Mitologia
+s 26 108 9200000 m pu 1m 2010-12-06 a y 8.39 12
+
+Boku no Hero Academia
+Kouhei Horikoshi
+Kouhei Horikoshi
+Shueisha
+1
+Accion
+3
+Escolar
+Reconfortante
+Superpoderes
+s 20 200 98000000 b pu 1s 2014-07-07 a y 8.07 12
+
+Yakusoku no Neverland
+Kaiu Shirai
+Posuka Demizu
+Shueisha
+5
+Fantasia
+Ciencia ficcion
+Psicologico
+Misterio
+Suspense
+2
+Supervivencia
+Postapocaliptico
+s 20 181 13000000 a ac 1s 2016-01-01 a y 8.16 16
+
+Tokyo Revengers
+Ken Wakui
+Ken Wakui
+Shueisha
+2
+Accion
+Drama
+5
+Artes marciales
+Delincuencia
+Escolar
+Tragedia
+Viajes en el tiempo
+s 31 279 6000000 b ac 1s 2017-01-01 a y 7.88 16
+
+Nisekoi
+Naoshi Komi
+Naoshi Komi
+Shueisha
+2
+Comedia
+Romance
+3
+Harem
+Escolar
+Triangulo amoroso
+s 25 229 13000000 b ac 1s 2011-06-23 a y 7.72 12
+
+Spy x Family
+Tatsuya Endou
+Tatsuya Endou
+Shueisha
+3
+Accion
+Comedia
+Slice of life
+5
+Escolar
+Familiar
+Historico
+Reconfortante
+Detectives
+s 13 101 66000000 b pu 1s 2019-03-04 a y 8.55 7
+
+Kanojo, Okarishimasu
+Reiji Miyajima
+Reiji Miyajima
+Shueisha
+3
+Comedia
+Romance
+Slice of life
+3
+Triangulo amoroso
+Harem
+Escolar
+s 16 200 1200000 b pu 1s 2017-06-12 a y 6.40 16
+
+Gotoubun no Hanayome
+Negi Haruba
+Negi Haruba
+Shueisha
+3
+Comedia
+Romance
+Slice of life
+3
+Triangulo amoroso
+Harem
+Escolar
+s 14 122 3400000 b ac 1s 2017-08-09 a y 7.93 12
+
+Mirai Nikki
+Sakae Esuno
+Sakae Esuno
+Shueisha
+4
+Accion
+Sobrenatural
+Suspense
+Psicologico
+4
+Gore
+Battle royale
+Supervivencia
+Escolar
+s 12 59 120000000 m ac 1s 2006-01-10 a y 7.66 18
+
+Nana
+Ai Yazawa
+Ai Yazawa
+Shueisha
+2
+Drama
+Romance
+4
+Personajes adultos
+Triangulo amoroso
+Artes
+Musica
+s 21 84 6000000 a pa ir 2000-05-26 a y 8.79 16
+
+Fullmetal Alchemist
+Hiromu Arakawa
+Hiromu Arakawa
+Shueisha
+4
+Accion
+Aventura
+Drama
+Fantasia
+3
+Guerra
+Historico
+Magia
+s 27 116 121000000 m ac 1s 2001-07-12 a y 9.03 12
+
+Great Teacher Onizuka
+Tooru Fujisawa
+Tooru Fujisawa
+Shogakukan
+4
+Accion
+Comedia
+Drama
+Slice of life
+2
+Delincuencia
+Escolar
+s 25 208 12000000 b ac 1s 1996-02-28 a y 8.88 16
