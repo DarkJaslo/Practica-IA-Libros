@@ -2443,30 +2443,34 @@
 ; No es lo mas eficiente exportar todo
 
 ; Modulo principal
-(defmodule MAIN (export ?ALL))
+(defmodule MAIN (export defclass ?ALL))
 
 ; Modulo obtencion datos
 (defmodule preguntas-usuario
-    (import MAIN ?ALL)
-    (export ?ALL)
+    (import MAIN defclass ?ALL)
+    (export deftemplate ?ALL)
 )
 
 ; Modulo para convertir al problema concreto en abstracto
 (defmodule abstraccion-problema
-    (import preguntas-usuario ?ALL) ; no os tomeis esto como que esta bien ni aqui ni en los siguientes
-    (export ?ALL)
+		(import MAIN defclass ?ALL)
+    (import preguntas-usuario ?ALL)
+    (export deftemplate ?ALL)
 )
 
 ; Modulo para solucionar el problema abstracto
 (defmodule asociacion-heuristica
+		(import MAIN defclass ?ALL)
     (import abstraccion-problema ?ALL)
-    (export ?ALL)
+    (export deftemplate ?ALL)
+		(export defglobal ?ALL)
 )
 
-; Modulo para refinar la solucion (si lo llegamos a necesitar)
+; Modulo para refinar la solucion
 (defmodule refinamiento-solucion
-    (import asociacion-heuristica ?ALL)
-    (export ?ALL)
+		(import MAIN defclass ?ALL)
+    (import asociacion-heuristica deftemplate ?ALL)
+		(import asociacion-heuristica defglobal ?ALL)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Funciones ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3044,16 +3048,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Control de reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Sobre la valoracion
-(defglobal ?*asoc_excelente* = 8.75)
-(defglobal ?*asoc_bueno* = 7.5)
-(defglobal ?*asoc_normal* = 6.5)
-(defglobal ?*asoc_malo* = 0.0)
+(defglobal asociacion-heuristica ?*asoc_excelente* = 8.75)
+(defglobal asociacion-heuristica ?*asoc_bueno* = 7.5)
+(defglobal asociacion-heuristica ?*asoc_normal* = 6.5)
+(defglobal asociacion-heuristica ?*asoc_malo* = 0.0)
 
 ; Sobre la popularidad
-(defglobal ?*asoc_extr_popular* = 10000000) ;10M
-(defglobal ?*asoc_popular* = 1000000) ;1M
-(defglobal ?*asoc_conocido* = 100000) ;100K
-(defglobal ?*asoc_desconocido* = 0)
+(defglobal asociacion-heuristica ?*asoc_extr_popular* = 10000000) ;10M
+(defglobal asociacion-heuristica ?*asoc_popular* = 1000000) ;1M
+(defglobal asociacion-heuristica ?*asoc_conocido* = 100000) ;100K
+(defglobal asociacion-heuristica ?*asoc_desconocido* = 0)
 
 ; Crea solucion abstracta
 (defrule asociacion-heuristica::crea-solucion
