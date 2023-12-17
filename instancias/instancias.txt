@@ -420,6 +420,8 @@ Shueisha
 2
 Accion
 Comedia
+Drama
+Slice of life
 1
 Escolar
 s 21 187 25000000 m ac 1s 2012-07-02 a y 8.26 12
@@ -902,6 +904,7 @@ Ciencia ficcion
 Comedia
 1
 Robots
+Espacio exterior
 s 10 65 8000000 m ac 1m 2007-04-27 a y 7.95 12
 
 Hirugashi no Naku Koro ni
