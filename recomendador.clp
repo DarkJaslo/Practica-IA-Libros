@@ -3456,7 +3456,7 @@
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (escrito-por ?autor) (publicado-por ?publ) (estado-publicacion ?epubl) (tiene-anime ?anime))
 	?usr <- (problema-abstracto (prefiere-acabados TRUE) (prefiere-sin-anime TRUE) (quiere-doujinshis TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (eq (send ?autor get-nombre) (send ?publ get-nombre))) ; comprueba doujinshi
+	(test (eq (class ?publ) Autopublicador)) ; comprueba doujinshi
 	(test (eq ?epubl "acabado")) ; comprueba acabado
 	(test (eq ?anime FALSE)) ; comprueba anime
 	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
@@ -3495,7 +3495,7 @@
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (escrito-por ?autor) (publicado-por ?publ) (estado-publicacion ?epubl))
 	?usr <- (problema-abstracto (prefiere-acabados TRUE) (quiere-doujinshis TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (eq (send ?autor get-nombre) (send ?publ get-nombre))) ; comprueba doujinshi
+	(test (eq (class ?publ) Autopublicador)) ; comprueba doujinshi
 	(test (eq ?epubl "acabado")) ; comprueba acabado
 	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
 	(test (< ?nmatch 4)) ; 3 nomatches
@@ -3587,7 +3587,7 @@
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (escrito-por ?autor) (publicado-por ?publ))
 	?usr <- (problema-abstracto (quiere-doujinshis TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (eq (send ?autor get-nombre) (send ?publ get-nombre))) ; comprueba doujinshi
+	(test (eq (class ?publ) Autopublicador)) ; comprueba doujinshi
 	(test (> (+ ?match-gen ?match-tem) 2)) ; 3 matches
 	(test (< ?nmatch 4)) ; 3 nomatches
 	(test (> ?val ?*asoc_bueno*)) ; Bueno
@@ -3605,7 +3605,7 @@
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (escrito-por ?autor) (publicado-por ?publ))
 	?usr <- (problema-abstracto (quiere-doujinshis TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (eq (send ?autor get-nombre) (send ?publ get-nombre))) ; comprueba doujinshi
+	(test (eq (class ?publ) Autopublicador)) ; comprueba doujinshi
 	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 match
 	(test (< ?nmatch 4)) ; 3 nomatches
 	(test (> ?val ?*asoc_bueno*)) ; Bueno
@@ -3768,7 +3768,7 @@
     ?m <- (object (is-a Manga) (titulo ?t) (tiene-anime ?ta) (estado-publicacion ?ep) (escrito-por ?autor) (publicado-por ?publ))
 	(test (or (and(eq ?anime TRUE) (eq ?ta TRUE))
 			  (and(eq ?acab TRUE) (eq ?ep "acabado"))
-			  (and(eq ?douj TRUE) (eq (send ?autor get-nombre) (send ?publ get-nombre))) ; confia
+			  (and(eq ?douj TRUE) (eq (class ?publ) Autopublicador))
 		  )
 	)
 	?counter <- (counter (num-recomendados ?n-rec))

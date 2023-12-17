@@ -1,0 +1,12 @@
+(load ../recomendador.clp)
+(reset)
+(run)
+20
+pocos
+0
+0
+no
+no
+no
+si
+(exit)
