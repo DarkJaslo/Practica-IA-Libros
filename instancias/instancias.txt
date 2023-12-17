@@ -1207,7 +1207,7 @@ Slice of life
 Escolar
 Idols
 Musica
-3 28 40000 b ac ir 2012-10-08 a n 7.49 3
+s 3 28 40000 b ac ir 2012-10-08 a n 7.49 3
 
 Sword Art Online
 Reki Kawahara
