@@ -1172,3 +1172,69 @@ Slice of life
 Delincuencia
 Escolar
 s 25 208 12000000 b ac 1s 1996-02-28 a y 8.88 16
+
+Love Live! School Idol Project
+Sakurako Kimino
+Arumi Tokita
+ASCII Media Works
+1
+Slice of life
+3
+Escolar
+Idols
+Musica
+s 5 43 2000000 b pa 1m 2012-01-30 f y 7.50 7
+
+The iDOLMASTER
+Tatsuya Takahashi
+Tatsuya Takahashi
+Tatsuya Takahashi
+2
+Comedia
+Drama
+2
+Idols
+Musica
+s 6 42 100000 b ac 1m 2012-08-27 f y 7.60 12
+
+Aikatsu!
+Sunrise
+Sunrise
+Sunrise
+1
+Slice of life
+3
+Escolar
+Idols
+Musica
+3 28 40000 b ac ir 2012-10-08 a y 7.49 3
+
+Sword Art Online
+Reki Kawahara
+Reki Kawahara
+Reki Kawahara
+4
+Accion
+Aventura
+Fantasia
+Romance
+3
+Isekai
+Triangulo amoroso
+Videojuegos
+s 10 72 200000 m ac 1m 2009-04-10 a y 7.99 12
+
+Accel World
+Reki Kawahara
+Reki Kawahara
+Reki Kawahara
+3
+Accion
+Ciencia ficcion
+Romance
+4
+Escolar
+Robots
+Superpoderes
+Videojuegos
+s 8 45 80000 m ac 1m 2010-04-10 f y 7.25 12
