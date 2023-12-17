@@ -3301,16 +3301,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Control de reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;; Coincidencia generos y temas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(deftemplate refinamiento-solucion::counter
-;   (slot num-recomendados (type INTEGER) (default 0))
-;   (slot total-recomendables (type INTEGER))
-;)
+(deftemplate refinamiento-solucion::counter
+   (slot num-recomendados (type INTEGER) (default 0))
+   (slot total-recomendables (type INTEGER))
+)
 
-;(defrule refinamiento-solucion::crea-solucion-concreta
-;  (not (solucion-concreta))
-;  =>
-;	(assert (solucion-concreta))
-;)
+(defrule refinamiento-solucion::crea-solucion-concreta
+  (not (solucion-concreta))
+  =>
+	(assert (counter))
+	(assert (solucion-concreta))
+)
 
 (defrule refinamiento-solucion::coincidencia-7
   (declare (salience 10))
@@ -3320,11 +3321,13 @@
 	(test (member$ ?dat ?rec))
   ?m <- (object (is-a Manga) (titulo ?t))
   (test (>= (+ ?match-gen ?match-tem) 7))
+	?counter <- (counter (num-recomendados ?n-rec))
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
   (send ?m delete)
   (assert (recomendacion-coincidencia))
+	(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
 
 (defrule refinamiento-solucion::coincidencia-6
@@ -3335,11 +3338,13 @@
 	(test (member$ ?dat ?rec))
   ?m <- (object (is-a Manga) (titulo ?t))
   (test (>= (+ ?match-gen ?match-tem) 6))
+	?counter <- (counter (num-recomendados ?n-rec))
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
   (send ?m delete)
   (assert (recomendacion-coincidencia))
+	(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
 
 (defrule refinamiento-solucion::coincidencia-5
@@ -3350,11 +3355,13 @@
 	(test (member$ ?dat ?rec))
   ?m <- (object (is-a Manga) (titulo ?t))
   (test (>= (+ ?match-gen ?match-tem) 5))
+	?counter <- (counter (num-recomendados ?n-rec))
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
   (send ?m delete)
   (assert (recomendacion-coincidencia))
+	(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
 
 (defrule refinamiento-solucion::coincidencia-4
@@ -3365,11 +3372,13 @@
 	(test (member$ ?dat ?rec))
   ?m <- (object (is-a Manga) (titulo ?t))
   (test (>= (+ ?match-gen ?match-tem) 4))
+	?counter <- (counter (num-recomendados ?n-rec))
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
   (send ?m delete)
   (assert (recomendacion-coincidencia))
+	(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
 
 (defrule refinamiento-solucion::coincidencia-3
@@ -3380,11 +3389,13 @@
 	(test (member$ ?dat ?rec))
   ?m <- (object (is-a Manga) (titulo ?t))
   (test (>= (+ ?match-gen ?match-tem) 3))
+	?counter <- (counter (num-recomendados ?n-rec))
   =>
 	(printout t "Manga por coincidencia de generos y/o temas: ")
 	(send ?m print)
   (send ?m delete)
   (assert (recomendacion-coincidencia))
+	(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Valoraciones ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3397,11 +3408,13 @@
 	(test (member$ ?dat ?rec))
   ?m <- (object (is-a Manga) (titulo ?t) (valoracion ?v))
   (test (>= ?v ?*asoc_excelente*))
+	?counter <- (counter (num-recomendados ?n-rec))
   =>
 	(printout t "Manga por buena valoracion: ")
 	(send ?m print)
   (send ?m delete)
   (assert (recomendacion-valoracion))
+	(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
 
 (defrule refinamiento-solucion::valoracion-buena
@@ -3412,11 +3425,13 @@
 	(test (member$ ?dat ?rec))
   ?m <- (object (is-a Manga) (titulo ?t) (valoracion ?v))
   (test (>= ?v ?*asoc_bueno*))
+	?counter <- (counter (num-recomendados ?n-rec))
   =>
 	(printout t "Manga por buena valoracion: ")
 	(send ?m print)
   (send ?m delete)
   (assert (recomendacion-valoracion))
+	(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Preferencias ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3435,11 +3450,13 @@
 			  (and(eq ?douj TRUE) (eq (send ?autor get-nombre) (send ?publ get-nombre))) ; confia
 		  )
 	)
+	?counter <- (counter (num-recomendados ?n-rec))
     =>
 	(printout t "Manga por cumplimiento de preferencias: ")
 	(send ?m print)
     (send ?m delete)
     (assert (recomendacion-preferencias))
+		(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
 
 ; Si no hay, uno cualquiera
@@ -3449,12 +3466,30 @@
 	?dat <- (datos-manga (manga ?t))
 	(test (member$ ?dat ?rec))
     ?m <- (object (is-a Manga) (titulo ?t))
+		?counter <- (counter (num-recomendados ?n-rec))
     =>
 	(printout t "Manga cualquiera (no habia preferencias): ")
 	(send ?m print)
     (send ?m delete)
     (assert (recomendacion-preferencias))
+		(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Auxiliares ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defrule refinamiento-solucion::simplemente-recomendable
+	(declare (salience -10))
+	(solucion-abstracta (recomendables $?rec))
+	?dat <- (datos-manga (manga ?t))
+	(test (member$ ?dat ?rec))
+  ?m <- (object (is-a Manga) (titulo ?t))
+
+	?counter <- (counter (num-recomendados ?n-rec))
+	(test (< ?n-rec 3))
+  =>
+	(printout t "Recomendacion: ")
+	(send ?m print)
+  (send ?m delete)
+	(modify ?counter (num-recomendados (+ ?n-rec 1)))
+)
 

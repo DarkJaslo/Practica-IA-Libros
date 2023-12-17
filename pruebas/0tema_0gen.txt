@@ -3,8 +3,8 @@
 (run)
 20
 pocos
-11
-8 38 39
+0
+0
 no
 no
 no
