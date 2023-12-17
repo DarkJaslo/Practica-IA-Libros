@@ -2563,6 +2563,8 @@
 								(default 0))
 	(slot temas (type INTEGER)
 								(default 0))
+	(slot nomatch (type INTEGER)
+								(default 0))
 )
 
 ;(deftemplate refinamiento-solucion::solucion-concreta
@@ -2988,9 +2990,13 @@
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
 	=>
 	(bind ?count-gen 0)
+	(bind ?count-nomatch 0)
 	(progn$ (?gen ?generos)
 		(if (member$ ?gen ?pgeneros) then
 			(bind ?count-gen (+ ?count-gen 1))
+		)
+		(if (not (member$ ?gen ?pgeneros)) then
+			(bind ?count-nomatch (+ ?count-nomatch 1))
 		)
 	)
 	(bind ?count-tem 0)
@@ -2998,10 +3004,13 @@
 		(if (member$ ?tem ?ptemas) then
 			(bind ?count-tem (+ ?count-tem 1))
 		)
+		(if (not (member$ ?tem ?ptemas)) then
+			(bind ?count-nomatch (+ ?count-nomatch 1))
+		)
 	)
 	;(format t "%s gen %d tem %d" ?t ?count-gen ?count-tem)
 	;(printout t crlf)
-	(assert(datos-manga (manga ?t) (generos ?count-gen) (temas ?count-tem)))
+	(assert(datos-manga (manga ?t) (generos ?count-gen) (temas ?count-tem) (nomatch ?count-nomatch)))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;; Reglas red ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3014,12 +3023,14 @@
 	?m <- (object (is-a Manga) (titulo ?t) (valoracion ?val))
 	?usr <- (problema-abstracto)
 	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (< (length$ ?rec) 4))
+	(test (< (length$ ?rec) 3))
 	(test (not (member$ ?dat $?rec)))
 	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
 	(test (> ?val ?*asoc_excelente*)) ; Excelente
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por regla red" ?t)
+	(printout t crlf)
 )
 
 ; Recomienda matches de 2 bien valorados
@@ -3029,12 +3040,14 @@
 	?m <- (object (is-a Manga) (titulo ?t) (valoracion ?val))
 	?usr <- (problema-abstracto)
 	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (< (length$ ?rec) 4))
+	(test (< (length$ ?rec) 3))
 	(test (not (member$ ?dat $?rec)))
 	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
 	(test (> ?val ?*asoc_bueno*)) ; Bien valorado
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por regla red" ?t)
+	(printout t crlf)
 )
 
 ; Recomienda matches de 2 populares
@@ -3044,12 +3057,14 @@
 	?m <- (object (is-a Manga) (titulo ?t) (copias-vendidas ?copias))
 	?usr <- (problema-abstracto)
 	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (< (length$ ?rec) 4))
+	(test (< (length$ ?rec) 3))
 	(test (not (member$ ?dat $?rec)))
 	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
 	(test (> ?copias ?*asoc_popular*)) ; popular
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por regla red" ?t)
+	(printout t crlf)
 )
 
 ; Recomienda matches de 1 muy bien valorados
@@ -3059,12 +3074,14 @@
 	?m <- (object (is-a Manga) (titulo ?t) (valoracion ?val))
 	?usr <- (problema-abstracto)
 	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (< (length$ ?rec) 4))
+	(test (< (length$ ?rec) 3))
 	(test (not (member$ ?dat $?rec)))
 	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
 	(test (> ?val ?*asoc_excelente*)) ; Excelente
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por regla red" ?t)
+	(printout t crlf)
 )
 
 ; Recomienda matches de 1 bien valorados
@@ -3074,27 +3091,31 @@
 	?m <- (object (is-a Manga) (titulo ?t) (valoracion ?val))
 	?usr <- (problema-abstracto)
 	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (< (length$ ?rec) 4))
+	(test (< (length$ ?rec) 3))
 	(test (not (member$ ?dat $?rec)))
 	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
 	(test (> ?val ?*asoc_bueno*)) ; Bien valorado
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por regla red" ?t)
+	(printout t crlf)
 )
 
-; Recomienda matches de 1 bien valorados
+; Recomienda matches de 1 populares
 (defrule asociacion-heuristica::regla-red-1-match-popular
 	(declare (salience -25))
 	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
-	?m <- (object (is-a Manga) (titulo ?t) (valoracion ?val))
+	?m <- (object (is-a Manga) (titulo ?t) (copias-vendidas ?copias))
 	?usr <- (problema-abstracto)
 	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (< (length$ ?rec) 4))
+	(test (< (length$ ?rec) 3))
 	(test (not (member$ ?dat $?rec)))
 	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
 	(test (> ?copias ?*asoc_popular*)) ; popular
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por regla red" ?t)
+	(printout t crlf)
 )
 
 
@@ -3105,11 +3126,13 @@
 	?m <- (object (is-a Manga) (titulo ?t))
 	?usr <- (problema-abstracto)
 	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (< (length$ ?rec) 4))
+	(test (< (length$ ?rec) 3))
 	(test (not (member$ ?dat $?rec)))
 	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por regla red" ?t)
+	(printout t crlf)
 )
 
 ; Recomienda cualquier manga
@@ -3119,47 +3142,50 @@
 	?m <- (object (is-a Manga) (titulo ?t))
 	?usr <- (problema-abstracto)
 	?sol <- (solucion-abstracta (recomendables $?rec))
-	(test (< (length$ ?rec) 4))
+	(test (< (length$ ?rec) 3))
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por regla red" ?t)
+	(printout t crlf)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;; Asociacion heuristica general (sin preferencias) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;Si coinciden 2 o mas generos/temas y excelente valoracion --> recomendar
+;Si coinciden 3 o mas generos/temas y excelente valoracion --> recomendar
 (defrule asociacion-heuristica::general-1match-excelente
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?dat $?rec)))
 	(test (> ?val ?*asoc_excelente*))
-	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
+	(test (> (+ ?match-gen ?match-tem) 2)) ; 3 matches
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por 2 match val>excelente" ?t)
+	(format t "El manga %s entra por 3 match val>excelente" ?t)
 	(printout t crlf)
 )
 
-;Si coinciden 3 o más generos/temas y buena valoracion --> recomendar
+;Si match 3 o más <4nomatch y buena valoracion --> recomendar
 (defrule asociacion-heuristica::general-3match-bueno
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?dat $?rec)))
 	(test (> ?val ?*asoc_bueno*))
 	(test (> (+ ?match-gen ?match-tem) 2)) ; 3 matches
+	(test (< ?nmatch 4)) ; 3 nomatches
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por 3match val>bueno" ?t)
+	(format t "El manga %s entra por 3match val>bueno <4nomatch" ?t)
 	(printout t crlf)
 )
 
 ;Si coinciden 4 o mas géneros/temas y valoracion normal --> recomendar
 (defrule asociacion-heuristica::general-4match-normal
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
 	?sol <- (solucion-abstracta (recomendables $?rec))
@@ -3174,7 +3200,7 @@
 
 ;Si coinciden 6 o mas generos/temas y mala valoracion --> recomendar
 (defrule asociacion-heuristica::general-6match-malo
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
 	?sol <- (solucion-abstracta (recomendables $?rec))
@@ -3188,79 +3214,101 @@
 )
 
 ;Si la persona lee pocos mangas, el manga es popular o mas, 
-;coincide en al menos 3 generos/temas y valoración normal o mejor --> recomendar
+;coincide en al menos 2 generos/temas, menos de 3 nomatches y valoración normal o mejor --> recomendar
 (defrule asociacion-heuristica::general-lee-pocos-popular
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas) (mangas-leidos pocos))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?dat $?rec)))
 	(test (> ?copias ?*asoc_popular*))
 	(test (> ?val ?*asoc_normal*))
-	(test (> (+ ?match-gen ?match-tem) 2)) ; 3 matches
+	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
+	(test (< ?nmatch 3)) ; 2 nomatches
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por leer pocos, manga popular>, 2 match valoracion normal>" ?t)
+	(format t "El manga %s entra por leer pocos, manga popular>, 2 match valoracion normal> <3nomatches" ?t)
 	(printout t crlf)
 )
 
 ;Si la persona lee bastantes mangas, el manga es conocido,
-;coincide al menos 1 genero/tema y valoracion normal o mejor --> recomendar
+;coincide al menos 2 genero/tema, menos 4nomatch y valoracion normal o mejor --> recomendar
 (defrule asociacion-heuristica::general-lee-bastantes-conocido
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas) (mangas-leidos bastantes))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?dat $?rec)))
 	(test (> ?copias ?*asoc_conocido*))
 	(test (> ?val ?*asoc_normal*))
-	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 match
+	(test (< ?nmatch 4)) ; 3 nomatches
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por leer bastantes, manga conocido, 1 match bueno" ?t)
+	(format t "El manga %s entra por leer bastantes, manga conocido, 2 match bueno <4nomatch" ?t)
 	(printout t crlf)
 )
 
 ;Si la persona lee muchos mangas, el manga es desconocido
-;coincide al menos 1 genero/tema y valoracion normal o mejor --> recomendar
-(defrule asociacion-heuristica::general-lee-muchos-desconocido
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+;coincide al menos 2 genero/tema y valoracion normal o mejor --> recomendar
+(defrule asociacion-heuristica::general-lee-muchos-desconocido-2match
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas) (mangas-leidos muchos))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (not (member$ ?dat $?rec)))
-	(test (> ?copias ?*asoc_desconocido*))
+	(test (and (> ?copias ?*asoc_desconocido*) (< ?copias ?*asoc_conocido*)))
+	;(test (> ?copias ?*asoc_desconocido*))
 	(test (> ?val ?*asoc_normal*))
-	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
+	(test (< ?nmatch 4)) ; 3 nomatches
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por leer muchos manga desconocido 1 match" ?t)
+	(format t "El manga %s entra por leer muchos manga desconocido 2> matches <4 matches" ?t)
+	(printout t crlf)
+)
+
+;Si la persona lee muchos mangas, el manga es conocido o mas
+;coincide al menos 3 genero/tema y valoracion buena o mejor --> recomendar
+(defrule asociacion-heuristica::general-lee-muchos-conocido-3match
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
+	?usr <- (problema-abstracto (preferencia-generos $?pgeneros) (preferencia-temas $?ptemas) (mangas-leidos muchos))
+	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (pertenece-a $?generos) (trata-de $?temas) (titulo ?t))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (not (member$ ?dat $?rec)))
+	(test (> ?copias ?*asoc_conocido*))
+	(test (> ?val ?*asoc_bueno*))
+	(test (> (+ ?match-gen ?match-tem) 2)) ; 3 matches
+	(test (< ?nmatch 4)) ; 3 nomatches
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por leer muchos manga conocido 3 matches bueno <4nomatch" ?t)
 	(printout t crlf)
 )
 
 
+; valoracion buena algun match 0 nomatch --> recomendar
+(defrule asociacion-heuristica::general-excelente-0nomatch
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
+	?m <- (object (is-a Manga) (valoracion ?val) (titulo ?t))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (not (member$ ?dat $?rec)))
+	(test (> ?val ?*asoc_bueno*))
+	(test (> (+ ?match-gen ?match-tem) 0)) ; algun match
+	(test (eq ?nmatch 0)) ; 0 nomatches
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por valoracion excelente 1>match 0 nomatch" ?t)
+	(printout t crlf)
+)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;; Asociacion heuristica con preferencias ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Si hay un match entre generos y temas
-; Recomienda 
-;(defrule asociacion-heuristica::regla-ejemplo
-;	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
-;	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t))
-;	?usr <- (problema-abstracto)
-;	?sol <- (solucion-abstracta (recomendables $?rec))
-;	(test (not (member$ ?dat $?rec)))
-;	(test (> (+ ?match-gen ?match-tem) 0))
-;	=>
-;	(modify ?sol (recomendables $?rec ?dat))
-;	(format t "El manga %s entra por match" ?t)
-;	(printout t crlf)
-;)
-
 ; User prefiere sin anime, acabados y doujinshi
-; Recomienda el que cumpla las 3, no sea malo y tenga 1 match entre generos y temas 
+; Recomienda el que cumpla las 3, no malo, 1 match y <4nomatch 
 (defrule asociacion-heuristica::3-preferencias
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (escrito-por ?autor) (publicado-por ?publ) (estado-publicacion ?epubl) (tiene-anime ?anime))
 	?usr <- (problema-abstracto (prefiere-acabados TRUE) (prefiere-sin-anime TRUE) (quiere-doujinshis TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
@@ -3268,89 +3316,94 @@
 	(test (eq ?epubl "acabado")) ; comprueba acabado
 	(test (eq ?anime FALSE)) ; comprueba anime
 	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	(test (< ?nmatch 4)) ; 3 nomatches
 	(test (> ?val ?*asoc_normal*)) ; No malo
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por 3pref" ?t)
+	(format t "El manga %s entra por 3pref 1>match <4nomatch" ?t)
 	(printout t crlf)
 )
 
 ; User prefiere sin anime, acabados
-; Recomienda el que sea bueno y tenga 1 match entre generos y temas 
+; Recomienda bueno, 1 match, <4nomatch
 (defrule asociacion-heuristica::2-pref-sin-anime-acabado
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (tiene-anime ?anime) (estado-publicacion ?epubl))
 	?usr <- (problema-abstracto (prefiere-acabados TRUE) (prefiere-sin-anime TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (eq ?epubl "acabado")) ; comprueba acabado
 	(test (eq ?anime FALSE)) ; comprueba anime
 	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	(test (< ?nmatch 4)) ; 3 nomatches
 	(test (> ?val ?*asoc_bueno*)) ; Bueno
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por 2pref sin anime acabado" ?t)
+	(format t "El manga %s entra por 2pref sin anime acabado 1>match <4nomatch" ?t)
 	(printout t crlf)
 )
 
 ; User prefiere acabados y doujinshi
-; Recomienda el que sea bueno y tenga 1 match entre generos y temas 
+; Recomienda bueno, 1 match, <4nomatch 
 (defrule asociacion-heuristica::2-pref-acabado-doujinshi
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (escrito-por ?autor) (publicado-por ?publ) (estado-publicacion ?epubl))
 	?usr <- (problema-abstracto (prefiere-acabados TRUE) (quiere-doujinshis TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (eq (send ?autor get-nombre) (send ?publ get-nombre))) ; comprueba doujinshi
 	(test (eq ?epubl "acabado")) ; comprueba acabado
 	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	(test (< ?nmatch 4)) ; 3 nomatches
 	(test (> ?val ?*asoc_bueno*)) ; Bueno
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por 2pref acabado doujinshi" ?t)
+	(format t "El manga %s entra por 2pref acabado doujinshi 1>match <4nomatch" ?t)
 	(printout t crlf)
 )
 
 ; User prefiere sin anime
-; Recomienda el que sea bueno, 2 matches
+; Recomienda el que sea bueno, 2 matches <4nomatch
 (defrule asociacion-heuristica::1-pref-sin-anime-matches
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (tiene-anime ?anime))
 	?usr <- (problema-abstracto (prefiere-sin-anime TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (eq ?anime FALSE)) ; comprueba anime
 	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
+	(test (< ?nmatch 4)) ; 3 nomatches
 	(test (> ?val ?*asoc_bueno*)) ; Bueno
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por sin anime 2 matches" ?t)
+	(format t "El manga %s entra por sin anime 2 matches <4nomatch" ?t)
 	(printout t crlf)
 )
 
 ; User prefiere sin anime
-; Recomienda el que sea bueno, popular, 1 match
+; Recomienda el que sea bueno, popular, 1 match <4nomatch
 (defrule asociacion-heuristica::1-pref-sin-anime-popular
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (tiene-anime ?anime))
 	?usr <- (problema-abstracto (prefiere-sin-anime TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (eq ?anime FALSE)) ; comprueba anime
 	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	(test (< ?nmatch 4)) ; 3 nomatches
 	(test (> ?val ?*asoc_bueno*)) ; Bueno
 	(test (> ?copias ?*asoc_popular*)) ; Popular
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por sin anime 1 match popular" ?t)
+	(format t "El manga %s entra por sin anime 1> matches popular <4nomatch" ?t)
 	(printout t crlf)
 )
 
 ; User prefiere acabados
 ; Recomienda el que sea bueno, 3 matches
 (defrule asociacion-heuristica::1-pref-acabado-matches
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (estado-publicacion ?epubl))
 	?usr <- (problema-abstracto (prefiere-acabados TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
@@ -3365,55 +3418,58 @@
 )
 
 ; User prefiere acabado
-; Recomienda el que sea bueno, popular, 2 matches
+; Recomienda el que sea bueno, popular, 2 matches, <4nomatches
 (defrule asociacion-heuristica::1-pref-acabado-popular
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (estado-publicacion ?epubl))
 	?usr <- (problema-abstracto (prefiere-acabados TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (eq ?epubl "acabado")) ; comprueba acabado
 	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
+	(test (< ?nmatch 4)) ; 3 nomatches
 	(test (> ?val ?*asoc_bueno*)) ; Bueno
 	(test (> ?copias ?*asoc_popular*)) ; Popular
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por acabado 2 matches popular" ?t)
+	(format t "El manga %s entra por acabado 2 matches popular <4nomatch" ?t)
 	(printout t crlf)
 )
 
 ; User prefiere doujinshi
-; Recomienda el que sea bueno, 2 matches
+; Recomienda el que sea bueno, 3 matches <4nomatch
 (defrule asociacion-heuristica::1-pref-doujinshi-matches
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (escrito-por ?autor) (publicado-por ?publ))
 	?usr <- (problema-abstracto (quiere-doujinshis TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (eq (send ?autor get-nombre) (send ?publ get-nombre))) ; comprueba doujinshi
-	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 matches
+	(test (> (+ ?match-gen ?match-tem) 2)) ; 3 matches
+	(test (< ?nmatch 4)) ; 3 nomatches
 	(test (> ?val ?*asoc_bueno*)) ; Bueno
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por doujinshi 2 matches" ?t)
+	(format t "El manga %s entra por doujinshi 3> matches <4nomatch" ?t)
 	(printout t crlf)
 )
 
 ; User prefiere doujinshi
-; Recomienda el que sea bueno, popular, 1 match
+; Recomienda el que sea bueno, popular, 2 matches <4nomatch
 (defrule asociacion-heuristica::1-pref-doujinshi-popular
-	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
+	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (escrito-por ?autor) (publicado-por ?publ))
 	?usr <- (problema-abstracto (quiere-doujinshis TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (eq (send ?autor get-nombre) (send ?publ get-nombre))) ; comprueba doujinshi
-	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	(test (> (+ ?match-gen ?match-tem) 1)) ; 2 match
+	(test (< ?nmatch 4)) ; 3 nomatches
 	(test (> ?val ?*asoc_bueno*)) ; Bueno
 	(test (> ?copias ?*asoc_popular*)) ; Popular
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por doujinshi 1 match popular" ?t)
+	(format t "El manga %s entra por doujinshi 1 match popular <4nomatch" ?t)
 	(printout t crlf)
 )
 
