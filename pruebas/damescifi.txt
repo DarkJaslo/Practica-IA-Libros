@@ -1,0 +1,13 @@
+(load ../recomendador.clp)
+(reset)
+(run)
+18
+pocos
+; Metemos Sci-fi exclusivamente
+3
+0
+no
+no
+no
+no
+(exit)
