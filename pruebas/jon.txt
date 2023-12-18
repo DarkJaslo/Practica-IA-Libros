@@ -12,9 +12,9 @@ muchos
 29 31
 
 no
-; Sin anime
+; Prefiere acabados
 si
-; Acabados prefiere
+; Sin anime
 si
 no
 (exit)

@@ -3867,6 +3867,32 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Preferencias ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Recomienda cualquiera que cumpla alguna de las preferencias
+(defrule refinamiento-solucion::2preferencias
+	(declare (salience 20))
+	(not (recomendacion-preferencias))
+	?abs <- (problema-abstracto (prefiere-sin-anime ?anime) (prefiere-acabados ?acab) (quiere-doujinshis ?douj))
+	?dat <- (datos-manga (manga ?t))
+	(solucion-abstracta (recomendables $?rec))
+	(test (member$ ?dat ?rec))
+    ?m <- (object (is-a Manga) (titulo ?t) (tiene-anime ?ta) (estado-publicacion ?ep) (escrito-por ?autor) (publicado-por ?publ))
+	(test (or
+				; No tiene anime y esta acabado
+				(and (and(eq ?anime TRUE) (eq ?ta FALSE)) (and(eq ?acab TRUE) (eq ?ep "acabado")))
+				; Esta acabado y es un doujinshi
+			  (and (and(eq ?acab TRUE) (eq ?ep "acabado")) (and(eq ?douj TRUE) (eq (class ?publ) Autopublicador)))
+				; No se mira sin anime y doujinshi porque ocurre siempre
+		  )
+	)
+	?counter <- (counter (num-recomendados ?n-rec))
+    =>
+	(printout t "Manga por cumplimiento de preferencias: ")
+	(send ?m print)
+    (send ?m delete)
+    (assert (recomendacion-preferencias))
+		(modify ?counter (num-recomendados (+ ?n-rec 1)))
+)
+
+; Recomienda cualquiera que cumpla alguna de las preferencias
 (defrule refinamiento-solucion::preferencias
 	(declare (salience 10))
 	(not (recomendacion-preferencias))
@@ -3875,7 +3901,7 @@
 	(solucion-abstracta (recomendables $?rec))
 	(test (member$ ?dat ?rec))
     ?m <- (object (is-a Manga) (titulo ?t) (tiene-anime ?ta) (estado-publicacion ?ep) (escrito-por ?autor) (publicado-por ?publ))
-	(test (or (and(eq ?anime TRUE) (eq ?ta TRUE))
+	(test (or (and(eq ?anime TRUE) (eq ?ta FALSE))
 			  (and(eq ?acab TRUE) (eq ?ep "acabado"))
 			  (and(eq ?douj TRUE) (eq (class ?publ) Autopublicador))
 		  )
