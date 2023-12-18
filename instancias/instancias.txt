@@ -1256,7 +1256,7 @@ Shogakukan
 2
 Ciencia ficcion
 Comedia
-1
+2
 Espacio exterior
 Humor absurdo
 o 1 200000 b 2022-02-28 a n 7.08 5
@@ -1265,11 +1265,10 @@ Yu-Gi-Oh
 Kazuki Takahashi
 Kazuki Takahashi
 Shueisha
-7
+6
 Accion
 Aventura
 Comedia
-Drama
 Fantasia
 Misterio
 Sobrenatural
