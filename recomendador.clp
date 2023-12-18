@@ -2715,6 +2715,7 @@
 	(format t "  Tomos: %d %n" ?self:tomos)
 	(format t "  Capitulos: %d %n" ?self:capitulos)
 	(format t "  Valoracion: %.2f %n" ?self:valoracion)
+	(format t "  Copias vendidas: %d %n" ?self:copias-vendidas)
 	(if (eq ?self:metodo-distribucion "ambos") then
 		(format t "  Se puede leer en formato tanto digital como fisico %n")
 		else
@@ -2761,6 +2762,7 @@
 	(format t "  Inicio de publicacion: %s %n" ?self:inicio-publicacion)
 	(format t "  Capitulos: %d %n" ?self:capitulos)
 	(format t "  Valoracion: %.2f %n" ?self:valoracion)
+	(format t "  Copias vendidas: %d %n" ?self:copias-vendidas)
 	(if (eq ?self:metodo-distribucion "ambos") then
 		(format t "  Se puede leer en formato tanto digital como fisico %n")
 		else
