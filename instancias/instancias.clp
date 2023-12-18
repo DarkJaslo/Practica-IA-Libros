@@ -2398,3 +2398,4 @@
 	(nombre  "Yuri")
 )
 )
+; Número de instancias: 97

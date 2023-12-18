@@ -502,11 +502,14 @@ int main()
 
     cout << "(definstances instancias\n";
 
+    int instancias = 0;
+
     do
     {
         Manga m;
         reading = readManga(m);
         m.toClips();
+        instancias++;
     }
     while(reading);
 
@@ -520,4 +523,6 @@ int main()
     printTemas();
 
     cout << ")\n";
+
+    cout << "; Número de instancias: " << instancias << "\n";
 }
