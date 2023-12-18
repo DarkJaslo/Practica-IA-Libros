@@ -2,7 +2,7 @@
 (reset)
 (run)
 20
-pocos
+bastantes
 0
 0
 no
