@@ -175,13 +175,12 @@ Made in Abyss
 Akihito Tsukushi
 Akihito Tsukushi
 Takeshobo
-7
+6
 Aventura
 Ciencia ficcion
 Drama
 Fantasia
 Horror
-Misterio
 Psicologico
 3
 Gore
@@ -1313,13 +1312,11 @@ Neon Genesis Evangelion
 Yoshiyuki Sadamoto
 Yoshiyuki Sadamoto
 Kadokawa Shoten
-6
+4
 Accion
 Ciencia ficcion
 Drama
-Misterio
 Psicologico
-Suspense
 1
 Robots
 s 14 97 25000000 m ac 1m 1994-12-26 a y 8.58 16
