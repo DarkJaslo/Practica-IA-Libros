@@ -2689,7 +2689,11 @@
 
 (defmessage-handler Serializado print ()
 	(printout t crlf)
-	(format t "  %s %n" ?self:titulo)
+	(bind ?douj "")
+	(if (eq (class ?self:publicado-por) Autopublicador) then
+			(bind ?douj "(doujinshi)")
+	)
+	(format t "  %s %s %n" ?self:titulo ?douj)
 	(bind ?escritor (send ?self:escrito-por get-nombre))
 	(bind ?artista (send ?self:ilustrado-por get-nombre))
 	(if (eq ?escritor ?artista) then
@@ -2699,6 +2703,10 @@
 		(format t "  Ilustrado por %s %n" ?artista)
 	)
 	(format t "  Publicado por %s %n" (send ?self:publicado-por get-nombre))
+	(if (eq ?self:tiene-anime TRUE) then
+		(format t "  Tiene una adaptacion al anime %n")
+		else
+		(format t "  Aun no ha sido adaptado al anime %n"))
 	(format t "  Estado de publicacion: %s %n" ?self:estado-publicacion)
 	(if (or (eq ?self:estado-publicacion "en publicacion") (eq ?self:estado-publicacion "en pausa")) then
 		(format t "  Frecuencia de publicacion: %s %n" ?self:frecuencia-publicacion)
@@ -2732,7 +2740,11 @@
 
 (defmessage-handler One-shot print ()
 	(printout t crlf)
-	(format t "  %s %n" ?self:titulo)
+	(bind ?douj "")
+	(if (eq (class ?self:publicado-por) Autopublicador) then
+			(bind ?douj "(doujinshi)")
+	)
+	(format t "  %s %s %n" ?self:titulo ?douj)
 	(bind ?escritor (send ?self:escrito-por get-nombre))
 	(bind ?artista (send ?self:ilustrado-por get-nombre))
 	(if (eq ?escritor ?artista) then
@@ -2742,6 +2754,10 @@
 		(format t "  Ilustrado por %s %n" ?artista)
 	)
 	(format t "  Publicado por %s %n" (send ?self:publicado-por get-nombre))
+	(if (eq ?self:tiene-anime TRUE) then
+		(format t "  Tiene una adaptacion al anime %n")
+		else
+		(format t "  Aun no ha sido adaptado al anime %n"))
 	(format t "  Inicio de publicacion: %s %n" ?self:inicio-publicacion)
 	(format t "  Capitulos: %d %n" ?self:capitulos)
 	(format t "  Valoracion: %.2f %n" ?self:valoracion)
