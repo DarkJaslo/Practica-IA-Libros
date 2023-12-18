@@ -2545,7 +2545,6 @@
 ; Número de instancias: 97
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Modulos ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; No es lo mas eficiente exportar todo
 
 ; Modulo principal
 (defmodule MAIN (export defclass ?ALL))
@@ -2758,6 +2757,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Templates ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; Problema concreto
 (deftemplate preguntas-usuario::usuario
     (slot edad (type INTEGER))
     (slot mangas-leidos (type SYMBOL)
@@ -2800,10 +2800,12 @@
     (multislot preferencia-temas (type INSTANCE))
 )
 
+; Solucion abstracta: guarda aquellos mangas que se consideran "recomendables"
 (deftemplate asociacion-heuristica::solucion-abstracta
-    (multislot recomendables (type INSTANCE)) ;instancias de mangas
+    (multislot recomendables (type INSTANCE)) ;instancias de datos-manga
 )
 
+; Estructura intermedia
 (deftemplate asociacion-heuristica::datos-manga
 	(slot manga (type STRING))
 	(slot generos (type INTEGER)
@@ -3744,40 +3746,6 @@
 	(assert (counter))
 )
 
-;(defrule refinamiento-solucion::coincidencia-7
-;  (declare (salience 10))
-;  (not (recomendacion-coincidencia))
-;	(solucion-abstracta (recomendables $?rec))
-;	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
-;	(test (member$ ?dat ?rec))
-;  ?m <- (object (is-a Manga) (titulo ?t))
-;  (test (>= (+ ?match-gen ?match-tem) 7))
-;	?counter <- (counter (num-recomendados ?n-rec))
-;  =>
-;	(printout t "Manga por coincidencia de generos y/o temas: ")
-;	(send ?m print)
-;  (send ?m delete)
-;  (assert (recomendacion-coincidencia))
-;	(modify ?counter (num-recomendados (+ ?n-rec 1)))
-;)
-
-;(defrule refinamiento-solucion::coincidencia-6
-;  (declare (salience 9))
-;  (not (recomendacion-coincidencia))
-;	(solucion-abstracta (recomendables $?rec))
-;	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem))
-;	(test (member$ ?dat ?rec))
-;  ?m <- (object (is-a Manga) (titulo ?t))
-;  (test (>= (+ ?match-gen ?match-tem) 6))
-;	?counter <- (counter (num-recomendados ?n-rec))
-;  =>
-;	(printout t "Manga por coincidencia de generos y/o temas: ")
-;	(send ?m print)
-;  (send ?m delete)
-;  (assert (recomendacion-coincidencia))
-;	(modify ?counter (num-recomendados (+ ?n-rec 1)))
-;)
-
 (defrule refinamiento-solucion::coincidencia-5
   (declare (salience 8))
   (not (recomendacion-coincidencia))
@@ -3788,7 +3756,7 @@
   (test (>= (+ ?match-gen ?match-tem) 5))
 	?counter <- (counter (num-recomendados ?n-rec))
   =>
-	(printout t "Manga por coincidencia de generos y/o temas: ")
+	(printout t "Recomendacion por compatibilidad de generos y temas: ")
 	(send ?m print)
   (send ?m delete)
   (assert (recomendacion-coincidencia))
@@ -3805,7 +3773,7 @@
   (test (>= (+ ?match-gen ?match-tem) 4))
 	?counter <- (counter (num-recomendados ?n-rec))
   =>
-	(printout t "Manga por coincidencia de generos y/o temas: ")
+	(printout t "Recomendacion por compatibilidad de generos y temas: ")
 	(send ?m print)
   (send ?m delete)
   (assert (recomendacion-coincidencia))
@@ -3822,7 +3790,7 @@
   (test (>= (+ ?match-gen ?match-tem) 3))
 	?counter <- (counter (num-recomendados ?n-rec))
   =>
-	(printout t "Manga por coincidencia de generos y/o temas: ")
+	(printout t "Recomendacion por compatibilidad de generos y temas: ")
 	(send ?m print)
   (send ?m delete)
   (assert (recomendacion-coincidencia))
@@ -3841,7 +3809,7 @@
   (test (>= ?v ?*asoc_excelente*))
 	?counter <- (counter (num-recomendados ?n-rec))
   =>
-	(printout t "Manga por buena valoracion: ")
+	(printout t "Recomendacion con buena valoracion: ")
 	(send ?m print)
   (send ?m delete)
   (assert (recomendacion-valoracion))
@@ -3858,7 +3826,7 @@
   (test (>= ?v ?*asoc_bueno*))
 	?counter <- (counter (num-recomendados ?n-rec))
   =>
-	(printout t "Manga por buena valoracion: ")
+	(printout t "Recomendacion con buena valoracion: ")
 	(send ?m print)
   (send ?m delete)
   (assert (recomendacion-valoracion))
@@ -3886,7 +3854,7 @@
 	)
 	?counter <- (counter (num-recomendados ?n-rec))
     =>
-	(printout t "Manga por cumplimiento de preferencias: ")
+	(printout t "Recomendacion que cumple preferencias: ")
 	(send ?m print)
     (send ?m delete)
     (assert (recomendacion-preferencias))
@@ -3909,7 +3877,7 @@
 	)
 	?counter <- (counter (num-recomendados ?n-rec))
     =>
-	(printout t "Manga por cumplimiento de preferencias: ")
+	(printout t "Recomendacion que cumple preferencias: ")
 	(send ?m print)
     (send ?m delete)
     (assert (recomendacion-preferencias))
@@ -3925,7 +3893,7 @@
     ?m <- (object (is-a Manga) (titulo ?t))
 		?counter <- (counter (num-recomendados ?n-rec))
     =>
-	(printout t "Manga cualquiera (no habia preferencias): ")
+	(printout t "Recomendacion: ")
 	(send ?m print)
     (send ?m delete)
     (assert (recomendacion-preferencias))
