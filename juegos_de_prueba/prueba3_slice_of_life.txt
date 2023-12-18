@@ -1,0 +1,20 @@
+(load ../recomendador.clp)
+(reset)
+(run)
+;edad del usuario
+16
+;cantidad de mangas leidos
+bastantes
+;Generos seleccionados: Comedia, Slice of life
+4 12
+;Tema seleccionado: Animales
+1
+;No le molestan la violencia explicita/temas desagradables
+no
+;No tiene preferencia por mangas acabados
+no
+;No tiene preferencia por mangas sin anime
+no
+;Tiene preferencia por los doujinshi
+si
+(exit)

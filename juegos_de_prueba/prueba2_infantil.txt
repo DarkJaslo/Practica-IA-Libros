@@ -1,0 +1,17 @@
+(load ../recomendador.clp)
+(reset)
+(run)
+;edad del usuario
+7
+;cantidad de mangas leidos
+pocos
+;Genero seleccionado: Romance
+11
+;Temas seleccionados: Escolar, Reconfortante
+8 27
+;Ninguna clase de preferencia
+no
+no
+no
+no
+(exit)

@@ -1,0 +1,15 @@
+(load ../recomendador.clp)
+(reset)
+(run)
+12
+bastantes
+; No tiene generos favoritos
+0
+; No tiene temas favoritos
+0
+; No tiene preferencias
+no
+no
+no
+no
+(exit)

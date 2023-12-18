@@ -1,0 +1,17 @@
+(load ../recomendador.clp)
+(reset)
+(run)
+;edad del usuario
+14
+;cantidad de mangas leidos
+pocos
+;Generos seleccionados: Ciencia ficcion, Misterio
+3 9
+;Tema seleccionado: Detectives
+7
+;Ninguna clase de preferencia
+no
+no
+no
+no
+(exit)

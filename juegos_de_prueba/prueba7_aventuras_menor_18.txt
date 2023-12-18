@@ -1,0 +1,20 @@
+(load ../recomendador.clp)
+(reset)
+(run)
+;edad del usuario
+14
+;cantidad de mangas leidos
+muchos
+;Generos seleccionados: Acción, Aventura, Drama, Fantasia
+1 2 6 7
+;Tema seleccionado: Superpoderes
+29
+;No le molestan la violencia explicita/temas desagradables
+no
+;Tiene preferencia por mangas acabados
+si
+;No tiene preferencia por los mangas sin anime
+no
+;No tiene preferencia por los doujinshi
+no
+(exit)

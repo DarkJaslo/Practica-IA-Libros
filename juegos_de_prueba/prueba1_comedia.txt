@@ -1,0 +1,17 @@
+(load ../recomendador.clp)
+(reset)
+(run)
+;edad del usuario
+25
+;cantidad de mangas leidos
+bastantes
+;Genero seleccionado: Comedia
+4
+;Temas seleccionados: Humor absurdo, Parodia
+16 24
+;Ninguna clase de preferencia
+no
+no
+no
+no
+(exit)

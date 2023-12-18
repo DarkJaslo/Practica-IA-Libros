@@ -1,0 +1,17 @@
+(load ../recomendador.clp)
+(reset)
+(run)
+;edad del usuario
+9
+;cantidad de mangas leidos
+bastantes
+;Generos seleccionados: Accion, Aventura
+1 2
+;Temas seleccionados: Gore, Historico
+12 15
+;Ninguna clase de preferencia
+no
+no
+no
+no
+(exit)

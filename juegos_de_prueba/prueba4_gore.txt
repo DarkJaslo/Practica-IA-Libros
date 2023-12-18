@@ -1,0 +1,20 @@
+(load ../recomendador.clp)
+(reset)
+(run)
+;edad del usuario
+19
+;cantidad de mangas leidos
+bastantes
+;Generos seleccionados: Drama, Horror, Psicologico
+6 8 10
+;Temas seleccionados: Gore, Tragedia
+12 32
+;No le molestan la violencia explicita/temas desagradables
+no
+;No tiene preferencia por mangas acabados
+no
+;Tiene preferencia por los mangas sin anime
+si
+;No tiene preferencia por los doujinshi
+no
+(exit)
