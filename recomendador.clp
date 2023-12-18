@@ -1,3 +1,16 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Indice simple ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Ontologia
+; Instancias (¡largo!)
+; Modulos y templates
+; Preguntas
+; Abstraccion
+; Asociacion
+	; Reglas red
+	; Criterios generales
+	; Criterios con preferencias
+; Refinamiento
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Ontologia ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defclass Publicador
@@ -140,7 +153,7 @@
         (create-accessor read-write))
 )
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Instancias (hasta linea 1978) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Instancias (hasta linea 2547) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (definstances instancias
 ([one-piece] of Serializado
@@ -2805,14 +2818,14 @@
     (multislot recomendables (type INSTANCE)) ;instancias de datos-manga
 )
 
-; Estructura intermedia
+; Estructura intermedia que guarda un manga (su titulo) y los matches en generos, temas y nomatches en ambos
 (deftemplate asociacion-heuristica::datos-manga
-	(slot manga (type STRING))
-	(slot generos (type INTEGER)
+	(slot manga (type STRING)) ; titulo de un manga (para buscar el objeto manga)
+	(slot generos (type INTEGER) ; veces que un genero coincide con pref del usuario
 								(default 0))
-	(slot temas (type INTEGER)
+	(slot temas (type INTEGER)   ; veces que un tema coincide con pref del usuario
 								(default 0))
-	(slot nomatch (type INTEGER)
+	(slot nomatch (type INTEGER) ; veces que un tema o genero del manga no era preferido por el usuario
 								(default 0))
 )
 
@@ -3161,9 +3174,9 @@
 (defglobal asociacion-heuristica ?*asoc_malo* = 0.0)
 
 ; Sobre la popularidad
-(defglobal asociacion-heuristica ?*asoc_extr_popular* = 10000000) ;10M
-(defglobal asociacion-heuristica ?*asoc_popular* = 1000000) ;1M
-(defglobal asociacion-heuristica ?*asoc_conocido* = 100000) ;100K
+(defglobal asociacion-heuristica ?*asoc_extr_popular* = 10000000) ;10M ventas
+(defglobal asociacion-heuristica ?*asoc_popular* = 1000000) ;1M ventas
+(defglobal asociacion-heuristica ?*asoc_conocido* = 100000) ;100K ventas
 (defglobal asociacion-heuristica ?*asoc_desconocido* = 0)
 
 ; Crea solucion abstracta
@@ -3256,7 +3269,8 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;; Reglas red ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+; Se llaman si las reglas comunes no consiguen recomendar 3 mangas. Puede pasar, especialmente
+; si se dan minimos generos y temas con los que trabajar
 
 ; Recomienda matches de 2 muy bien valorados
 (defrule asociacion-heuristica::regla-red-2-match-excel
@@ -3640,21 +3654,21 @@
 )
 
 ; User prefiere sin anime
-; Recomienda el que sea bueno, popular, 1 match <4nomatch
+; Recomienda el que sea bueno, popular, 1>matches <4nomatch
 (defrule asociacion-heuristica::1-pref-sin-anime-popular
 	?dat <- (datos-manga (manga ?t) (generos ?match-gen) (temas ?match-tem) (nomatch ?nmatch))
 	?m <- (object (is-a Manga) (valoracion ?val) (copias-vendidas ?copias) (titulo ?t) (tiene-anime ?anime))
 	?usr <- (problema-abstracto (prefiere-sin-anime TRUE))
 	?sol <- (solucion-abstracta (recomendables $?rec))
 	(test (eq ?anime FALSE)) ; comprueba anime
-	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 match
+	(test (> (+ ?match-gen ?match-tem) 0)) ; 1 matches
 	(test (< ?nmatch 4)) ; 3 nomatches
 	(test (> ?val ?*asoc_bueno*)) ; Bueno
 	(test (> ?copias ?*asoc_popular*)) ; Popular
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por sin anime 1> matches popular <4nomatch" ?t)
+	(format t "El manga %s entra por sin anime popular 1>matches <4nomatch" ?t)
 	(printout t crlf)
 )
 
@@ -3671,7 +3685,7 @@
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por acabado 3 matches" ?t)
+	(format t "El manga %s entra por acabado bueno 3>matches" ?t)
 	(printout t crlf)
 )
 
@@ -3690,7 +3704,7 @@
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por acabado 2 matches popular <4nomatch" ?t)
+	(format t "El manga %s entra por acabado 2>matches popular <4nomatch" ?t)
 	(printout t crlf)
 )
 
@@ -3708,7 +3722,7 @@
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por doujinshi 3> matches <4nomatch" ?t)
+	(format t "El manga %s entra por doujinshi 3>matches <4nomatch" ?t)
 	(printout t crlf)
 )
 
@@ -3727,7 +3741,7 @@
 	(test (not (member$ ?dat $?rec)))
 	=>
 	(modify ?sol (recomendables $?rec ?dat))
-	(format t "El manga %s entra por doujinshi 1 match popular <4nomatch" ?t)
+	(format t "El manga %s entra por doujinshi popular 2>matches  <4nomatch" ?t)
 	(printout t crlf)
 )
 
@@ -3736,6 +3750,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Control de reglas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;; Coincidencia generos y temas ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Criterio de refinamiento, devuelve uno que coincida bien
+
 (deftemplate refinamiento-solucion::counter
    (slot num-recomendados (type INTEGER) (default 0))
 )
@@ -3746,6 +3762,9 @@
 	(assert (counter))
 )
 
+; En orden, se miran numeros de coincidencias. Si una regla encuentra un candidato, fin
+
+; 5 matches
 (defrule refinamiento-solucion::coincidencia-5
   (declare (salience 8))
   (not (recomendacion-coincidencia))
@@ -3763,6 +3782,7 @@
 	(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
 
+; 4 matches
 (defrule refinamiento-solucion::coincidencia-4
   (declare (salience 7))
   (not (recomendacion-coincidencia))
@@ -3780,6 +3800,7 @@
 	(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
 
+; 3 matches
 (defrule refinamiento-solucion::coincidencia-3
   (declare (salience 6))
   (not (recomendacion-coincidencia))
@@ -3798,6 +3819,7 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Valoraciones ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Criterio de refinamiento, se toma uno excelentemente valorado, y si no lo hay, uno bien valorado
 
 (defrule refinamiento-solucion::valoracion-excelente
 	(declare (salience 10))
@@ -3834,8 +3856,10 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Preferencias ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Criterio de refinamiento, se toma un manga que cumpla muchas preferencias
+; Actualmente son 3, si cumple 2 se prioriza a si cumple solo una
 
-; Recomienda cualquiera que cumpla alguna de las preferencias
+; Recomienda cualquiera que cumpla dos de las preferencias
 (defrule refinamiento-solucion::2preferencias
 	(declare (salience 20))
 	(not (recomendacion-preferencias))
@@ -3884,7 +3908,10 @@
 		(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
 
-; Si no hay, uno cualquiera
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; General ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Criterio general, no siempre tienen por que cumplirse los 3 criterios definidos mas arriba
+
+; Escoge uno cualquiera
 (defrule refinamiento-solucion::preferencias-no-hay
 	(not (recomendacion-preferencias))
 	(solucion-abstracta (recomendables $?rec))
@@ -3900,8 +3927,7 @@
 		(modify ?counter (num-recomendados (+ ?n-rec 1)))
 )
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Auxiliares ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+; Escoge uno cualquiera
 (defrule refinamiento-solucion::simplemente-recomendable
 	(declare (salience -10))
 	(solucion-abstracta (recomendables $?rec))
