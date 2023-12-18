@@ -3409,6 +3409,57 @@
 	(printout t crlf)
 )
 
+; Recomienda cumplimiento de 1 preferencia
+; No tiene anime
+(defrule asociacion-heuristica::regla-red-preferencia-sin-anime
+	(declare (salience -40))
+	?dat <- (datos-manga (manga ?t))
+	?m <- (object (is-a Manga) (titulo ?t) (tiene-anime ?ta))
+	?usr <- (problema-abstracto (prefiere-sin-anime TRUE))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (< (length$ ?rec) 3))
+	(test (not (member$ ?dat $?rec)))
+	(test (eq ?ta FALSE))
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por regla red" ?t)
+	(printout t crlf)
+)
+
+; Recomienda cumplimiento de 1 preferencia
+; Acabado
+(defrule asociacion-heuristica::regla-red-preferencia-acabado
+	(declare (salience -40))
+	?dat <- (datos-manga (manga ?t))
+	?m <- (object (is-a Manga) (titulo ?t) (estado-publicacion ?ep))
+	?usr <- (problema-abstracto (prefiere-acabados TRUE))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (< (length$ ?rec) 3))
+	(test (not (member$ ?dat $?rec)))
+	(test (eq ?ep "acabado"))
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por regla red" ?t)
+	(printout t crlf)
+)
+
+; Recomienda cumplimiento de 1 preferencia
+; Doujinshi
+(defrule asociacion-heuristica::regla-red-preferencia-doujinshi
+	(declare (salience -40))
+	?dat <- (datos-manga (manga ?t))
+	?m <- (object (is-a Manga) (titulo ?t) (publicado-por ?publ))
+	?usr <- (problema-abstracto (quiere-doujinshis TRUE))
+	?sol <- (solucion-abstracta (recomendables $?rec))
+	(test (< (length$ ?rec) 3))
+	(test (not (member$ ?dat $?rec)))
+	(test (eq (class ?publ) Autopublicador))
+	=>
+	(modify ?sol (recomendables $?rec ?dat))
+	(format t "El manga %s entra por regla red" ?t)
+	(printout t crlf)
+)
+
 ; Recomienda cualquier manga bien valorado
 (defrule asociacion-heuristica::regla-red-bueno
 	(declare (salience -45))
